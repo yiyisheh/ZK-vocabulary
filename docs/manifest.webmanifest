@@ -1,0 +1,29 @@
+{
+  "name": "中考高频单词 · 背诵",
+  "short_name": "中考688",
+  "description": "中考高频 688 词，含词根词缀、离线发音",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6efdd",
+  "theme_color": "#1f5fa8",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

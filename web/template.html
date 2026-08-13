@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="__APP_TITLE__">
+<meta name="theme-color" content="#1f5fa8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>__PAGE_TITLE__</title>
+<style>
+  :root{
+    --bg:#ffffff; --card:#ffffff; --ink:#1a1a1a; --sub:#555555;
+    --gray:#8a8a8a; --blue:#1f5fa8; --hair:rgba(0,0,0,.08);
+    --mark:#8a8a8a; --panel:#f4f6f9;
+    --fs:1; --gap:20px; --padh:14px;
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; height:100%; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+    -webkit-text-size-adjust:100%; overscroll-behavior:none; }
+  body{ display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+
+  #top{ flex:0 0 auto; display:flex; align-items:center; gap:10px;
+    padding:calc(env(safe-area-inset-top) + 8px) 14px 8px; }
+  #top .t{ font-weight:700; font-size:15px; color:var(--blue); }
+  #top .sp{ flex:1; }
+  .iconbtn{ border:1px solid var(--hair); background:var(--card); color:var(--sub);
+    border-radius:9px; padding:6px 11px; font-size:13px; cursor:pointer; }
+
+  /* ---------- pages ---------- */
+  #pages{ flex:1 1 auto; position:relative; }
+  #pages.h{ display:flex; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+  /* scroll-snap-stop:always => a fast/light fling can advance at most ONE page (it must stop at
+     the next snap point), fixing over-sensitive phone swipes without breaking trackpad/iPad. */
+  #pages.h .page{ flex:0 0 100%; scroll-snap-align:start; scroll-snap-stop:always; }
+  #pages.v{ display:block; overflow-y:auto; overflow-x:hidden;
+    -webkit-overflow-scrolling:touch; }
+  /* hide native scrollbar (the stray thumb that appeared while scrolling) */
+  #pages::-webkit-scrollbar{ display:none; }
+  #pages{ scrollbar-width:none; -ms-overflow-style:none; }
+
+  .page{ display:flex; gap:var(--gap); padding:6px var(--padh);
+    align-items:flex-start; }
+  .col{ flex:0 0 auto; overflow:hidden; }
+
+  /* ---------- entry (matches the PDF; sizes in pt × --fs ≈ PDF 1:1) ---------- */
+  .entry{ position:relative; border-bottom:1px solid var(--hair);
+    padding:calc(4pt*var(--fs)) 0 calc(4.5pt*var(--fs)) 14px; }
+  .headline{ position:relative; line-height:1.15; }
+  .num{ position:relative; color:var(--gray); font-size:calc(9pt*var(--fs));
+    font-variant-numeric:tabular-nums; cursor:pointer; padding:2px 1px 2px 1px; }
+  .hw{ font-size:calc(11pt*var(--fs)); font-weight:700; color:var(--blue); cursor:pointer;
+    letter-spacing:.2px; }
+  /* uniform breathing gap above each line (headline→ipa→def→ex all share the same 6px). */
+  .ipa{ font-size:calc(7.5pt*var(--fs)); font-weight:300; color:var(--sub);
+    margin:6px 0 0; letter-spacing:.1px; }
+  .def{ font-size:calc(8.5pt*var(--fs)); line-height:1.4; margin:6px 0 0; }
+  /* self-test mask: blank a block/inline (释义 / 词根 / 例句翻译) until the card is unlocked.
+     transparent text keeps the exact height so nothing reflows on reveal; a faint tinted box
+     marks it tappable. Tapping any masked part reveals ALL masked parts of the entry at once
+     ("和卡片同步解锁"). Descendants blanked too (词根 has colored children). */
+  .mask{ color:transparent !important; background:var(--panel); border-radius:5px;
+    cursor:pointer; -webkit-user-select:none; user-select:none; }
+  .mask *{ color:transparent !important; }
+  /* example line: tap target is the padding box only. The gap above lives in margin-top
+     (NOT clickable) and top padding is trimmed to 1px so the hit area hugs the text; the
+     roomier bottom padding stays for a comfortable tap. Negative side margins keep the text
+     aligned with .def. Tap to read the sentence. */
+  .ex{ font-size:calc(8.5pt*var(--fs)); line-height:1.45; margin:6px -6px 0; padding:1px 6px 5px;
+    border-radius:7px; cursor:pointer; -webkit-user-select:none; user-select:none; }
+  .ex:active{ background:var(--panel); }
+  /* running-total milestone: dark-gray small text on the divider between two words, left-aligned. */
+  .milestone{ text-align:left; color:var(--sub); font-weight:600;
+    font-size:calc(6.8pt*var(--fs)); letter-spacing:.5px;
+    margin:calc(5pt*var(--fs)) 0 calc(-2pt*var(--fs)); opacity:.75; }
+  .root{ margin-top:2px; padding-left:6px; }
+  .root .p{ font-size:calc(8pt*var(--fs)); line-height:1.5; color:var(--gray); }
+  .root .p .txt{ font-weight:700; }
+  .root .sum{ font-size:calc(8pt*var(--fs)); line-height:1.5; color:var(--gray); margin-top:1px; }
+
+  /* mark: gray strikethrough through the middle of the number, from the far left
+     (before the number) to just after the number's dot — like a Word strikethrough */
+  .entry.marked .num::before{ content:""; position:absolute; left:-14px; right:0; top:50%;
+    transform:translateY(-50%); height:1.5px; background:var(--mark); }
+  /* style A (default): also dim the whole entry */
+  .entry.marked{ opacity:.5; }
+  /* style B: line only, text stays its normal color */
+  #pages.markline .entry.marked{ opacity:1; }
+  /* NOTE: no CSS display:none for marked entries — "去掉已划掉" filters at paginate()
+     time only (see visible()), so marking a word never reflows the page in real time. */
+  /* optional divider between entries (transparent keeps height stable for pagination) */
+  #pages.nodivider .entry{ border-bottom-color:transparent; }
+
+  #measure{ position:absolute; visibility:hidden; left:-99999px; top:0; pointer-events:none; }
+
+  /* bottom-bar tap zones: the empty areas left/right of the page number turn one page
+     (left => previous, right => next). Faint chevrons so they're discoverable. */
+  .barnav{ flex:1 1 0; display:flex; align-items:center; color:var(--gray); opacity:.4;
+    font-size:30px; font-weight:300; line-height:1; cursor:pointer;
+    -webkit-user-select:none; user-select:none; transition:opacity .15s; }
+  #barnav-l{ justify-content:flex-start; padding-left:26px; }
+  #barnav-r{ justify-content:flex-end; padding-right:26px; }
+  .barnav:active{ opacity:.9; background:var(--panel); }
+
+  /* ---------- page bar + wheel ---------- */
+  #bar{ flex:0 0 auto; display:flex; align-items:stretch; justify-content:space-between;
+    padding:0 0 env(safe-area-inset-bottom); min-height:50px; border-top:1px solid var(--hair); }
+  #pageno{ align-self:center; font-size:13px; color:var(--sub); cursor:pointer; padding:4px 16px;
+    border:1px solid var(--hair); border-radius:20px; background:var(--card);
+    font-variant-numeric:tabular-nums; }
+  #wheelH{ position:absolute; left:12px; right:12px; bottom:52px; z-index:8;
+    background:var(--card); border:1px solid var(--hair); border-radius:12px;
+    padding:10px 14px; display:none; box-shadow:0 6px 24px rgba(0,0,0,.18); }
+  #wheelH input{ width:100%; }
+  #wheelV{ position:absolute; right:8px; top:12%; bottom:12%; width:46px; z-index:8;
+    background:var(--card); border:1px solid var(--hair); border-radius:23px;
+    display:none; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(0,0,0,.18); }
+  #wheelV input{ writing-mode:vertical-lr; -webkit-appearance:slider-vertical; width:22px; height:90%; }
+  .wlabel{ text-align:center; font-size:12px; color:var(--sub); margin-bottom:6px;
+    font-variant-numeric:tabular-nums; }
+  input[type=range]{ accent-color:var(--blue); }
+
+  /* ---------- settings ---------- */
+  #settings{ position:fixed; inset:0; background:var(--bg); z-index:50;
+    display:flex; flex-direction:column; padding:0 22px;
+    padding-top:calc(env(safe-area-inset-top) + 18px);
+    padding-bottom:calc(env(safe-area-inset-bottom) + 92px); overflow:auto; }
+  #settings h1{ font-size:22px; color:var(--blue); margin:12px 0 4px; }
+  #settings .desc{ color:var(--sub); font-size:13px; margin-bottom:12px; }
+  .row{ display:flex; align-items:center; padding:13px 2px;
+    border-bottom:1px solid var(--hair); gap:12px; flex-wrap:wrap; }
+  .row .lab{ flex:1; min-width:140px; }
+  /* nested sub-option (e.g. 自测 的例句翻译子项): indented with a left rule to read as a child row */
+  .row.subrow{ padding-left:16px; margin-left:6px; border-left:2px solid var(--blue); }
+  .row.subrow .lab b{ font-size:14px; font-weight:600; }
+  .row .lab b{ font-size:15px; } .row .lab span{ display:block; color:var(--sub);
+    font-size:12px; margin-top:2px; }
+  .seg{ display:flex; border:1px solid var(--blue); border-radius:9px; overflow:hidden; flex-wrap:wrap; }
+  .seg button{ border:0; background:var(--card); color:var(--blue);
+    padding:8px 12px; font-size:13px; cursor:pointer; }
+  .seg button.on{ background:var(--blue); color:#fff; }
+  .switch{ width:52px; height:30px; border-radius:16px; background:#c8ccd2;
+    position:relative; cursor:pointer; transition:background .2s; flex:0 0 auto; }
+  .switch.on{ background:var(--blue); }
+  .switch::after{ content:""; position:absolute; top:3px; left:3px; width:24px; height:24px;
+    border-radius:50%; background:#fff; transition:left .2s; }
+  .switch.on::after{ left:25px; }
+  .slider{ display:flex; align-items:center; gap:10px; min-width:180px; flex:1; }
+  .slider input{ flex:1; } .slider .val{ font-size:12px; color:var(--sub); width:40px;
+    text-align:right; font-variant-numeric:tabular-nums; }
+  .swatches{ display:flex; flex-wrap:wrap; gap:8px; width:100%; margin-top:4px; }
+  .sw{ width:34px; height:34px; border-radius:8px; cursor:pointer;
+    border:1px solid rgba(0,0,0,.15); position:relative; }
+  .sw.on::after{ content:"✓"; position:absolute; inset:0; display:flex; align-items:center;
+    justify-content:center; color:#1f5fa8; font-weight:700; text-shadow:0 0 3px #fff,0 0 3px #fff; }
+  .hexwrap{ display:flex; gap:8px; align-items:center; margin-top:8px; width:100%; }
+  .hexwrap input{ flex:1; max-width:170px; padding:8px 10px; font-size:13px;
+    border:1px solid var(--hair); border-radius:8px; background:var(--card); color:var(--ink); }
+  .hexwrap button{ padding:8px 14px; border:1px solid var(--blue); background:var(--blue);
+    color:#fff; border-radius:8px; font-size:13px; cursor:pointer; }
+  /* counter-interval chips (added running-total intervals; tap a chip to remove it) */
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:8px; }
+  .chip{ padding:5px 10px; border:1px solid var(--blue); border-radius:14px; color:var(--blue);
+    background:var(--card); font-size:12px; cursor:pointer; -webkit-user-select:none; user-select:none; }
+  .chip::after{ content:" ✕"; opacity:.6; font-size:10px; }
+  .chip.empty{ border-style:dashed; color:var(--sub); border-color:var(--hair); cursor:default; }
+  .chip.empty::after{ content:""; }
+  /* Leitner active-pool numbers (池容量 / 低水位阈值) */
+  .poolnums{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .poolnums label{ font-size:12px; color:var(--sub); display:flex; align-items:center; gap:6px; }
+  .poolnums input{ width:68px; padding:7px 8px; font-size:13px; text-align:center;
+    border:1px solid var(--hair); border-radius:8px; background:var(--card); color:var(--ink); }
+  .minibtn{ flex:0 0 auto; padding:9px 16px; border:1px solid var(--blue); background:var(--blue);
+    color:#fff; border-radius:9px; font-size:13px; cursor:pointer; }
+  .minibtn:disabled{ opacity:.5; cursor:default; }
+  /* update-available accent: the version button turns amber when a new build is waiting */
+  .minibtn.hasupd{ background:#d98a00; border-color:#d98a00; }
+  /* "检测到新版本" confirm dialog: a centered modal over everything (hidden until an update waits) */
+  #umodal{ display:none; position:fixed; inset:0; z-index:80; background:rgba(0,0,0,.45);
+    align-items:center; justify-content:center; padding:24px; }
+  #umodal.show{ display:flex; }
+  .umbox{ background:var(--card); color:var(--ink); border-radius:14px; padding:20px 20px 16px;
+    max-width:340px; width:100%; box-shadow:0 12px 40px rgba(0,0,0,.35); }
+  .umbox h2{ font-size:17px; color:var(--blue); margin-bottom:8px; }
+  .umbox p{ font-size:13.5px; color:var(--sub); line-height:1.6; }
+  .umchk{ display:flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; color:var(--ink);
+    cursor:pointer; -webkit-user-select:none; user-select:none; }
+  .umchk input{ width:16px; height:16px; }
+  #um-status{ font-size:12.5px; margin-top:10px; min-height:16px; color:var(--sub); }
+  #um-status.err{ color:#c0392b; }
+  .umbtns{ display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
+  .umbtns .minibtn.ghost{ background:var(--card); color:var(--blue); }
+  /* fixed at the bottom of the settings overlay so it's always reachable without scrolling.
+     Child of #settings (display:none when closed) so it only shows while settings is open. */
+  #start{ position:fixed; left:22px; right:22px; bottom:calc(env(safe-area-inset-bottom) + 16px);
+    z-index:60; padding:15px; background:var(--blue); color:#fff;
+    border:0; border-radius:13px; font-size:17px; font-weight:700; cursor:pointer;
+    box-shadow:0 6px 22px rgba(0,0,0,.24); }
+  .hintbox{ background:var(--panel); border-radius:10px; padding:12px 14px;
+    font-size:12.5px; color:var(--sub); line-height:1.7; margin-top:10px; }
+  .hintbox b{ color:var(--ink); }
+  /* offline-cache progress: slim bar in settings, matches the accent color */
+  .cachebar{ flex:0 0 120px; height:8px; border-radius:5px; background:var(--panel);
+    overflow:hidden; border:1px solid var(--hair); }
+  .cachebar i{ display:block; height:100%; width:0; background:var(--blue);
+    border-radius:5px; transition:width .35s ease; }
+  #cache-row.done .cachebar i{ background:#2ea043; }
+  /* developer mode: bottom dock (takes real layout space), drag top edge to resize */
+  #dev{ display:none; flex:0 0 auto; height:var(--devH,170px); min-height:80px;
+    flex-direction:column; background:rgba(6,10,14,.96); border-top:1px solid #26323c; }
+  #dev.on{ display:flex; }
+  #dev-handle{ flex:0 0 15px; cursor:ns-resize; touch-action:none; background:#12202c;
+    display:flex; align-items:center; justify-content:center; }
+  #dev-handle::before{ content:""; width:46px; height:4px; border-radius:2px; background:#3a5566; }
+  #dev-canvas{ flex:1 1 auto; display:block; width:100%; min-height:0; background:#0b0f14; }
+  #dev-info{ flex:0 0 auto; padding:4px 8px calc(4px + env(safe-area-inset-bottom));
+    font:11px/1.4 ui-monospace,Menlo,Consolas,monospace; color:#8fe; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+
+<div id="settings">
+  <h1>__PAGE_TITLE__</h1>
+  <div class="desc">__DESC__</div>
+
+  <div class="row">
+    <div class="lab"><b>去掉已经划掉的单词</b><span>开启后，已掌握（划线）的单词会被去掉；不实时移除，每次进出设置页时才重新加载去掉</span></div>
+    <div id="sw-removemarked" class="switch"></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>状态池模式（莱特纳）</b><span>只背序号范围内还没划掉的词；划掉=熟练剔除。剩余降到阈值时，范围自动往后推进放新词进来。已掌握按全库总量算，不会归零</span></div>
+    <div id="sw-poolmode" class="switch"></div>
+  </div>
+  <div class="row subrow">
+    <div class="lab"><b>池大小 / 推进阈值</b><span id="pool-stat">未开启</span></div>
+    <div class="poolnums">
+      <label>池大小 <input id="pool-size" type="number" min="1" max="__MAX_RANK__" inputmode="numeric"></label>
+      <label>阈值 <input id="pool-low" type="number" min="1" max="1249" inputmode="numeric"></label>
+      <button id="pool-reset" class="minibtn">重置范围</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>自测（释义 / 词根留白）</b><span>开启后释义、词根词缀卡彻底留白，点卡片才一起显示——先回忆再核对</span></div>
+    <div id="sw-selftest" class="switch"></div>
+  </div>
+  <div class="row subrow">
+    <div class="lab"><b>例句翻译随卡片解锁</b><span>仅自测时生效：例句中文翻译也一起遮住，点卡片和释义/词根同步解锁（英文原句始终可见）</span></div>
+    <div id="sw-masktrans" class="switch"></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>显示例句</b><span>关闭后不显示例句行（更精简）</span></div>
+    <div id="sw-showex" class="switch"></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>实时累计词数</b><span>在分界线上按间隔标出「累计 N 词」深灰小字；可加多个间隔（如 100、25）。数当前显示的词——开「去掉已划掉」后自动只数剩下的</span></div>
+    <div class="hexwrap">
+      <input id="counter-input" type="number" min="1" inputmode="numeric" placeholder="每 N 词，如 100">
+      <button id="counter-add">添加</button>
+    </div>
+    <div class="chips" id="counter-chips"></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>划线样式</b><span>变灰=划线并把整条变灰 / 仅划线=只划线，字体不变</span></div>
+    <div class="seg" id="seg-markstyle">
+      <button data-v="dim">变灰划线</button><button data-v="line">仅划线</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>显示分界线</b><span>词条之间的浅色分隔线</span></div>
+    <div id="sw-divider" class="switch"></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>翻页方式</b><span>左右滑动分页 / 上下无缝滚动</span></div>
+    <div class="seg" id="seg-mode">
+      <button data-v="h">左右翻页</button><button data-v="v">上下无缝</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>跳过开头静音</b><span>发音开头静音归一为约 100ms；跳得越多越跟手（0–100ms）</span></div>
+    <div class="slider"><input id="rg-skip" type="range" min="0" max="100" step="10"><span class="val" id="v-skip"></span></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>例句播放前延迟</b><span>点例句朗读前的静默间隔；例句音频已去前置静音，可留 0</span></div>
+    <div class="slider"><input id="rg-exdelay" type="range" min="0" max="50" step="5"><span class="val" id="v-exdelay"></span></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>字体大小</b><span>默认≈优化版 PDF 原大小（100% 缩放时）</span></div>
+    <div class="slider"><input id="rg-fs" type="range" min="0.75" max="1.6" step="0.05"><span class="val" id="v-fs"></span></div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>栏数</b><span>自动=按 PDF 栏宽铺满屏幕；也可固定</span></div>
+    <div class="seg" id="seg-cols">
+      <button data-v="auto">自动</button><button data-v="2">2</button><button data-v="3">3</button><button data-v="4">4</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="lab"><b>间距（空隙）</b><span>控制栏间距与左右留白</span></div>
+    <div class="slider"><input id="rg-sp" type="range" min="0" max="1" step="0.05"><span class="val" id="v-sp"></span></div>
+  </div>
+  <div class="row" style="display:block">
+    <div class="lab"><b>背景颜色</b><span>点色块选择；或在下方输入色号 (#RRGGBB) 添加</span></div>
+    <div class="swatches" id="swatches"></div>
+    <div class="hexwrap">
+      <input id="hexinput" type="text" placeholder="#f0e8d0" maxlength="7">
+      <button id="hexadd">添加</button>
+    </div>
+  </div>
+
+  <div class="row" style="display:block">
+    <div class="lab"><b>多端同步</b><span>两台设备填<b>同一个同步码</b>即可同步「划线」(以最新改动为准) 与「自定义色号列表」；其余设置及当前选中的颜色不同步</span></div>
+    <div class="hexwrap">
+      <input id="syncinput" type="text" placeholder="__SYNC_HINT__" maxlength="40">
+      <button id="syncbtn">连接 / 保存</button>
+    </div>
+    <div id="syncstatus" style="font-size:12px;color:var(--sub);margin-top:6px"></div>
+  </div>
+
+  <div class="row" id="cache-row">
+    <div class="lab"><b>离线缓存</b><span id="cache-sub">检测中…</span></div>
+    <div class="cachebar"><i id="cache-fill"></i></div>
+  </div>
+
+  <div class="row" id="update-row">
+    <div class="lab"><b>版本</b><span id="ver-sub">…</span></div>
+    <button id="btn-update" class="minibtn">检查更新</button>
+  </div>
+
+  <div class="row">
+    <div class="lab"><b>开发者模式</b><span>底部实时显示解码 PCM 波形、真起音(橙)/起播(绿)/播放头(红)，调试发音起点用</span></div>
+    <div id="sw-dev" class="switch"></div>
+  </div>
+
+  <div class="hintbox">
+    <b>操作说明</b><br>
+    · 点<b>序号</b> → 灰线标记「已掌握」（再点取消）<br>
+    · 点<b>单词</b> → 音节拆分 ⇄ 原词，并发音（美音）<br>
+    · 点<b>例句</b> → 朗读整句（Andrew / Brian 双音色）<br>
+    · 点词条<b>其他地方</b> → 发音<br>
+    · 点<b>页码</b> → 弹出快速翻页滚轮（再点收起）<br>
+    · <b>状态池</b>：只背序号范围内的词，划掉即剔除；剩余到阈值自动往后推进<br>
+    · 设置 / 划线 / 上次位置自动保存
+  </div>
+  <button id="start">开始背诵</button>
+</div>
+
+<div id="top">
+  <div class="t">__TOP_TITLE__</div><div class="sp"></div>
+  <button class="iconbtn" id="btn-settings">设置</button>
+</div>
+
+<div id="pages"></div>
+<div id="measure"></div>
+
+<div id="dev">
+  <div id="dev-handle" title="上下拖动改变高度"></div>
+  <canvas id="dev-canvas"></canvas>
+  <div id="dev-info">开发者模式：点任意单词发音 —— 橙线=检测到的真起音，绿线=实际起播(起音前留 lead)，红线=播放头</div>
+</div>
+
+<div id="wheelH"><div class="wlabel" id="wlabelH"></div><input type="range" id="rangeH"></div>
+<div id="wheelV"><input type="range" id="rangeV"></div>
+<div id="bar">
+  <div id="barnav-l" class="barnav">‹</div>
+  <div id="pageno">1 / 1</div>
+  <div id="barnav-r" class="barnav">›</div>
+</div>
+
+<!-- 「检测到新版本」确认弹窗：探测到新版本时弹出，问是否更新（不会自动更新，见末尾更新 IIFE） -->
+<div id="umodal">
+  <div class="umbox">
+    <h2>检测到新版本</h2>
+    <p>发现可更新的新版本。更新会重新加载页面（进度与设置已保存，不受影响）。是否立即更新？</p>
+    <label class="umchk"><input type="checkbox" id="um-noremind" checked>不再提示（仍可在设置页手动更新）</label>
+    <div id="um-status"></div>
+    <div class="umbtns">
+      <button id="um-later" class="minibtn ghost">以后再说</button>
+      <button id="um-now" class="minibtn">立即更新</button>
+    </div>
+  </div>
+</div>
+
+<!-- 单文件离线版：音频以 base64 内联在下面两个块里（不执行，用时才 JSON.parse）。
+     托管版(docs/)：这两个块是空的，音频改走 AUDIO_INDEX 指向的二进制包，见下。 -->
+<script type="application/json" id="audio-us">__AUDIO_US__</script>
+<script type="application/json" id="audio-ex">__AUDIO_EX__</script>
+<script>
+window.CET4 = __DATA__;
+/* 托管版：{us:{file,bytes,index:{单词:[偏移,长度]}}, ex:{…按 rank}}；单文件版为 null。
+   包名带内容哈希 ⇒ 音频一变文件名就变、必然重下；没变则一个字节都不重下。 */
+window.AUDIO_INDEX = __AUDIO_INDEX__;
+window.BUILD_INFO = __BUILD_INFO__;     // {v:内容哈希版本, t:构建时间戳}（构建时注入），与 sw 缓存名同源
+window.CACHE_NAME = "__CACHE_NAME__";   // 与 sw.js 同名的缓存桶：音频包由网页自己写进去
+</script>
+<script>
+/* 多端同步配置（Supabase，仅可公开的 publishable key）。
+   留空(null)则不启用同步——App 仍可本地/离线正常使用。 */
+window.SYNC_CONFIG = __SYNC_CONFIG__;
+</script>
+<script>
+(function(){
+  "use strict";
+  var DATA = window.CET4 || [];
+  var LS = "__LS_KEY__";
+  var PRESETS = [
+    {n:"白", c:"#ffffff"}, {n:"米黄", c:"#f6efdd"}, {n:"护眼绿", c:"#c9e6cc"},
+    {n:"淡青", c:"#dde9e7"}, {n:"浅灰", c:"#e9ebee"}, {n:"夜间", c:"#15181b"}
+  ];
+
+  var state = {
+    removeMarked:false, markStyle:"dim", divider:true, mode:"h", accent:"us",
+    fontScale:1.0, cols:"auto", spacing:0.35, skipMs:40, exDelay:0,
+    bg:"#ffffff", customColors:[], marks:{}, anchor:1, syncCode:"", dev:false, devH:170,
+    selftest:false, showEx:true,  // selftest: blank the definition until tapped; showEx: render example lines
+    maskExTrans:true,             // self-test sub-option: also mask the example's 中文 translation, revealed together with the card
+    counters:[],                  // running-total milestone intervals, e.g. [100,25]; empty = off. 【local】
+    poolMode:false, poolSize:40, poolLow:15, poolMax:0   // Leitner rank ceiling (see ensurePool). 【local】
+  };
+  try{ var s=JSON.parse(localStorage.getItem(LS)); if(s) Object.assign(state,s); }catch(e){}
+  // migrate old marks {rank:1} -> {rank:{v,t}} (t=0 so any later change wins)
+  if(state.marked){ for(var _r in state.marked){ if(!state.marks[_r]) state.marks[_r]={v:1,t:0}; } delete state.marked; }
+  // migrate showMarked(显示) -> removeMarked(去掉): inverse meaning
+  if(state.showMarked!==undefined){ state.removeMarked=!state.showMarked; delete state.showMarked; }
+  if(!state.marks) state.marks={};
+  if(!Array.isArray(state.counters)) state.counters=[];
+  // skip slider reference changed 314 -> 100ms; clamp old out-of-range values
+  if(!(state.skipMs>=0 && state.skipMs<=100)) state.skipMs=40;
+  // active-pool defaults / sanity (threshold must leave room for at least one advance)
+  // migrate the old per-round roster {pool:[ranks]} -> a single rank ceiling
+  var _poolMigrated=false;
+  if(Array.isArray(state.pool)){
+    if(state.pool.length) state.poolMax=Math.max(state.poolMax||0, Math.max.apply(null,state.pool));
+    delete state.pool; _poolMigrated=true;         // 存盘一次，否则旧数组会一直留在 localStorage 里
+  }
+  if(!(state.poolMax>=0)) state.poolMax=0;
+  if(!(state.poolSize>=1)) state.poolSize=40;
+  if(!(state.poolLow>=1)) state.poolLow=15;       // 0 would advance by 0 forever
+  if(state.poolLow>=state.poolSize) state.poolLow=state.poolSize-1;
+  if(_poolMigrated) save();
+  function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
+  function marked(rank){ var m=state.marks[rank]; return !!(m && m.v===1); }
+
+  var pagesEl=document.getElementById("pages"),
+      measEl=document.getElementById("measure"),
+      pagenoEl=document.getElementById("pageno");
+
+  function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  // example is "英文（中文）" mixed; split at the first (（ paren into english / translation parts
+  function exEnglish(s){ s=s||""; var i=s.search(/[（(]/); return (i<0?s:s.slice(0,i)).trim(); }
+  function exTrans(s){ s=s||""; var i=s.search(/[（(]/); return i<0?"":s.slice(i).trim(); }
+
+  // running-total milestones: rank -> count to show on that entry's divider. Recomputed each
+  // paginate() from the current visible list; a divider shows if its 1-based position is a
+  // multiple of ANY configured interval ("数当前显示的词"). Empty map when no intervals set.
+  var milestoneAt={};
+  function computeMilestones(list){
+    milestoneAt={};
+    var ivs=(state.counters||[]).filter(function(n){ return n>0; });
+    if(!ivs.length) return;
+    for(var i=0;i<list.length;i++){ var pos=i+1;
+      if(ivs.some(function(n){ return pos%n===0; })) milestoneAt[list[i].rank]=pos;
+    }
+  }
+
+  function entryHTML(e){
+    var h='<div class="entry'+(marked(e.rank)?" marked":"")+'" data-rank="'+e.rank+'" data-word="'+esc(e.word)+'">';
+    h+='<div class="headline"><span class="num" data-act="mark">'+e.rank+'.</span> '
+      +'<span class="hw" data-act="syl" data-orig="'+esc(e.word)+'" data-syl="'+esc(e.syl||e.word)+'">'+esc(e.word)+'</span></div>';
+    var st=state.selftest, m=st?' mask':"", ma=st?' data-act="reveal"':"";  // self-test masking
+    if(e.uk||e.us) h+='<div class="ipa">英[/'+esc(e.uk)+'/]&nbsp; 美[/'+esc(e.us)+'/]</div>';
+    if(e.def) h+='<div class="def'+m+'"'+ma+'>'+esc(e.def)+'</div>';
+    // 词根词缀卡（在例句之上；自测里也一起遮蔽）
+    if(e.root && e.root.parts && e.root.parts.length){
+      h+='<div class="root'+m+'"'+ma+'>';
+      e.root.parts.forEach(function(p){
+        h+='<div class="p">'+esc(p.type)+' <span class="txt">'+esc(p.text)+'</span> = '+esc(p.meaning)+'</div>';
+      });
+      if(e.root.summary) h+='<div class="sum">▸ '+esc(e.root.summary)+'</div>';
+      h+='</div>';
+    }
+    // 例句放在词根下面；英文常显，中文翻译在自测+子项开时随卡片一起遮蔽/解锁
+    if(e.ex && state.showEx){
+      var en=exEnglish(e.ex), tr=exTrans(e.ex), maskTr=st&&state.maskExTrans&&tr;
+      h+='<div class="ex" data-act="ex">'+esc(e.ex_label||"例句")+'：'+esc(en);
+      if(tr) h+=(en?" ":"")+'<span class="extrans'+(maskTr?" mask":"")+'"'+(maskTr?' data-act="reveal"':"")+'>'+esc(tr)+'</span>';
+      h+='</div>';
+    }
+    if(milestoneAt[e.rank]) h+='<div class="milestone">累计 '+milestoneAt[e.rank]+' 词</div>';
+    return h+'</div>';
+  }
+
+  function applyLayout(){
+    var gap=Math.round(10+state.spacing*28), padh=Math.round(6+state.spacing*20);
+    var r=document.documentElement.style;
+    r.setProperty("--fs", state.fontScale);
+    r.setProperty("--gap", gap+"px");
+    r.setProperty("--padh", padh+"px");
+    return {gap:gap, padh:padh};
+  }
+
+  // ---- measured pagination (fills a column top-to-bottom like the PDF) ----
+  var pages=[], colW=300, colCount=2;
+  // marked words are filtered out ONLY here (at paginate time), not via CSS in real time —
+  // so "去掉已划掉" takes effect when the settings page is opened/closed (which re-paginates),
+  // and marking a word while reading never makes the page reflow under your finger.
+  function visible(){
+    if(state.poolMode) return DATA.filter(function(e){ return e.rank<=state.poolMax && !marked(e.rank); });
+    return state.removeMarked ? DATA.filter(function(e){ return !marked(e.rank); }) : DATA;
+  }
+
+  // ---- Leitner active pool: a RANK CEILING, counted against the whole book ----
+  // The pool is simply "ranks 1..poolMax that aren't crossed off yet". One number, `poolMax`,
+  // is the whole state — so 已掌握 is always the real total (54 means 54), never a per-round
+  // tally that resets. Stubborn words need no special handling: they stay in range because they
+  // are still unmarked, which is exactly the Leitner behaviour.
+  //
+  // Advance rule: while 剩余 (unmarked words within range) <= poolLow, push the ceiling forward
+  // by (poolSize - poolLow) — the amount that refills 剩余 back up to the full 池大小 poolSize.
+  // With 池大小 100 / 阈值 40: at 已掌握 60 the range 1..100 has 40 left (== 阈值) -> ceiling moves
+  // to 160 (+60), so 剩余 returns to exactly 100. The active window is a steady 100 the whole time,
+  // not just at the start. (Step used to be poolLow itself, which only refilled 剩余 to 80 — the
+  // 池大小 was honoured on round 1 only. That was the bug.)
+  //
+  // ⚠️ NOT «ceiling = 100 + 40*floor(已掌握/60)». That formula advances every 60 mastered but
+  // only by 40, so 剩余 drifts down (21 at m=119, 1 at m=179) and hits 0 at m=220 with the next
+  // advance not due until 240 — the pool starves. The loop below keys off 剩余 instead, which
+  // cannot starve. step = poolSize - poolLow ≥ 1 (poolLow < poolSize is enforced), never 0.
+  //
+  // Earlier designs (per-round roster of poolSize words) are gone: they made 已掌握 reset every
+  // round, which is precisely what the user rejected.
+  function poolRemain(){                              // unmarked words at or below the ceiling
+    var n=0;
+    for(var i=0;i<DATA.length;i++){
+      var r=DATA[i].rank;
+      if(r>state.poolMax) break;
+      if(!marked(r)) n++;
+    }
+    return n;
+  }
+  function poolNeedsRefill(){
+    return state.poolMode && state.poolMax<DATA.length && poolRemain()<=state.poolLow;
+  }
+  function ensurePool(){                              // idempotent; true if the ceiling moved
+    if(!state.poolMode) return false;
+    var before=state.poolMax, step=Math.max(1, state.poolSize-state.poolLow);   // refill 剩余 back to 池大小
+    if(state.poolMax<state.poolSize) state.poolMax=Math.min(DATA.length, state.poolSize);
+    while(state.poolMax<DATA.length && poolRemain()<=state.poolLow)
+      state.poolMax=Math.min(DATA.length, state.poolMax+step);
+    if(state.poolMax===before) return false;
+    save();
+    return true;
+  }
+
+  function paginate(){
+    ensurePool();                                   // top up the active pool before measuring
+    var lay=applyLayout();
+    var W=pagesEl.clientWidth, H=pagesEl.clientHeight;
+    if(!W||!H) return;
+    if(state.cols==="auto"){
+      var target=330*state.fontScale;
+      colCount=Math.max(1, Math.round((W-2*lay.padh+lay.gap)/(target+lay.gap)));
+    } else colCount=+state.cols;
+    colCount=Math.max(1, Math.min(6, colCount));
+    colW=Math.floor((W-2*lay.padh-(colCount-1)*lay.gap)/colCount);
+    var colH=H-14;
+    var list=visible();
+    computeMilestones(list);
+    measEl.style.width=colW+"px";
+    measEl.innerHTML=list.map(entryHTML).join("");
+    var kids=measEl.children, hs=[];
+    for(var i=0;i<kids.length;i++) hs.push(kids[i].offsetHeight);
+    measEl.innerHTML="";
+    var cols=[], cur=[], curH=0;
+    for(var j=0;j<list.length;j++){
+      var eh=hs[j]+1;
+      if(cur.length && curH+eh>colH){ cols.push(cur); cur=[]; curH=0; }
+      cur.push(list[j]); curH+=eh;
+    }
+    if(cur.length) cols.push(cur);
+    pages=[];
+    for(var c=0;c<cols.length;c+=colCount) pages.push(cols.slice(c,c+colCount));
+    if(!pages.length) pages=[[[]]];
+    render();
+  }
+
+  function render(){
+    var html="";
+    for(var p=0;p<pages.length;p++){
+      html+='<div class="page" data-page="'+p+'">';
+      for(var c=0;c<pages[p].length;c++){
+        html+='<div class="col" style="width:'+colW+'px">';
+        for(var k=0;k<pages[p][c].length;k++) html+=entryHTML(pages[p][c][k]);
+        html+='</div>';
+      }
+      html+='</div>';
+    }
+    pagesEl.innerHTML=html;
+    pagesEl.className=state.mode+(state.markStyle==="line"?" markline":"")+(state.divider?"":" nodivider");
+    rangeH.max=rangeV.max=Math.max(0,pages.length-1);
+    restoreAnchor(); prefetchCurrent();
+  }
+
+  function pageOfRank(rank){
+    for(var p=0;p<pages.length;p++) for(var c=0;c<pages[p].length;c++)
+      for(var k=0;k<pages[p][c].length;k++) if(pages[p][c][k].rank===rank) return p;
+    return 0;
+  }
+  function restoreAnchor(){ var p=pageOfRank(state.anchor);
+    requestAnimationFrame(function(){ scrollToPage(p,false); updateLabel(); }); }
+  function scrollToPage(p,smooth){
+    p=Math.max(0,Math.min(pages.length-1,p));
+    var el=pagesEl.querySelector('.page[data-page="'+p+'"]'); if(!el) return;
+    if(state.mode==="h") pagesEl.scrollTo({left:el.offsetLeft, behavior:smooth?"smooth":"auto"});
+    else pagesEl.scrollTo({top:el.offsetTop, behavior:smooth?"smooth":"auto"});
+  }
+  function currentPage(){
+    var ps=pagesEl.querySelectorAll(".page"); if(!ps.length) return 0;
+    if(state.mode==="h"){ var x=pagesEl.scrollLeft+pagesEl.clientWidth/2;
+      for(var i=0;i<ps.length;i++) if(ps[i].offsetLeft+ps[i].offsetWidth>=x) return i;
+    }else{ var y=pagesEl.scrollTop+pagesEl.clientHeight/2;
+      for(var j=0;j<ps.length;j++) if(ps[j].offsetTop+ps[j].offsetHeight>=y) return j; }
+    return ps.length-1;
+  }
+  function firstRankOnPage(p){ return (pages[p]&&pages[p][0]&&pages[p][0][0])?pages[p][0][0].rank:state.anchor; }
+  function updateLabel(){
+    var cur=currentPage();
+    pagenoEl.textContent=(cur+1)+" / "+pages.length;
+    rangeH.value=rangeV.value=cur;
+    wlabelH.textContent="第 "+(cur+1)+" / "+pages.length+" 页";
+    return cur;
+  }
+  var scrollTO;
+  pagesEl.addEventListener("scroll", function(){
+    var cur=updateLabel(); clearTimeout(scrollTO);
+    scrollTO=setTimeout(function(){ state.anchor=firstRankOnPage(cur); save(); prefetchCurrent(); }, 160);
+  }, {passive:true});
+
+  // ---- audio source: inline base64 (single-file build) OR binary packs (hosted build) ----
+  // Both end at the same place: an ArrayBuffer of raw mp3 bytes handed to decodeAudioData.
+  // Single-file: everything is inline, available immediately, no network ever.
+  // Hosted: the shell (~560KB incl. all text) loads first so you can read at once, and the two
+  // audio packs stream in behind it. base64 is dropped there — it only existed to fit inside
+  // HTML and cost a flat +33% (it is a lossless byte<->text mapping, never a quality question).
+  var AIDX = window.AUDIO_INDEX || null;           // null => single-file build
+  var packs = {};                                  // "us"/"ex" -> ArrayBuffer once downloaded
+  var audioMaps={};                                // single-file only: accent -> {word: base64}
+  function audioMap(acc){
+    if(!audioMaps[acc]){
+      var el=document.getElementById("audio-"+acc);
+      try{ audioMaps[acc]= el && el.textContent.trim() ? JSON.parse(el.textContent) : {}; }
+      catch(e){ audioMaps[acc]={}; }
+    }
+    return audioMaps[acc];
+  }
+  function b64ToBytes(b64){                       // base64 -> ArrayBuffer (offline, no fetch)
+    var s=atob(b64), n=s.length, u=new Uint8Array(n);
+    for(var i=0;i<n;i++) u[i]=s.charCodeAt(i);
+    return u.buffer;
+  }
+  // The ONE place that answers "give me the mp3 bytes for this clip" (null = not available yet).
+  function clipBytes(which, key){
+    if(AIDX){
+      var meta=AIDX[which], buf=packs[which];
+      var ent = meta && meta.index[key];
+      return (buf && ent) ? buf.slice(ent[0], ent[0]+ent[1]) : null;   // pack still downloading
+    }
+    var b = (which==="us") ? audioMap(state.accent)[key] : exMap()[key];
+    return b ? b64ToBytes(b) : null;
+  }
+  function youdaoUrl(w){ return "https://dict.youdao.com/dictvoice?type="+(state.accent==="uk"?1:2)+"&audio="+encodeURIComponent(w); }
+
+  // ---- audio: Web Audio DECODE + <audio> element OUTPUT, sample-accurate vs each clip's onset ----
+  // Why not <audio>.currentTime on the MP3: seeking mid-way into an MP3 is unreliable — the seek
+  // snaps to ~24ms frame boundaries (imprecise) AND the frame right after the seek decodes wrong
+  // (MP3's bit-reservoir needs prior-frame context). Either eats soft onsets. So we decode the
+  // WHOLE clip to PCM once (full context, no seek) and cut at an exact sample.
+  //
+  // Why not AudioBufferSourceNode for OUTPUT: on iOS/iPadOS, Web Audio output obeys the silent
+  // switch / audio-session policy and can be muted while the graph keeps "playing" (context
+  // running, playhead moving, no sound — exactly what iPad showed). <audio> elements are exempt.
+  // So: decodeAudioData (silent, always allowed) -> detectOnset on the PCM -> slice at the exact
+  // sample -> re-encode that slice as a WAV blob -> play it via a shared <audio>. WAV needs no
+  // seek at all (the file starts where playback should), so the no-clipping property holds.
+  //
+  // The Youdao source has wildly uneven leading silence (~314ms up to ~1000ms), so a FIXED skip
+  // leaves a long dead gap before the word on many clips. Instead we DETECT each clip's true
+  // onset on the decoded PCM (sustained-RMS above the per-clip noise floor — ignores lone blips,
+  // catches quiet fricatives) and start `lead` ms before it, where lead = 100 - skipMs (default
+  // skip 40 => uniform 60ms lead). This normalizes every word to the same snappy lead-in.
+  // (UK accent removed — US-only now to keep the page light enough for iPad WebKit.)
+  var actx=null, abufCache={}, abufOrder=[];        // cache: key -> {buf, onset(sec), url, urlKey}
+  var ABUF_MAX=48;                                 // cap decoded-buffer cache (~5MB)
+  function audioCtx(){
+    if(!actx){ var C=window.AudioContext||window.webkitAudioContext; if(C){ try{ actx=new C(); }catch(e){} } }
+    if(actx && actx.state==="suspended"){ try{ actx.resume(); }catch(e){} }   // iOS: unlock within the tap gesture
+    return actx;
+  }
+  function detectOnset(buf){                        // first sustained audible sample (sec)
+    var a=buf.getChannelData(0), sr=buf.sampleRate;
+    var win=Math.max(1,(sr*0.012)|0), hop=Math.max(1,(sr*0.002)|0);
+    if(a.length<=win) return 0;
+    var ps=new Float64Array(a.length+1), i, st;
+    for(i=0;i<a.length;i++) ps[i+1]=ps[i]+a[i]*a[i];
+    var n=((a.length-win)/hop)|0; if(n<=0) return 0;
+    var rms=new Float64Array(n);
+    for(i=0;i<n;i++){ st=i*hop; rms[i]=Math.sqrt((ps[st+win]-ps[st])/win); }
+    var sorted=Float64Array.prototype.slice.call(rms).sort();
+    var floor=sorted[(n*0.15)|0]||0, thr=Math.max(floor*2.5, 0.0009);
+    var need=5, run=0;                              // 5 windows x 2ms hop = 10ms sustained -> rejects blips
+    for(i=0;i<n;i++){
+      if(rms[i]>thr){ if(++run>=need) return Math.max(0, (i-need+1)*hop - sr*0.004)/sr; }
+      else run=0;
+    }
+    return 0;
+  }
+  function pcmToWav(a, sr, s0, preSec){              // Float32 channel from sample s0 -> 16-bit mono WAV blob, `preSec` of silence prepended
+    var n=a.length-s0; if(n<0) n=0;
+    var preN=Math.round((preSec||0)*sr), N=preN+n;
+    var dv=new DataView(new ArrayBuffer(44+N*2));
+    function wstr(o,s){ for(var i=0;i<s.length;i++) dv.setUint8(o+i, s.charCodeAt(i)); }
+    wstr(0,"RIFF"); dv.setUint32(4,36+N*2,true); wstr(8,"WAVEfmt ");
+    dv.setUint32(16,16,true); dv.setUint16(20,1,true); dv.setUint16(22,1,true);
+    dv.setUint32(24,sr,true); dv.setUint32(28,sr*2,true); dv.setUint16(32,2,true); dv.setUint16(34,16,true);
+    wstr(36,"data"); dv.setUint32(40,N*2,true);
+    for(var i=0,o=44+preN*2,v;i<n;i++){ v=a[s0+i]; v=v<-1?-1:v>1?1:v; dv.setInt16(o+i*2, v<0?v*0x8000:v*0x7FFF, true); }
+    return new Blob([dv.buffer],{type:"audio/wav"});
+  }
+  var player=null, mediaUnlocked=false;
+  function mediaEl(){ if(!player){ player=new Audio(); player.preload="auto"; } return player; }
+  function mediaUnlock(){                            // call synchronously inside the tap: a play() within the
+    if(mediaUnlocked) return; mediaUnlocked=true;    // gesture unlocks the element, so the play() after the
+    var p=mediaEl();                                 // async decode is allowed too (iOS gesture requirement)
+    p.src=URL.createObjectURL(pcmToWav(new Float32Array(220),22050,0,0));
+    p.play().catch(function(){});
+  }
+  function dropUrl(en){ if(en&&en.url){ try{ URL.revokeObjectURL(en.url); }catch(e){} en.url=null; } }
+  function playClip(en, off, preSec, label){         // shared output path for words & sentences
+    var p=mediaEl(); try{ p.pause(); }catch(e){}     // cut off anything still playing
+    var sr=en.buf.sampleRate, s0=Math.round(off*sr), key=s0+"|"+Math.round((preSec||0)*1000);
+    if(en.url && en.urlKey!==key) dropUrl(en);       // cut point moved (skipMs/exDelay changed) -> re-slice
+    if(!en.url){ en.url=URL.createObjectURL(pcmToWav(en.buf.getChannelData(0), sr, s0, preSec)); en.urlKey=key; }
+    p.src=en.url;
+    p.play().catch(function(){});
+    if(state.dev) devShow(en.buf, off, preSec||0, label, en.onset);
+  }
+  function playEntry(en, w){
+    var lead=(100-(state.skipMs||0))/1000; if(lead<0) lead=0;   // lead-in normalized to 100ms; skipMs(0..100) read live; higher = less lead
+    var off=en.onset-lead; if(off<0) off=0;
+    if(!(off < en.buf.duration-0.05)) off=0;        // guard: never start past (near) the end
+    playClip(en, off, 0, w);
+  }
+  var htmlFallback=null;
+  function speakHtml(w){                             // fallback: non-embedded word, or no Web Audio
+    if(!htmlFallback){ htmlFallback=new Audio(); }
+    htmlFallback.src = youdaoUrl(w);
+    htmlFallback.play().catch(function(){});
+  }
+  function prefetchCurrent(){}                       // no-op: decode happens lazily on first tap
+  function speak(w){
+    var key=state.accent+"|"+w, hit=abufCache[key];
+    if(hit){ mediaUnlock(); playEntry(hit, w); return; }
+    var b=clipBytes("us", w), ctx=b?audioCtx():null;
+    // No bytes yet (pack still streaming) or no Web Audio: fall back to the Youdao URL, which
+    // needs network — that's the honest behaviour before the offline pack has landed.
+    if(!ctx || !b){ speakHtml(w); return; }
+    mediaUnlock();                                   // still inside the tap gesture here
+    ctx.decodeAudioData(b,
+      function(buf){
+        var en={buf:buf, onset:detectOnset(buf)};
+        abufCache[key]=en; abufOrder.push(key);
+        if(abufOrder.length>ABUF_MAX){ var old=abufOrder.shift(); dropUrl(abufCache[old]); delete abufCache[old]; }
+        playEntry(en, w);
+      },
+      function(){ speakHtml(w); });                  // decode failed -> fallback
+  }
+
+  // ---- example-sentence audio: edge-tts clips (Andrew/Brian, one voice per sentence),
+  // trimmed of leading silence, keyed by rank. Reuses the decode+cache engine. No Youdao
+  // fallback (a sentence isn't a dictionary lookup). `exDelay` (0..50ms) inserts a short
+  // pre-play gap before sound, since the clips carry no leading silence of their own.
+  var exData=null, exCache={}, exOrder=[];
+  function exMap(){
+    if(exData===null){
+      var el=document.getElementById("audio-ex");
+      try{ exData = el && el.textContent.trim() ? JSON.parse(el.textContent) : {}; }
+      catch(e){ exData={}; }
+    }
+    return exData;
+  }
+  function playEx(en){
+    var delay=(state.exDelay||0)/1000;               // pre-play gap, read live: baked into the WAV as leading silence
+    var off=en.onset; if(off<0) off=0;               // clips pre-trimmed => onset ~0
+    if(!(off < en.buf.duration-0.05)) off=0;
+    playClip(en, off, delay, "(例句)");
+  }
+  function speakEx(rank){
+    var key="ex|"+rank, hit=exCache[key];
+    if(hit){ mediaUnlock(); playEx(hit); return; }
+    var b=clipBytes("ex", rank), ctx=b?audioCtx():null;
+    if(!ctx || !b){ return; }                        // no clip / pack not in yet -> silent
+    mediaUnlock();                                   // still inside the tap gesture here
+    ctx.decodeAudioData(b,
+      function(buf){
+        var en={buf:buf, onset:detectOnset(buf)};
+        exCache[key]=en; exOrder.push(key);
+        if(exOrder.length>ABUF_MAX){ var old=exOrder.shift(); dropUrl(exCache[old]); delete exCache[old]; }
+        playEx(en);
+      },
+      function(){});                                 // decode failed -> silent
+  }
+
+  // ---- developer mode: live decode waveform + skip line + playhead ----
+  // Docked at the bottom as a real flex child of <body>, so #pages shrinks above it
+  // (no overlay). Drag the top handle to resize; height persists in state.devH.
+  var dev={ cv:null, g:null, info:null, cols:null, buf:null, off:0, onset:0, pre:0, raf:0, W:0, H:0, word:"" };
+  function devEl(){ if(!dev.cv){ dev.cv=document.getElementById("dev-canvas"); if(dev.cv){ dev.g=dev.cv.getContext("2d"); dev.info=document.getElementById("dev-info"); } } }
+  function setDevH(h){                              // clamp + apply dock height
+    h=Math.max(80, Math.min(h, Math.round(window.innerHeight*0.7)));
+    state.devH=Math.round(h);
+    document.documentElement.style.setProperty("--devH", state.devH+"px");
+  }
+  function devApply(){                              // reflect state.dev: show/hide + (re)draw
+    devEl(); var wrap=document.getElementById("dev"); if(!wrap) return;
+    setDevH(state.devH||170);
+    wrap.classList.toggle("on", !!state.dev);
+    if(state.dev){ devResize(); if(dev.buf) devStatic(); }
+    else { cancelAnimationFrame(dev.raf); }
+  }
+  (function(){                                      // drag the handle to resize the dock
+    var hnd=document.getElementById("dev-handle"); if(!hnd) return;
+    var y0=0, h0=0, drag=false, wrap=document.getElementById("dev");
+    hnd.addEventListener("pointerdown", function(e){ drag=true; y0=e.clientY; h0=wrap.offsetHeight;
+      try{ hnd.setPointerCapture(e.pointerId); }catch(_){} e.preventDefault(); });
+    hnd.addEventListener("pointermove", function(e){ if(!drag) return;
+      setDevH(h0 + (y0 - e.clientY));              // drag up => taller
+      devResize(); if(dev.buf) devStatic(); });
+    hnd.addEventListener("pointerup", function(){ if(!drag) return; drag=false; save(); paginate(); });
+  })();
+  function devResize(){
+    devEl(); if(!dev.cv) return;
+    var dpr=window.devicePixelRatio||1, r=dev.cv.getBoundingClientRect();
+    dev.W=dev.cv.width=Math.max(1,(r.width*dpr)|0); dev.H=dev.cv.height=Math.max(1,(r.height*dpr)|0);
+    dev.cols=null;                                  // width changed -> recompute columns
+  }
+  function devCols(){                               // downsample buffer -> per-pixel [min,max]
+    var a=dev.buf.getChannelData(0), N=a.length, W=dev.W, step=N/W, c=new Float32Array(W*2), x, i, s0, s1, mn, mx, v;
+    for(x=0;x<W;x++){ s0=(x*step)|0; s1=((x+1)*step)|0; if(s1<=s0) s1=s0+1; mn=1; mx=-1;
+      for(i=s0;i<s1 && i<N;i++){ v=a[i]; if(v<mn)mn=v; if(v>mx)mx=v; }
+      c[x*2]=mn; c[x*2+1]=mx; }
+    dev.cols=c;
+  }
+  function devStatic(){
+    if(!dev.g||!dev.buf) return;
+    var g=dev.g, W=dev.W, H=dev.H, mid=H/2, x;
+    g.clearRect(0,0,W,H);
+    g.strokeStyle="#1b2732"; g.lineWidth=1; g.beginPath(); g.moveTo(0,mid); g.lineTo(W,mid); g.stroke();
+    if(!dev.cols) devCols();
+    g.strokeStyle="#3aa0ff"; g.beginPath();
+    for(x=0;x<W;x++){ g.moveTo(x+0.5, mid-dev.cols[x*2+1]*mid); g.lineTo(x+0.5, mid-dev.cols[x*2]*mid); }
+    g.stroke();
+    var dur=dev.buf.duration;
+    var ox=(dev.onset/dur)*W;                       // detected onset line (orange)
+    g.strokeStyle="#ffb02e"; g.lineWidth=2; g.beginPath(); g.moveTo(ox,0); g.lineTo(ox,H); g.stroke();
+    var sx=(dev.off/dur)*W;                          // playback start line (green) = onset - lead
+    g.strokeStyle="#2ee66a"; g.lineWidth=2; g.beginPath(); g.moveTo(sx,0); g.lineTo(sx,H); g.stroke();
+  }
+  function devShow(buf, off, pre, w, onset){         // pre = leading silence baked into the playing WAV (sec)
+    devEl(); if(!dev.g) return; if(!dev.W) devResize();
+    dev.buf=buf; dev.off=off; dev.onset=onset||0; dev.pre=pre||0; dev.word=w; dev.cols=null;
+    cancelAnimationFrame(dev.raf); dev.raf=requestAnimationFrame(devTick);
+  }
+  function devTick(){
+    if(!state.dev||!dev.buf||!dev.g) return;
+    devStatic();
+    // player.currentTime is position inside the sliced WAV; map back into the original buffer
+    var pos=dev.off+Math.max(0,(player?player.currentTime:0)-dev.pre), dur=dev.buf.duration;
+    var g=dev.g, W=dev.W, H=dev.H, px=(Math.min(Math.max(pos,0),dur)/dur)*W;
+    g.strokeStyle="#ff4444"; g.lineWidth=2; g.beginPath(); g.moveTo(px,0); g.lineTo(px,H); g.stroke();
+    dev.info.textContent=dev.word+"   dur "+(dur*1000|0)+"ms   onset(橙) "+(dev.onset*1000|0)+"ms   start(绿) "+(dev.off*1000|0)+"ms   lead "+((dev.onset-dev.off)*1000|0)+"ms   pos(红) "+(pos*1000|0)+"ms   sr "+dev.buf.sampleRate+"Hz";
+    if(pos<dur+0.03 && player && !player.ended) dev.raf=requestAnimationFrame(devTick);
+  }
+  window.addEventListener("resize", function(){ if(state.dev){ devResize(); devStatic(); } });
+
+  // ---- interactions ----
+  pagesEl.addEventListener("click", function(ev){
+    var entry=ev.target.closest(".entry"); if(!entry) return;
+    var rank=+entry.dataset.rank, word=entry.dataset.word;
+    var a=ev.target.closest("[data-act]"), act=a?a.dataset.act:"speak";
+    if(act==="ex"){ speakEx(rank); return; }         // tap the example line -> read it
+    if(act==="reveal"){                              // self-test: unlock the card -> reveal ALL masked parts together
+      var hid=entry.querySelectorAll(".mask");
+      if(hid.length){ [].forEach.call(hid,function(x){ x.classList.remove("mask"); x.removeAttribute("data-act"); }); return; }
+      speak(word); return;                           // already revealed -> pronounce
+    }
+    // clicking the blank strip in front of / around the number also marks
+    if(act==="speak"){
+      var hwEl=entry.querySelector(".hw");
+      if(hwEl){ var r=hwEl.getBoundingClientRect();
+        if(ev.clientY<=r.bottom && ev.clientX<r.left) act="mark"; }
+    }
+    if(act==="mark"){
+      var nv = marked(rank) ? 0 : 1;
+      state.marks[rank] = {v:nv, t:Date.now()};
+      entry.classList.toggle("marked", nv===1); save();
+      syncPushMark(rank);
+      // Pool mode: the ONE place that re-paginates on a mark — hitting the low watermark starts the
+      // next round (survivors + freshly injected words), so it's a deliberate, visible event.
+      if(poolNeedsRefill()){
+        ensurePool();
+        var first=visible()[0]; if(first) state.anchor=first.rank; save();
+        paginate();
+        return;
+      }
+      // otherwise no paginate(): removal is deferred to the next settings open/close (see visible())
+      return;
+    }
+    if(act==="syl"){
+      var showing=a.dataset.showing==="syl";
+      a.textContent=showing?a.dataset.orig:a.dataset.syl;
+      a.dataset.showing=showing?"orig":"syl";
+      speak(word); return;
+    }
+    speak(word);
+  });
+
+  // ---- wheel ----
+  var wheelH=document.getElementById("wheelH"), wheelV=document.getElementById("wheelV"),
+      rangeH=document.getElementById("rangeH"), rangeV=document.getElementById("rangeV"),
+      wlabelH=document.getElementById("wlabelH");
+  rangeH.min=rangeV.min=0;
+  rangeH.addEventListener("input", function(){ wlabelH.textContent="第 "+(+rangeH.value+1)+" / "+pages.length+" 页"; scrollToPage(+rangeH.value,false); });
+  rangeV.addEventListener("input", function(){ scrollToPage(+rangeV.value,false); });
+  function wheelOpen(){ return wheelH.style.display==="block" || wheelV.style.display==="flex"; }
+  function closeWheel(){ wheelH.style.display="none"; wheelV.style.display="none"; }
+  pagenoEl.addEventListener("click", function(){
+    if(state.mode==="h"){ var v=wheelH.style.display==="block"; closeWheel(); if(!v) wheelH.style.display="block"; }
+    else{ var v2=wheelV.style.display==="flex"; closeWheel(); if(!v2) wheelV.style.display="flex"; }
+    updateLabel();
+  });
+  // tap anywhere outside the wheel dismisses it; that first tap is swallowed so it
+  // can't also mark/pronounce a word behind the popup (capture phase = before any
+  // other handler, incl. the #pages click delegate and #barnav-l/r).
+  document.addEventListener("click", function(e){
+    if(!wheelOpen()) return;
+    if(wheelH.contains(e.target) || wheelV.contains(e.target) || pagenoEl.contains(e.target)) return;
+    closeWheel();
+    e.stopPropagation(); e.preventDefault();
+  }, true);
+  // bottom-bar side tap = turn one page (works in both h paging and v seamless scroll)
+  function turnPage(d){ scrollToPage(currentPage()+d, true); }
+  document.getElementById("barnav-l").addEventListener("click", function(){ turnPage(-1); });
+  document.getElementById("barnav-r").addEventListener("click", function(){ turnPage(1); });
+
+  // ---- theme ----
+  function lum(hex){ hex=hex.replace("#",""); if(hex.length===3) hex=hex.split("").map(function(c){return c+c;}).join("");
+    var r=parseInt(hex.substr(0,2),16)/255,g=parseInt(hex.substr(2,2),16)/255,b=parseInt(hex.substr(4,2),16)/255;
+    return 0.2126*r+0.7152*g+0.0722*b; }
+  function applyTheme(bg){
+    var dark=lum(bg)<0.42, r=document.documentElement.style;
+    r.setProperty("--bg",bg); r.setProperty("--card",bg);
+    r.setProperty("--ink",dark?"#e9e9e9":"#1a1a1a");
+    r.setProperty("--sub",dark?"#aab0b6":"#555555");
+    r.setProperty("--gray",dark?"#9aa0a6":"#8a8a8a");
+    r.setProperty("--blue",dark?"#7fb0e6":"#1f5fa8");
+    r.setProperty("--mark",dark?"#8b9096":"#8a8a8a");
+    r.setProperty("--hair",dark?"rgba(255,255,255,.10)":"rgba(0,0,0,.08)");
+    r.setProperty("--panel",dark?"rgba(255,255,255,.05)":"#f4f6f9");
+  }
+
+  // ---- settings UI ----
+  var settingsEl=document.getElementById("settings"),
+      swRemove=document.getElementById("sw-removemarked"),
+      swPoolMode=document.getElementById("sw-poolmode"),
+      poolSizeIn=document.getElementById("pool-size"),
+      poolLowIn=document.getElementById("pool-low"),
+      poolStatEl=document.getElementById("pool-stat"),
+      poolResetBtn=document.getElementById("pool-reset"),
+      swSelftest=document.getElementById("sw-selftest"),
+      swShowEx=document.getElementById("sw-showex"),
+      swMaskTrans=document.getElementById("sw-masktrans"),
+      counterInput=document.getElementById("counter-input"),
+      counterAdd=document.getElementById("counter-add"),
+      counterChips=document.getElementById("counter-chips"),
+      swDivider=document.getElementById("sw-divider"),
+      segMark=document.getElementById("seg-markstyle"),
+      segMode=document.getElementById("seg-mode"),
+      segCols=document.getElementById("seg-cols"),
+      rgFs=document.getElementById("rg-fs"), vFs=document.getElementById("v-fs"),
+      rgSp=document.getElementById("rg-sp"), vSp=document.getElementById("v-sp"),
+      rgSkip=document.getElementById("rg-skip"), vSkip=document.getElementById("v-skip"),
+      rgExDelay=document.getElementById("rg-exdelay"), vExDelay=document.getElementById("v-exdelay"),
+      swDev=document.getElementById("sw-dev"),
+      swatchesEl=document.getElementById("swatches"),
+      hexInput=document.getElementById("hexinput"), hexAdd=document.getElementById("hexadd");
+
+  function renderSwatches(){
+    var all=PRESETS.concat(state.customColors.map(function(c){ return {n:c,c:c}; }));
+    swatchesEl.innerHTML=all.map(function(o){
+      return '<div class="sw'+(o.c.toLowerCase()===state.bg.toLowerCase()?" on":"")+'" title="'+o.n+'" data-c="'+o.c+'" style="background:'+o.c+'"></div>';
+    }).join("");
+  }
+  swatchesEl.addEventListener("click", function(ev){ var el=ev.target.closest(".sw"); if(!el) return;
+    state.bg=el.dataset.c; applyTheme(state.bg); renderSwatches(); save(); });
+  hexAdd.addEventListener("click", function(){
+    var v=(hexInput.value||"").trim();
+    if(!/^#?[0-9a-fA-F]{6}$/.test(v)){ hexInput.value=""; hexInput.placeholder="色号无效，如 #f0e8d0"; return; }
+    if(v[0]!=="#") v="#"+v; v=v.toLowerCase();
+    if(state.customColors.indexOf(v)<0 && !PRESETS.some(function(p){return p.c===v;})){ state.customColors.push(v); syncPushColor(v); }
+    state.bg=v; applyTheme(v); renderSwatches(); hexInput.value=""; save();
+  });
+
+  function seg(el,key,after){ el.addEventListener("click", function(ev){ var b=ev.target.closest("button"); if(!b) return;
+    state[key]=b.dataset.v; syncSettings(); save(); if(after) after(); }); }
+  function renderPool(){
+    poolSizeIn.value=state.poolSize; poolLowIn.value=state.poolLow;
+    swPoolMode.classList.toggle("on",state.poolMode);
+    if(!state.poolMode){ poolStatEl.textContent="未开启——开启后从第 1 号起，始终保持「池大小」那么多没划掉的词"; return; }
+    var all=0; for(var i=0;i<DATA.length;i++) if(marked(DATA[i].rank)) all++;
+    var win=Math.min(state.poolMax, DATA.length), rem=poolRemain(), next=Math.min(DATA.length, win+(state.poolSize-state.poolLow));
+    poolStatEl.innerHTML =
+      "范围 第 1–"+win+" 号 · 已掌握 "+(win-rem)+" · 剩余 <b>"+rem+"</b><br>"
+      +(win>=DATA.length ? "（已到全书末尾）"
+                         : "（剩余 ≤ "+state.poolLow+" 时推进到 "+next+" 号）")
+      +"<br>全库已掌握 "+all+" / "+DATA.length;
+  }
+  function syncSettings(){
+    renderPool();
+    swRemove.classList.toggle("on",state.removeMarked);
+    swSelftest.classList.toggle("on",state.selftest);
+    swShowEx.classList.toggle("on",state.showEx);
+    swMaskTrans.classList.toggle("on",state.maskExTrans);
+    renderCounters();
+    swDivider.classList.toggle("on",state.divider);
+    [[segMark,"markStyle"],[segMode,"mode"],[segCols,"cols"]].forEach(function(x){
+      [].forEach.call(x[0].children,function(b){ b.classList.toggle("on",b.dataset.v===String(state[x[1]])); });
+    });
+    rgFs.value=state.fontScale; vFs.textContent=Math.round(state.fontScale*100)+"%";
+    rgSp.value=state.spacing; vSp.textContent=Math.round(state.spacing*100)+"%";
+    rgSkip.value=state.skipMs; vSkip.textContent=state.skipMs+"ms";
+    rgExDelay.value=state.exDelay; vExDelay.textContent=state.exDelay+"ms";
+    swDev.classList.toggle("on",!!state.dev);
+    renderSwatches();
+  }
+  swRemove.addEventListener("click", function(){ state.removeMarked=!state.removeMarked; syncSettings(); save(); });
+  // active pool. The ceiling only ever moves FORWARD, so editing 容量/阈值 can never lose
+  // progress: 容量 is just the starting range, 阈值 is both the low-water mark and the step.
+  function poolApply(){ syncSettings(); save(); paginate(); }
+  swPoolMode.addEventListener("click", function(){ state.poolMode=!state.poolMode; ensurePool(); poolApply(); });
+  poolSizeIn.addEventListener("change", function(){
+    var n=parseInt(poolSizeIn.value,10);
+    state.poolSize=(n>=1)?Math.min(n,DATA.length||1250):40;
+    if(state.poolLow>=state.poolSize) state.poolLow=state.poolSize-1;
+    if(state.poolMode) ensurePool();               // 只会把范围往前推，不会倒退
+    poolApply();
+  });
+  poolLowIn.addEventListener("change", function(){
+    var n=parseInt(poolLowIn.value,10);
+    state.poolLow=(n>=0)?Math.min(n,state.poolSize-1):Math.min(15,state.poolSize-1);
+    if(state.poolMode) ensurePool();               // 阈值调高到当前剩余之上 → 当场推进
+    poolApply();
+  });
+  poolResetBtn.addEventListener("click", function(){ state.poolMax=0; ensurePool(); poolApply(); });
+  // selftest/showEx change what entryHTML renders -> re-paginate so it takes effect (and heights recompute for showEx)
+  swSelftest.addEventListener("click", function(){ state.selftest=!state.selftest; syncSettings(); paginate(); save(); });
+  swShowEx.addEventListener("click", function(){ state.showEx=!state.showEx; syncSettings(); paginate(); save(); });
+  swMaskTrans.addEventListener("click", function(){ state.maskExTrans=!state.maskExTrans; syncSettings(); paginate(); save(); });
+  // running-total intervals: chip list you add to / remove from (like custom colors)
+  function renderCounters(){
+    var ivs=state.counters.slice().sort(function(a,b){ return a-b; });
+    counterChips.innerHTML = ivs.length
+      ? ivs.map(function(n){ return '<div class="chip" data-n="'+n+'">每 '+n+' 词</div>'; }).join("")
+      : '<div class="chip empty">未添加——不显示累计</div>';
+  }
+  counterAdd.addEventListener("click", function(){
+    var n=parseInt(counterInput.value,10);
+    if(!(n>0)){ counterInput.value=""; counterInput.placeholder="请输入正整数，如 100"; return; }
+    if(state.counters.indexOf(n)<0){ state.counters.push(n); renderCounters(); paginate(); save(); }
+    counterInput.value="";
+  });
+  counterChips.addEventListener("click", function(ev){
+    var c=ev.target.closest(".chip"); if(!c||!c.dataset.n) return;
+    var n=+c.dataset.n; state.counters=state.counters.filter(function(x){ return x!==n; });
+    renderCounters(); paginate(); save();
+  });
+  swDivider.addEventListener("click", function(){ state.divider=!state.divider; syncSettings(); pagesEl.classList.toggle("nodivider", !state.divider); save(); });
+  swDev.addEventListener("click", function(){ state.dev=!state.dev; syncSettings(); devApply(); paginate(); save(); });
+  seg(segMark,"markStyle"); seg(segMode,"mode"); seg(segCols,"cols");
+  rgFs.addEventListener("input", function(){ state.fontScale=+rgFs.value; vFs.textContent=Math.round(state.fontScale*100)+"%"; applyLayout(); save(); });
+  rgSp.addEventListener("input", function(){ state.spacing=+rgSp.value; vSp.textContent=Math.round(state.spacing*100)+"%"; applyLayout(); save(); });
+  rgSkip.addEventListener("input", function(){ state.skipMs=+rgSkip.value; vSkip.textContent=state.skipMs+"ms"; save(); });
+  rgExDelay.addEventListener("input", function(){ state.exDelay=+rgExDelay.value; vExDelay.textContent=state.exDelay+"ms"; save(); });
+
+  document.getElementById("start").addEventListener("click", function(){ settingsEl.style.display="none"; paginate(); });
+  document.getElementById("btn-settings").addEventListener("click", function(){
+    syncSettings(); updateCacheUI(); settingsEl.style.display="flex"; wheelH.style.display="none"; wheelV.style.display="none"; });
+
+  // ---- offline-cache progress ----
+  // The bar tracks the audio packs, because that IS the download: the shell is ~560KB (the SW
+  // precaches it during install, effectively instantly) and the packs are the other ~36MB.
+  // We read them with a streaming reader and count bytes ourselves, so the percentage and the
+  // ETA are real. Nothing here re-downloads anything: it's the same fetch the app needs anyway,
+  // and the result is written into the Cache API so the next launch is offline and instant.
+  var cacheRow=document.getElementById("cache-row"),
+      cacheSub=document.getElementById("cache-sub"),
+      cacheFill=document.getElementById("cache-fill"), cacheTO=null;
+  function mb(b){ return (b/1048576).toFixed(0); }
+  function eta(sec){
+    if(!isFinite(sec) || sec<0) return "";
+    if(sec<5) return "即将完成";                    // below this the number just flickers
+    if(sec<60) return "剩余约 "+Math.round(sec)+" 秒";
+    var m=Math.floor(sec/60), s=Math.round(sec%60);
+    return "剩余约 "+m+" 分"+(s?" "+s+" 秒":"");
+  }
+  function setCache(pct, txt, done){
+    if(cacheFill) cacheFill.style.width=Math.max(0,Math.min(100,pct))+"%";
+    if(cacheSub) cacheSub.textContent=txt;
+    if(cacheRow) cacheRow.classList.toggle("done", !!done);
+  }
+  function updateCacheUI(){
+    clearTimeout(cacheTO);
+    if(!AIDX){                                       // single-file build: everything is already inside
+      setCache(100, "单文件离线版，音频已内嵌 ✓", true); return;
+    }
+    if(packState.failed){
+      setCache(0, "音频下载失败，重新联网后会自动重试", false); return;
+    }
+    if(packState.done){
+      setCache(100, "已缓存，可离线使用 ✓（约 "+mb(packState.total)+" MB 音频）", true); return;
+    }
+    var got=packState.got, tot=packState.total, ms=Date.now()-packState.t0;
+    var rest = (ms>400 && got>0 && tot>got) ? eta((tot-got)/(got/ms)/1000) : "";
+    var pct = tot ? Math.min(99, Math.round(got/tot*100)) : 0;
+    setCache(pct, "音频下载中… "+pct+"%（"+mb(got)+" / "+mb(tot)+" MB"+(rest?" · "+rest:"")+"）"
+                  + (packState.offline?"　离线中，稍后重试":""), false);
+    if(settingsEl && settingsEl.style.display!=="none") cacheTO=setTimeout(updateCacheUI, 500);
+  }
+
+  // ---- audio packs: stream, count, cache (hosted build only) ----
+  // Reading the body through a reader is what makes the progress real; the assembled bytes go
+  // straight into the same Cache API bucket the service worker uses, so a relaunch is offline.
+  var packState={total:0, got:0, t0:Date.now(), done:false, failed:false, offline:false};
+  function paint(){ if(settingsEl && settingsEl.style.display!=="none") updateCacheUI(); }
+  function fetchPack(which){
+    var meta=AIDX[which], url=meta.file;
+    var cached = ("caches" in window) ? caches.match(url).catch(function(){ return null; })
+                                      : Promise.resolve(null);
+    // A pack is only itself if it is exactly the length the index says. Offline, the service
+    // worker used to answer an uncached pack with the HTML shell (200 text/html); accepting that
+    // would cache HTML under the pack URL and mute the app for good. Length is the cheap guard:
+    // wrong or truncated bodies throw, which lands in the retry path instead of the cache.
+    function check(buf){
+      if(!buf || buf.byteLength !== meta.bytes) throw new Error("pack "+which+" bad body");
+      return buf;
+    }
+    return cached.then(function(hit){
+      if(hit) return hit.arrayBuffer().then(function(b){
+        if(b.byteLength !== meta.bytes){                 // poisoned/partial entry: drop and refetch
+          if("caches" in window) caches.open(window.CACHE_NAME).then(function(c){ c.delete(url); }).catch(function(){});
+          return null;
+        }
+        packState.got+=meta.bytes; paint(); return b;
+      });
+      return null;
+    }).then(function(b){
+      if(b) return b;
+      return fetch(url).then(function(res){
+        if(!res.ok) throw new Error("pack "+res.status);
+        if(!res.body) return res.arrayBuffer();      // no streams (old Safari): works, just no bar
+        var reader=res.body.getReader(), chunks=[], n=0, last=0;
+        return (function pump(){
+          return reader.read().then(function(r){
+            if(r.done){
+              var out=new Uint8Array(n), p=0;
+              for(var i=0;i<chunks.length;i++){ out.set(chunks[i], p); p+=chunks[i].length; }
+              return out.buffer;
+            }
+            chunks.push(r.value); n+=r.value.length; packState.got+=r.value.length;
+            var now=Date.now(); if(now-last>150){ last=now; paint(); }   // throttle: chunks >> frames
+            return pump();
+          });
+        })();
+      }).then(check).then(function(buf){
+        if("caches" in window){                       // best-effort: a full quota shouldn't break playback
+          caches.open(window.CACHE_NAME).then(function(c){ return c.put(url, new Response(buf)); })
+            .catch(function(){});
+        }
+        return buf;
+      });
+    });
+  }
+  function loadPacks(){
+    if(!AIDX) return;
+    packState.total = AIDX.us.bytes + AIDX.ex.bytes;
+    packState.t0 = Date.now();
+    // us first: tapping a word is the common case, example sentences can land a moment later.
+    fetchPack("us").then(function(b){ packs.us=b; return fetchPack("ex"); })
+      .then(function(b){ packs.ex=b; packState.done=true; paint(); })
+      .catch(function(){
+        packState.failed=true; packState.offline=!navigator.onLine; paint();
+        window.addEventListener("online", function once(){    // retry when the network comes back
+          window.removeEventListener("online", once);
+          packState.failed=false; packState.got=0; loadPacks();
+        });
+      });
+  }
+
+  var rzTO;
+  window.addEventListener("resize", function(){ clearTimeout(rzTO); rzTO=setTimeout(function(){ if(settingsEl.style.display==="none") paginate(); }, 200); });
+
+  // ---- multi-device sync (Supabase REST, last-write-wins per word) ----
+  // Syncs ONLY: per-word marks (LWW by timestamp) + the custom-color LIST (union).
+  // NOT synced: any other setting, nor which bg color is selected.
+  var SYNC={cfg:window.SYNC_CONFIG||null, code:"", status:"off", timer:null, busy:false};
+  var syncStatusEl=null;
+  function setSyncStatus(s){ SYNC.status=s; if(syncStatusEl){
+    syncStatusEl.textContent={off:"未开启同步",connecting:"连接中…",on:"已同步 ✓",err:"连接失败（检查同步码/网络）",noconf:"未配置云端"}[s]||s; } }
+
+  function api(path, opts){
+    opts=opts||{};
+    opts.headers=Object.assign({ "apikey":SYNC.cfg.key, "Authorization":"Bearer "+SYNC.cfg.key,
+      "Content-Type":"application/json" }, opts.headers||{});
+    return fetch(SYNC.cfg.url+"/rest/v1/"+path, opts);
+  }
+  function startSync(){
+    if(SYNC.timer){ clearInterval(SYNC.timer); SYNC.timer=null; }
+    SYNC.code=(state.syncCode||"").trim();
+    if(!SYNC.code){ setSyncStatus("off"); return; }
+    if(!SYNC.cfg || !SYNC.cfg.url){ setSyncStatus("noconf"); return; }
+    setSyncStatus("connecting");
+    reconcile();
+    SYNC.timer=setInterval(reconcile, 25000);   // periodic pull while open
+  }
+  // 分页拉取:云端(PostgREST db-max-rows)一次最多回 N 行(本项目默认 1000),
+  // 且不会提示"还有更多"。这里按“实际返回行数”翻页、直到某页为空,
+  // 因此不写死 1000/500,换任何服务器都能拉全(见 §8)。
+  function pullAll(code, off, acc){
+    return api("progress?code=eq."+encodeURIComponent(code)+"&select=kind,item,v,t&order=kind,item&offset="+off)
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(rows){
+        acc=acc.concat(rows);
+        if(rows.length===0 || off>200000) return acc;   // 空页=已拉完;20万行上限防死循环
+        return pullAll(code, off+rows.length, acc);      // ★按实际行数前进,不假设页大小
+      });
+  }
+  function reconcile(){
+    if(!SYNC.code || !SYNC.cfg || SYNC.busy) return;
+    SYNC.busy=true;
+    pullAll(SYNC.code, 0, [])
+      .then(function(rows){
+        var rMarks={}, rColors={}, k;
+        rows.forEach(function(row){ if(row.kind==="mark") rMarks[row.item]={v:row.v,t:Number(row.t)};
+                                    else if(row.kind==="color") rColors[row.item]=true; });
+        var changed=false, push=[];
+        for(k in rMarks){ var rm=rMarks[k], lm=state.marks[k];
+          if(!lm || rm.t>lm.t){ state.marks[k]={v:rm.v?1:0,t:rm.t}; changed=true; } }
+        for(k in state.marks){ var l2=state.marks[k], r2=rMarks[k];
+          if(!r2 || l2.t>(r2.t||0)) push.push({code:SYNC.code,kind:"mark",item:String(k),v:l2.v,t:l2.t}); }
+        for(k in rColors){ var hex="#"+k;
+          if(state.customColors.indexOf(hex)<0 && !PRESETS.some(function(p){return p.c===hex;})){ state.customColors.push(hex); changed=true; } }
+        state.customColors.forEach(function(hex){ var ck=hex.replace("#",""); if(!(ck in rColors)) push.push({code:SYNC.code,kind:"color",item:ck,v:1,t:Date.now()}); });
+        if(changed){ save(); renderSwatches(); if(settingsEl.style.display==="none") paginate(); }
+        if(push.length) return api("progress?on_conflict=code,kind,item",
+          {method:"POST", headers:{"Prefer":"resolution=merge-duplicates,return=minimal"}, body:JSON.stringify(push)});
+      })
+      .then(function(){ setSyncStatus("on"); })
+      .catch(function(){ setSyncStatus("err"); })
+      .then(function(){ SYNC.busy=false; });
+  }
+  var pushTO;
+  function scheduleSync(){ if(!SYNC.code || !SYNC.cfg) return; clearTimeout(pushTO); pushTO=setTimeout(reconcile, 800); }
+  function syncPushMark(){ scheduleSync(); }
+  function syncPushColor(){ scheduleSync(); }
+  document.addEventListener("visibilitychange", function(){ if(!document.hidden) reconcile(); });
+  window.addEventListener("focus", function(){ reconcile(); });
+
+  // sync settings UI
+  var syncInput=document.getElementById("syncinput"), syncBtn=document.getElementById("syncbtn");
+  syncStatusEl=document.getElementById("syncstatus");
+  syncInput.value=state.syncCode||"";
+  syncBtn.addEventListener("click", function(){ state.syncCode=(syncInput.value||"").trim(); save(); startSync(); });
+  setSyncStatus(state.syncCode ? "connecting" : "off");
+
+  // init
+  applyTheme(state.bg); applyLayout(); syncSettings(); devApply(); paginate(); updateCacheUI();
+  loadPacks();                                   // hosted build: stream the audio in behind the shell
+  if(state.syncCode) startSync();
+
+  // PWA: register service worker (offline + durable storage once added to home screen).
+  // Silently ignored when opened as a local file:// (no origin).
+  if("serviceWorker" in navigator && location.protocol.indexOf("http")===0){
+    window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+    // Reload once when a new SW takes control. A waiting SW now only takes control after the USER
+    // confirms the update (we postMessage SKIP_WAITING; the SW no longer skipWaiting()s on its own —
+    // see sw.js), so this reload is the user-initiated update applying, never an automatic one.
+    // hadController MUST be sampled here, at load: by the time controllerchange fires the controller
+    // has ALREADY been swapped in, so testing it inside the handler always passes. No prior
+    // controller = first install, where the page already IS the version just cached — don't reload.
+    var hadController = !!navigator.serviceWorker.controller, reloaded=false;
+    navigator.serviceWorker.addEventListener("controllerchange", function(){
+      if(!hadController || reloaded) return; reloaded=true; location.reload();
+    });
+  }
+
+  // ---- version readout + MANUAL update (never automatic) ----
+  // Version = the content hash baked into BUILD_INFO (same value as the sw cache name), so what's
+  // shown here is exactly what determines whether an update exists. Timestamp = build time.
+  //
+  // The app does NOT auto-update. A new build installs as a WAITING service worker and sits there;
+  // the running page keeps its old version until the user says so. When a waiting SW is detected we:
+  //   - flip the button to "检测到新版本" (amber), and
+  //   - pop the confirm dialog once — its 「不再提示」 checkbox is CHECKED by default, so simply
+  //     closing it means "stop nagging" (the button stays as the manual entry point).
+  // Applying the update first runs a connectivity check; if the network is unreachable we show an
+  // error and abort (no reload). Only on success do we postMessage SKIP_WAITING → the SW takes
+  // control → the controllerchange handler above reloads into the new version.
+  (function(){
+    var verSub=document.getElementById("ver-sub"), updBtn=document.getElementById("btn-update");
+    var modal=document.getElementById("umodal"), umStatus=document.getElementById("um-status"),
+        umNo=document.getElementById("um-noremind"), umNow=document.getElementById("um-now"),
+        umLater=document.getElementById("um-later");
+    if(!verSub||!updBtn) return;
+    var BI=window.BUILD_INFO||{};
+    var SNOOZE_KEY="__SNOOZE_KEY__";   // set when the user dismisses the dialog with 「不再提示」 ticked
+    function snoozed(){ try{ return localStorage.getItem(SNOOZE_KEY)==="1"; }catch(e){ return false; } }
+    function setSnooze(v){ try{ v?localStorage.setItem(SNOOZE_KEY,"1"):localStorage.removeItem(SNOOZE_KEY); }catch(e){} }
+    function setVer(extra){
+      // BI.v / BI.t are build-injected (hex hash + timestamp), safe to drop into innerHTML.
+      // extra (状态提示) goes on its OWN line — no trailing "·" dangling at the end of the version line.
+      var s="当前 "+(BI.v||"—")+(BI.t?" · "+BI.t:"");
+      verSub.innerHTML = extra ? s+"<br>"+extra : s;
+    }
+    setVer();
+    var swSupported=("serviceWorker" in navigator) && location.protocol.indexOf("http")===0;
+    if(!swSupported){ updBtn.disabled=true; updBtn.textContent="离线单文件"; return; }
+
+    var waitingSW=null;   // the installed-but-waiting worker, once we find one
+
+    // Reachability probe: ask the network (never the cache) for sw.js. cache:"no-store" + a cache-
+    // busting query means the SW's fetch handler falls through to a real fetch() (§sw.js), so this
+    // resolves only when the origin is actually reachable and rejects when offline.
+    function reachable(){
+      return fetch("sw.js?ping="+Date.now(), {cache:"no-store"})
+        .then(function(){ return true; }).catch(function(){ return false; });
+    }
+
+    // Called when a waiting SW appears (new version downloaded, ready but not applied).
+    function onUpdateReady(sw){
+      waitingSW=sw;
+      updBtn.disabled=false;
+      updBtn.textContent="检测到新版本";
+      updBtn.classList.add("hasupd");
+      setVer("已就绪，点按钮更新");
+      if(!snoozed()) openModal();     // pop once unless the user asked us not to
+    }
+    function openModal(){ if(modal){ umNo.checked=true; umStatus.textContent=""; umStatus.classList.remove("err"); modal.classList.add("show"); } }
+    function closeModal(){ if(modal) modal.classList.remove("show"); }
+
+    // Apply the pending update: connectivity check → tell the waiting SW to take over → reload
+    // (via controllerchange). Aborts with an error if the network is unreachable.
+    function applyUpdate(){
+      if(!waitingSW){ closeModal(); return; }
+      umStatus.classList.remove("err"); umStatus.textContent="正在检查连接…";
+      umNow.disabled=true; umLater.disabled=true;
+      reachable().then(function(ok){
+        if(!ok){
+          umStatus.classList.add("err");
+          umStatus.textContent="连接失败，已中止更新。请检查网络后重试。";
+          umNow.disabled=false; umLater.disabled=false;
+          return;
+        }
+        umStatus.textContent="正在更新，即将重新加载…";
+        setSnooze(false);                       // updating clears the snooze so future versions prompt again
+        waitingSW.postMessage({type:"SKIP_WAITING"});   // → activate → controllerchange → reload
+      });
+    }
+
+    if(umNow) umNow.addEventListener("click", applyUpdate);
+    if(umLater) umLater.addEventListener("click", function(){ setSnooze(umNo.checked); closeModal(); });
+
+    // Button: if an update is already waiting it re-opens the confirm dialog; otherwise it does a
+    // manual check (re-fetch sw.js). Detection needs the network too, so a failed check reports it.
+    updBtn.addEventListener("click", function(){
+      if(waitingSW){ openModal(); return; }
+      updBtn.disabled=true; updBtn.textContent="检查中…"; setVer("正在检查更新…");
+      function reset(){ updBtn.disabled=false; updBtn.textContent="检查更新"; }
+      navigator.serviceWorker.getRegistration().then(function(reg){
+        if(!reg){ setVer("尚未注册离线更新（请稍后重试）"); reset(); return; }
+        watch(reg);
+        reg.update().then(function(){
+          // Give updatefound/statechange a beat to surface a waiting worker; if none, we're current.
+          setTimeout(function(){ if(!waitingSW){ setVer("已是最新版本 ✓"); reset(); } }, 1600);
+        }).catch(function(){ setVer("检查失败，请检查网络后重试"); reset(); });
+      }).catch(function(){ setVer("检查失败，请检查网络后重试"); reset(); });
+    });
+
+    // Watch a registration for a worker reaching the "installed while a controller exists" state —
+    // that is precisely "new version downloaded, waiting to be applied". Covers both the already-
+    // waiting case (page opened after the SW installed) and a fresh install found later.
+    function watch(reg){
+      if(reg.waiting && navigator.serviceWorker.controller){ onUpdateReady(reg.waiting); return; }
+      reg.addEventListener("updatefound", function(){
+        var sw=reg.installing; if(!sw) return;
+        sw.addEventListener("statechange", function(){
+          if(sw.state==="installed" && navigator.serviceWorker.controller) onUpdateReady(sw);
+        });
+      });
+    }
+    navigator.serviceWorker.getRegistration().then(function(reg){ if(reg) watch(reg); });
+  })();
+})();
+</script>
+</body>
+</html>

@@ -65,7 +65,7 @@ PROFILES = {
 }
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--profile", choices=PROFILES, default="zhongkao")
+parser.add_argument("--profile", choices=PROFILES, default="cet4")
 args = parser.parse_args()
 P = PROFILES[args.profile]
 
@@ -77,7 +77,7 @@ DOCS = P["docs"]
 PWA_DIR = REPO / "web" / "pwa"
 CACHE_NAME = P["cache_name"]
 MAX_RANK = str(len(DATA))
-MIN_BYTES = {"us": 500, "ex": 300}
+MIN_BYTES = {"us": 500, "ex": 300, "ex_slow": 300}
 
 slim = [{
     "rank": e["rank"], "word": e["word"], "syl": e["syl"],
@@ -113,15 +113,17 @@ def pack(items):
 
 
 us_items, ex_items = clips("us"), clips("ex")
+ex_slow_items = clips("ex_slow") if (AUD / "ex_slow").is_dir() else []
 cfg = REPO / "web" / "supabase-config.json"
 sync_config = cfg.read_text().strip() if cfg.exists() else "null"
 
 # ---------- shared: build a filled template, given the audio-carrying bits ----------
-def render(audio_us, audio_ex, audio_index):
+def render(audio_us, audio_ex, audio_ex_slow, audio_index):
     return (TPL
             .replace("__DATA__", json.dumps(slim, ensure_ascii=False, separators=(",", ":")))
             .replace("__AUDIO_US__", audio_us)
             .replace("__AUDIO_EX__", audio_ex)
+            .replace("__AUDIO_EX_SLOW__", audio_ex_slow)
             .replace("__AUDIO_INDEX__", audio_index)
             .replace("__CACHE_NAME__", CACHE_NAME)
             .replace("__SYNC_CONFIG__", sync_config)
@@ -146,27 +148,38 @@ ex_blob, ex_index = pack(ex_items)
 us_name = f"audio-us.{hashlib.sha256(us_blob).hexdigest()[:10]}.bin"
 ex_name = f"audio-ex.{hashlib.sha256(ex_blob).hexdigest()[:10]}.bin"
 
-audio_index = json.dumps({
+aidx = {
     "us": {"file": us_name, "bytes": len(us_blob), "index": us_index},
     "ex": {"file": ex_name, "bytes": len(ex_blob), "index": ex_index},
-}, ensure_ascii=False, separators=(",", ":"))
+}
+pack_names = [us_name, ex_name]
 
-shell = render("", "", audio_index)
+if ex_slow_items:
+    ex_slow_blob, ex_slow_index = pack(ex_slow_items)
+    ex_slow_name = f"audio-ex-slow.{hashlib.sha256(ex_slow_blob).hexdigest()[:10]}.bin"
+    aidx["ex_slow"] = {"file": ex_slow_name, "bytes": len(ex_slow_blob), "index": ex_slow_index}
+    pack_names.append(ex_slow_name)
+
+audio_index = json.dumps(aidx, ensure_ascii=False, separators=(",", ":"))
+
+shell = render("", "", "", audio_index)
 build_hash = hashlib.sha256(shell.encode()).hexdigest()[:12]
 build_time = datetime.now().strftime("%Y-%m-%d %H:%M")
 shell = stamp(shell, build_hash, build_time)
 
 DOCS.mkdir(exist_ok=True)
 for old in DOCS.glob("audio-*.bin"):
-    if old.name not in (us_name, ex_name):
+    if old.name not in pack_names:
         old.unlink()
 (DOCS / "index.html").write_text(shell)
 (DOCS / us_name).write_bytes(us_blob)
 (DOCS / ex_name).write_bytes(ex_blob)
+if ex_slow_items:
+    (DOCS / ex_slow_name).write_bytes(ex_slow_blob)
 
 precache = ["./index.html", "./manifest.webmanifest",
             "./icon-180.png", "./icon-192.png", "./icon-512.png"]
-keep = precache + ["./" + us_name, "./" + ex_name]
+keep = precache + ["./" + n for n in pack_names]
 
 manifest = {
     "name": P["manifest"]["name"],
@@ -202,7 +215,9 @@ print(f"-> {DOCS}/  shell {shell_kb} KB + {us_name} ({len(us_blob)//1048576} MB)
       f"+ {ex_name} ({len(ex_blob)//1048576} MB) + sw.js/manifest/icons, ver={build_hash} @ {build_time}")
 
 # ---------- single file: everything inline ----------
-single = stamp(render(inline_json(us_items), inline_json(ex_items), "null"), build_hash, build_time)
+single = stamp(render(inline_json(us_items), inline_json(ex_items),
+                      inline_json(ex_slow_items) if ex_slow_items else "",
+                      "null"), build_hash, build_time)
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(single)
 print(f"-> {OUT}  ({OUT.stat().st_size//1048576} MB, {len(slim)} entries, "

@@ -16,11 +16,11 @@ var CACHE = "zk-688";
 // is an update by byte-comparing sw.js; without this line an unhashed index.html plus PRECACHE
 // lists that never move would leave sw.js identical forever, and the cache-first shell would
 // never be replaced on any device that already installed it.
-var BUILD = "9290801c84ce";
+var BUILD = "f9129746c509";
 // PRECACHE is downloaded here on install (small). KEEP additionally lists the audio packs, which
 // the PAGE downloads and caches — precaching them here too would fetch the same 36MB twice.
 var PRECACHE = ["./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
-var KEEP = ["./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png", "./audio-us.a5b18eb6da.bin", "./audio-ex.c40bbdb23c.bin"];
+var KEEP = ["./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png", "./audio-us.a5b18eb6da.bin", "./audio-ex.c40bbdb23c.bin", "./audio-ex-slow.4904258d52.bin"];
 var APP = "./index.html";
 // Navigations ask for "./", not "./index.html", so we answer them from the one cached copy
 // rather than caching both URLs (that stored the same bytes twice).

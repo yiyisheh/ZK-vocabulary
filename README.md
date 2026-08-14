@@ -15,11 +15,12 @@
 
 和四级版完全一致的功能，只是词表换成中考 688 词：
 
-- **离线发音**：688 个单词美音（有道）+ 688 条例句朗读（edge-tts）
+- **离线发音**：688 个单词美音（有道）+ 688 条例句朗读（edge-tts，正常语速 + 慢速两套）
 - **点击交互**：点单词发音 + 音节切分，点例句朗读整句，点序号划线标记已掌握
 - **自测模式**：释义/词根留白遮蔽，点击解锁
 - **状态池（莱特纳）**：自动推进背诵范围
 - **多端同步**（Supabase）：同步划线进度与自定义色号
+- **例句慢速朗读**：设置页一键切换正常/慢速语速（慢速 -20%，贴近中考听力语速）
 - **PWA**：添加到主屏幕后离线可用
 - 详细功能说明见原始项目的 [WEB_HANDOFF.md](https://github.com/yiyisheh/CET4-vocabulary/blob/main/WEB_HANDOFF.md)
 
@@ -80,7 +81,8 @@
 ├── intermediate/
 │   ├── entries_full.json            688 词完整词条数据
 │   ├── audio/us/*.mp3               单词美音（688 条）
-│   ├── audio/ex/*.mp3               例句朗读（688 条）
+│   ├── audio/ex/*.mp3               例句朗读·正常语速（688 条）
+│   ├── audio/ex_slow/*.mp3          例句朗读·慢速 -20%（688 条）
 │   ├── words_raw.json               688 词原始提取
 │   └── batch_*.json                 分批生成的中间文件
 ├── output/
@@ -88,7 +90,8 @@
 ├── docs/                            GitHub Pages 托管目录
 │   ├── index.html                   网页外壳（284KB）
 │   ├── audio-us.*.bin               单词音频包（~9MB）
-│   ├── audio-ex.*.bin               例句音频包（~11MB）
+│   ├── audio-ex.*.bin               例句音频包·正常语速（~10MB）
+│   ├── audio-ex-slow.*.bin          例句音频包·慢速（~13MB）
 │   └── sw.js / manifest / icons
 └── 英语中考高频单词彩色背诵版(优化).pdf
 ```
@@ -103,9 +106,10 @@ python make_zhongkao_pdf.py
 python scripts/build_html.py
 
 # 重新下载音频（断点续传，跳过已存在文件）
-python scripts/fetch_audio.py          # 有道单词发音
-python scripts/fetch_ex_audio.py       # edge-tts 例句朗读（需 ffmpeg）
-pip install edge_tts                   # 例句 TTS 依赖
+python scripts/fetch_audio.py                                # 有道单词发音
+python scripts/fetch_ex_audio.py                             # 例句朗读·正常语速（需 ffmpeg）
+python scripts/fetch_ex_audio.py --rate "-20%" --subdir ex_slow  # 例句朗读·慢速
+pip install edge_tts                                         # 例句 TTS 依赖
 ```
 
 PDF 生成需要 `reportlab` 和 macOS 自带的 `Arial Unicode.ttf` 字体。

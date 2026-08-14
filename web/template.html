@@ -288,6 +288,10 @@
     <div class="lab"><b>例句播放前延迟</b><span>点例句朗读前的静默间隔；例句音频已去前置静音，可留 0</span></div>
     <div class="slider"><input id="rg-exdelay" type="range" min="0" max="50" step="5"><span class="val" id="v-exdelay"></span></div>
   </div>
+  <div class="row" id="row-exslow" style="display:none">
+    <div class="lab"><b>例句慢速朗读</b><span>切换例句正常语速 / 慢速语速</span></div>
+    <div id="sw-exslow" class="switch"></div>
+  </div>
   <div class="row">
     <div class="lab"><b>字体大小</b><span>默认≈优化版 PDF 原大小（100% 缩放时）</span></div>
     <div class="slider"><input id="rg-fs" type="range" min="0.75" max="1.6" step="0.05"><span class="val" id="v-fs"></span></div>
@@ -388,6 +392,7 @@
      托管版(docs/)：这两个块是空的，音频改走 AUDIO_INDEX 指向的二进制包，见下。 -->
 <script type="application/json" id="audio-us">__AUDIO_US__</script>
 <script type="application/json" id="audio-ex">__AUDIO_EX__</script>
+<script type="application/json" id="audio-ex-slow">__AUDIO_EX_SLOW__</script>
 <script>
 window.CET4 = __DATA__;
 /* 托管版：{us:{file,bytes,index:{单词:[偏移,长度]}}, ex:{…按 rank}}；单文件版为 null。
@@ -417,6 +422,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     bg:"#ffffff", customColors:[], marks:{}, anchor:1, syncCode:"", dev:false, devH:170,
     selftest:false, showEx:true,  // selftest: blank the definition until tapped; showEx: render example lines
     maskExTrans:true,             // self-test sub-option: also mask the example's 中文 translation, revealed together with the card
+    exSlow:false,                 // slow example audio (only available when ex_slow audio is embedded/packed)
     counters:[],                  // running-total milestone intervals, e.g. [100,25]; empty = off. 【local】
     poolMode:false, poolSize:40, poolLow:15, poolMax:0   // Leitner rank ceiling (see ensurePool). 【local】
   };
@@ -668,7 +674,8 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
       var ent = meta && meta.index[key];
       return (buf && ent) ? buf.slice(ent[0], ent[0]+ent[1]) : null;   // pack still downloading
     }
-    var b = (which==="us") ? audioMap(state.accent)[key] : exMap()[key];
+    var b = (which==="us") ? audioMap(state.accent)[key]
+          : (which==="ex_slow") ? exSlowMap()[key] : exMap()[key];
     return b ? b64ToBytes(b) : null;
   }
   function youdaoUrl(w){ return "https://dict.youdao.com/dictvoice?type="+(state.accent==="uk"?1:2)+"&audio="+encodeURIComponent(w); }
@@ -782,7 +789,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   // trimmed of leading silence, keyed by rank. Reuses the decode+cache engine. No Youdao
   // fallback (a sentence isn't a dictionary lookup). `exDelay` (0..50ms) inserts a short
   // pre-play gap before sound, since the clips carry no leading silence of their own.
-  var exData=null, exCache={}, exOrder=[];
+  var exData=null, exSlowData=null, exCache={}, exOrder=[];
   function exMap(){
     if(exData===null){
       var el=document.getElementById("audio-ex");
@@ -791,6 +798,15 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     }
     return exData;
   }
+  function exSlowMap(){
+    if(exSlowData===null){
+      var el=document.getElementById("audio-ex-slow");
+      try{ exSlowData = el && el.textContent.trim() ? JSON.parse(el.textContent) : {}; }
+      catch(e){ exSlowData={}; }
+    }
+    return exSlowData;
+  }
+  var hasSlowEx = false;
   function playEx(en){
     var delay=(state.exDelay||0)/1000;               // pre-play gap, read live: baked into the WAV as leading silence
     var off=en.onset; if(off<0) off=0;               // clips pre-trimmed => onset ~0
@@ -798,9 +814,10 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     playClip(en, off, delay, "(例句)");
   }
   function speakEx(rank){
-    var key="ex|"+rank, hit=exCache[key];
+    var which=(state.exSlow && hasSlowEx)?"ex_slow":"ex";
+    var key=which+"|"+rank, hit=exCache[key];
     if(hit){ mediaUnlock(); playEx(hit); return; }
-    var b=clipBytes("ex", rank), ctx=b?audioCtx():null;
+    var b=clipBytes(which, rank), ctx=b?audioCtx():null;
     if(!ctx || !b){ return; }                        // no clip / pack not in yet -> silent
     mediaUnlock();                                   // still inside the tap gesture here
     ctx.decodeAudioData(b,
@@ -993,6 +1010,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
       rgSp=document.getElementById("rg-sp"), vSp=document.getElementById("v-sp"),
       rgSkip=document.getElementById("rg-skip"), vSkip=document.getElementById("v-skip"),
       rgExDelay=document.getElementById("rg-exdelay"), vExDelay=document.getElementById("v-exdelay"),
+      swExSlow=document.getElementById("sw-exslow"), rowExSlow=document.getElementById("row-exslow"),
       swDev=document.getElementById("sw-dev"),
       swatchesEl=document.getElementById("swatches"),
       hexInput=document.getElementById("hexinput"), hexAdd=document.getElementById("hexadd");
@@ -1042,6 +1060,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     rgSp.value=state.spacing; vSp.textContent=Math.round(state.spacing*100)+"%";
     rgSkip.value=state.skipMs; vSkip.textContent=state.skipMs+"ms";
     rgExDelay.value=state.exDelay; vExDelay.textContent=state.exDelay+"ms";
+    swExSlow.classList.toggle("on",!!state.exSlow);
     swDev.classList.toggle("on",!!state.dev);
     renderSwatches();
   }
@@ -1087,6 +1106,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     renderCounters(); paginate(); save();
   });
   swDivider.addEventListener("click", function(){ state.divider=!state.divider; syncSettings(); pagesEl.classList.toggle("nodivider", !state.divider); save(); });
+  swExSlow.addEventListener("click", function(){ state.exSlow=!state.exSlow; syncSettings(); save(); });
   swDev.addEventListener("click", function(){ state.dev=!state.dev; syncSettings(); devApply(); paginate(); save(); });
   seg(segMark,"markStyle"); seg(segMode,"mode"); seg(segCols,"cols");
   rgFs.addEventListener("input", function(){ state.fontScale=+rgFs.value; vFs.textContent=Math.round(state.fontScale*100)+"%"; applyLayout(); save(); });
@@ -1194,11 +1214,14 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   }
   function loadPacks(){
     if(!AIDX) return;
-    packState.total = AIDX.us.bytes + AIDX.ex.bytes;
+    packState.total = AIDX.us.bytes + AIDX.ex.bytes + (AIDX.ex_slow ? AIDX.ex_slow.bytes : 0);
     packState.t0 = Date.now();
     // us first: tapping a word is the common case, example sentences can land a moment later.
     fetchPack("us").then(function(b){ packs.us=b; return fetchPack("ex"); })
-      .then(function(b){ packs.ex=b; packState.done=true; paint(); })
+      .then(function(b){ packs.ex=b;
+        if(AIDX.ex_slow) return fetchPack("ex_slow").then(function(b2){ packs.ex_slow=b2; });
+      })
+      .then(function(){ packState.done=true; paint(); })
       .catch(function(){
         packState.failed=true; packState.offline=!navigator.onLine; paint();
         window.addEventListener("online", function once(){    // retry when the network comes back
@@ -1283,6 +1306,10 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   syncInput.value=state.syncCode||"";
   syncBtn.addEventListener("click", function(){ state.syncCode=(syncInput.value||"").trim(); save(); startSync(); });
   setSyncStatus(state.syncCode ? "connecting" : "off");
+
+  // detect slow example audio availability
+  hasSlowEx = (AIDX && AIDX.ex_slow) || !!(document.getElementById("audio-ex-slow") && document.getElementById("audio-ex-slow").textContent.trim());
+  if(hasSlowEx) rowExSlow.style.display="";
 
   // init
   applyTheme(state.bg); applyLayout(); syncSettings(); devApply(); paginate(); updateCacheUI();

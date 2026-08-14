@@ -27,10 +27,14 @@ import edge_tts
 _p = argparse.ArgumentParser()
 _p.add_argument("--root", type=Path, default=Path(__file__).parent.parent,
                 help="project root (default: repo root)")
+_p.add_argument("--rate", type=str, default="+0%",
+                help="edge-tts speech rate, e.g. '-20%%' for slower (default: +0%%)")
+_p.add_argument("--subdir", type=str, default="ex",
+                help="output subdirectory under intermediate/audio/ (default: ex)")
 _args = _p.parse_args()
 ROOT = _args.root
 ENTRIES = json.loads((ROOT / "intermediate" / "entries_full.json").read_text())
-OUT = ROOT / "intermediate" / "audio" / "ex"
+OUT = ROOT / "intermediate" / "audio" / _args.subdir
 OUT.mkdir(parents=True, exist_ok=True)
 
 VOICES = {"Andrew": "en-US-AndrewMultilingualNeural",
@@ -74,7 +78,7 @@ async def one(rank, text, voice_name, sem, stats):
     async with sem:
         for attempt in range(4):
             try:
-                await edge_tts.Communicate(text, VOICES[voice_name]).save(str(raw))
+                await edge_tts.Communicate(text, VOICES[voice_name], rate=_args.rate).save(str(raw))
                 if raw.stat().st_size < 300:
                     raise ValueError("too small")
                 break

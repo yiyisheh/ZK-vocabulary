@@ -129,7 +129,26 @@
     "ex_label": "例句",
     "ex": "People from different countries have different cultures.(来自不同国家的人有不同的文化。)",
     "syl": "dif·fer·ent",
-    "root": "dif-(分开)+fer(带来)+ent → 带向不同方向的→不同的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dif-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "fer",
+          "meaning": "带来"
+        },
+        {
+          "type": "后缀",
+          "text": "-ent",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "dif- 分开 + fer 带来 + -ent 形容词 ⇒ 带向不同方向的 ⇒ 不同的"
+    }
   },
   {
     "rank": 12,
@@ -249,7 +268,26 @@
     "ex_label": "例句",
     "ex": "It is important to protect the environment.(保护环境很重要。)",
     "syl": "im·por·tant",
-    "root": "im-(进入)+port(搬运)+ant → 搬进来的→重要的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "im-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "port",
+          "meaning": "搬运"
+        },
+        {
+          "type": "后缀",
+          "text": "-ant",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "im- 进入 + port 搬运 + -ant 形容词 ⇒ 搬进来的 ⇒ 重要的"
+    }
   },
   {
     "rank": 22,
@@ -261,7 +299,21 @@
     "ex_label": "例句",
     "ex": "We plan to visit the museum this weekend.(我们计划这个周末参观博物馆。)",
     "syl": "vis·it",
-    "root": "vis(看)+it → 去看→拜访"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "vis",
+          "meaning": "看"
+        },
+        {
+          "type": "词根",
+          "text": "it",
+          "meaning": "走"
+        }
+      ],
+      "summary": "vis 看 + it 走 ⇒ 去看 ⇒ 拜访"
+    }
   },
   {
     "rank": 23,
@@ -273,7 +325,21 @@
     "ex_label": "例句",
     "ex": "He has a great interest in Chinese history.(他对中国历史有很大的兴趣。)",
     "syl": "in·ter·est",
-    "root": "inter-(在…之间)+est → 在其中的→引起兴趣的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "inter-",
+          "meaning": "在…之间"
+        },
+        {
+          "type": "词根",
+          "text": "est",
+          "meaning": "存在"
+        }
+      ],
+      "summary": "inter- 在…之间 + est 存在 ⇒ 在其中的 ⇒ 引起兴趣的"
+    }
   },
   {
     "rank": 24,
@@ -297,7 +363,21 @@
     "ex_label": "例句",
     "ex": "Don't worry. We can solve this problem together.(别担心。我们可以一起解决这个问题。)",
     "syl": "prob·lem",
-    "root": "pro-(向前)+blem(扔) → 扔出来的→难题"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "blem",
+          "meaning": "扔"
+        }
+      ],
+      "summary": "pro- 向前 + blem 扔 ⇒ 扔出来的 ⇒ 难题"
+    }
   },
   {
     "rank": 26,
@@ -393,7 +473,21 @@
     "ex_label": "例句",
     "ex": "According to the weather report, it will rain tomorrow.(根据天气预报，明天会下雨。)",
     "syl": "ac·cord·ing",
-    "root": "ac-(朝向)+cord(心) → 内心一致→依照"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ac-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "cord",
+          "meaning": "心"
+        }
+      ],
+      "summary": "ac- 朝向 + cord 心 ⇒ 内心一致 ⇒ 依照"
+    }
   },
   {
     "rank": 34,
@@ -429,7 +523,21 @@
     "ex_label": "例句",
     "ex": "We should protect wild animals and their homes.(我们应该保护野生动物和它们的家园。)",
     "syl": "an·i·mal",
-    "root": "anim(生命)+al → 有生命的→动物"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "anim",
+          "meaning": "生命"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "anim 生命 + -al 名词 ⇒ 有生命的 ⇒ 动物"
+    }
   },
   {
     "rank": 37,
@@ -465,7 +573,21 @@
     "ex_label": "例句",
     "ex": "I enjoy reading books in my free time.(我喜欢在空闲时间读书。)",
     "syl": "en·joy",
-    "root": "en-(使)+joy(快乐) → 使快乐→享受"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "en-",
+          "meaning": "使"
+        },
+        {
+          "type": "词",
+          "text": "joy",
+          "meaning": "快乐"
+        }
+      ],
+      "summary": "en- 使 + joy 快乐 ⇒ 使快乐 ⇒ 享受"
+    }
   },
   {
     "rank": 40,
@@ -561,7 +683,21 @@
     "ex_label": "例句",
     "ex": "Please remember to bring your book tomorrow.(请记得明天带上你的书。)",
     "syl": "re·mem·ber",
-    "root": "re-(再)+membr(记忆) → 再次记起→记得"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "membr",
+          "meaning": "记忆"
+        }
+      ],
+      "summary": "re- 再 + membr 记忆 ⇒ 再次记起 ⇒ 记得"
+    }
   },
   {
     "rank": 48,
@@ -693,7 +829,21 @@
     "ex_label": "例句",
     "ex": "She prepared a special gift for her friend.(她为朋友准备了一份特别的礼物。)",
     "syl": "spe·cial",
-    "root": "spec(看)+ial → 值得看的→特别的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "spec",
+          "meaning": "看"
+        },
+        {
+          "type": "后缀",
+          "text": "-ial",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "spec 看 + -ial 形容词 ⇒ 值得看的 ⇒ 特别的"
+    }
   },
   {
     "rank": 59,
@@ -729,7 +879,21 @@
     "ex_label": "例句",
     "ex": "This song is very popular among young people.(这首歌在年轻人中很受欢迎。)",
     "syl": "pop·u·lar",
-    "root": "popul(人民)+ar → 属于人民的→受欢迎的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "popul",
+          "meaning": "人民"
+        },
+        {
+          "type": "后缀",
+          "text": "-ar",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "popul 人民 + -ar 形容词 ⇒ 属于人民的 ⇒ 受欢迎的"
+    }
   },
   {
     "rank": 62,
@@ -813,7 +977,21 @@
     "ex_label": "例句",
     "ex": "It takes me ten minutes to walk to school.(我步行去学校需要十分钟。)",
     "syl": "min·ute",
-    "root": "min(小)+ute → 小的时间单位→分钟"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "min",
+          "meaning": "小"
+        },
+        {
+          "type": "后缀",
+          "text": "-ute",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "min 小 + -ute 名词 ⇒ 小的时间单位 ⇒ 分钟"
+    }
   },
   {
     "rank": 69,
@@ -825,7 +1003,21 @@
     "ex_label": "例句",
     "ex": "He decided to study abroad after graduation.(他决定毕业后出国留学。)",
     "syl": "de·cide",
-    "root": "de-(离开)+cide(切) → 切断犹豫→决定"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "离开"
+        },
+        {
+          "type": "词根",
+          "text": "cide",
+          "meaning": "切"
+        }
+      ],
+      "summary": "de- 离开 + cide 切 ⇒ 切断犹豫 ⇒ 决定"
+    }
   },
   {
     "rank": 70,
@@ -897,7 +1089,21 @@
     "ex_label": "例句",
     "ex": "It will probably rain this afternoon.(今天下午可能会下雨。)",
     "syl": "prob·a·bly",
-    "root": "prob(证明)+ably → 能被证明的→可能的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "prob",
+          "meaning": "证明"
+        },
+        {
+          "type": "后缀",
+          "text": "-ably",
+          "meaning": "副词"
+        }
+      ],
+      "summary": "prob 证明 + -ably 副词 ⇒ 能被证明的 ⇒ 可能的"
+    }
   },
   {
     "rank": 76,
@@ -981,7 +1187,21 @@
     "ex_label": "例句",
     "ex": "Have you finished your homework yet?(你做完作业了吗？)",
     "syl": "fin·ish",
-    "root": "fin(结束)+ish → 结束→完成"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "fin",
+          "meaning": "结束"
+        },
+        {
+          "type": "后缀",
+          "text": "-ish",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "fin 结束 + -ish 动词 ⇒ 结束 ⇒ 完成"
+    }
   },
   {
     "rank": 83,
@@ -993,7 +1213,21 @@
     "ex_label": "例句",
     "ex": "There are many after-school activities in our school.(我们学校有很多课外活动。)",
     "syl": "ac·tiv·i·ty",
-    "root": "act(行动)+ivity → 行动的状态→活动"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "act",
+          "meaning": "行动"
+        },
+        {
+          "type": "后缀",
+          "text": "-ivity",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "act 行动 + -ivity 名词 ⇒ 行动的状态 ⇒ 活动"
+    }
   },
   {
     "rank": 84,
@@ -1065,7 +1299,21 @@
     "ex_label": "例句",
     "ex": "The Spring Festival is the most important festival in China.(春节是中国最重要的节日。)",
     "syl": "fes·ti·val",
-    "root": "fest- = feast 节日 + -ival 形容词/名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "fest-",
+          "meaning": "节日"
+        },
+        {
+          "type": "后缀",
+          "text": "-ival",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "fest- 节日 + -ival 名词 ⇒ 节日"
+    }
   },
   {
     "rank": 90,
@@ -1077,7 +1325,21 @@
     "ex_label": "例句",
     "ex": "English is a useful language to learn.(英语是一门有用的语言。)",
     "syl": "lan·guage",
-    "root": "lingua- = tongue 舌头/语言 + -age 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "lingua-",
+          "meaning": "舌头/语言"
+        },
+        {
+          "type": "后缀",
+          "text": "-age",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "lingua- 语言 + -age 名词 ⇒ 语言"
+    }
   },
   {
     "rank": 91,
@@ -1089,7 +1351,21 @@
     "ex_label": "例句",
     "ex": "Can you give me an example?(你能给我举个例子吗？)",
     "syl": "ex·am·ple",
-    "root": "ex- 出 + ampl- = take 拿取"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "ampl-",
+          "meaning": "拿取"
+        }
+      ],
+      "summary": "ex- 出 + ampl- 拿取 ⇒ 取出来展示的 ⇒ 例子"
+    }
   },
   {
     "rank": 92,
@@ -1137,7 +1413,21 @@
     "ex_label": "例句",
     "ex": "My father works for a big company.(我爸爸在一家大公司工作。)",
     "syl": "com·pa·ny",
-    "root": "com- 一起 + pan- = bread 面包 → 一起吃面包的人 → 同伴/公司"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "com-",
+          "meaning": "一起"
+        },
+        {
+          "type": "词根",
+          "text": "pan-",
+          "meaning": "面包"
+        }
+      ],
+      "summary": "com- 一起 + pan- 面包 ⇒ 一起吃面包的人 ⇒ 同伴；公司"
+    }
   },
   {
     "rank": 96,
@@ -1161,7 +1451,21 @@
     "ex_label": "例句",
     "ex": "We visited the science museum last weekend.(上周末我们参观了科学博物馆。)",
     "syl": "mu·se·um",
-    "root": "muse- = muse 缪斯(艺术女神) + -um 场所后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "muse-",
+          "meaning": "缪斯"
+        },
+        {
+          "type": "后缀",
+          "text": "-um",
+          "meaning": "场所"
+        }
+      ],
+      "summary": "muse- 缪斯 + -um 场所 ⇒ 供奉缪斯的地方 ⇒ 博物馆"
+    }
   },
   {
     "rank": 98,
@@ -1173,7 +1477,21 @@
     "ex_label": "例句",
     "ex": "This math problem is too difficult for me.(这道数学题对我来说太难了。)",
     "syl": "dif·fi·cult",
-    "root": "dif- = dis- 不 + ficul- = facil- 容易 → 不容易的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dif-",
+          "meaning": "不"
+        },
+        {
+          "type": "词根",
+          "text": "ficul-",
+          "meaning": "容易"
+        }
+      ],
+      "summary": "dif- 不 + ficul- 容易 ⇒ 不容易的 ⇒ 困难的"
+    }
   },
   {
     "rank": 99,
@@ -1233,7 +1551,21 @@
     "ex_label": "例句",
     "ex": "The good news excited everyone in the class.(这个好消息让全班同学都很兴奋。)",
     "syl": "ex·cite",
-    "root": "ex- 出 + cite- = call 叫/唤起 → 唤出情绪"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "cite-",
+          "meaning": "唤起"
+        }
+      ],
+      "summary": "ex- 出 + cite- 唤起 ⇒ 唤出情绪 ⇒ 使激动"
+    }
   },
   {
     "rank": 104,
@@ -1293,7 +1625,16 @@
     "ex_label": "例句",
     "ex": "The teacher asked us to sit in order.(老师让我们按顺序坐好。)",
     "syl": "or·der",
-    "root": "ordin- = order 秩序"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "ordin-",
+          "meaning": "秩序"
+        }
+      ],
+      "summary": "ordin- 秩序 ⇒ 顺序；命令"
+    }
   },
   {
     "rank": 109,
@@ -1305,7 +1646,26 @@
     "ex_label": "例句",
     "ex": "She wants to become a scientist when she grows up.(她长大后想成为一名科学家。)",
     "syl": "sci·en·tist",
-    "root": "sci- = know 知道 + -ent 形容词后缀 + -ist 人"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "sci-",
+          "meaning": "知道"
+        },
+        {
+          "type": "后缀",
+          "text": "-ent",
+          "meaning": "形容词"
+        },
+        {
+          "type": "后缀",
+          "text": "-ist",
+          "meaning": "人"
+        }
+      ],
+      "summary": "sci- 知道 + -ent 形容词 + -ist 人 ⇒ 掌握知识的人 ⇒ 科学家"
+    }
   },
   {
     "rank": 110,
@@ -1341,7 +1701,21 @@
     "ex_label": "例句",
     "ex": "My brother likes to collect stamps.(我哥哥喜欢集邮。)",
     "syl": "col·lect",
-    "root": "col- = com- 一起 + lect- = gather 收集"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "col-",
+          "meaning": "一起"
+        },
+        {
+          "type": "词根",
+          "text": "lect-",
+          "meaning": "收集"
+        }
+      ],
+      "summary": "col- 一起 + lect- 收集 ⇒ 聚到一起 ⇒ 收集"
+    }
   },
   {
     "rank": 113,
@@ -1389,7 +1763,21 @@
     "ex_label": "例句",
     "ex": "We should protect the environment.(我们应该保护环境。)",
     "syl": "pro·tect",
-    "root": "pro- 向前 + tect- = cover 覆盖 → 挡在前面保护"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "tect-",
+          "meaning": "覆盖"
+        }
+      ],
+      "summary": "pro- 向前 + tect- 覆盖 ⇒ 挡在前面 ⇒ 保护"
+    }
   },
   {
     "rank": 117,
@@ -1437,7 +1825,21 @@
     "ex_label": "例句",
     "ex": "Reading can help improve your English.(阅读可以帮助你提高英语水平。)",
     "syl": "im·prove",
-    "root": "im- = in- 进入 + prove- = profit 有益 → 使变得更好"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "im-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "prove-",
+          "meaning": "有益"
+        }
+      ],
+      "summary": "im- 进入 + prove- 有益 ⇒ 使变得更好 ⇒ 改善"
+    }
   },
   {
     "rank": 121,
@@ -1449,7 +1851,21 @@
     "ex_label": "例句",
     "ex": "Every country has its own culture.(每个国家都有自己的文化。)",
     "syl": "cul·ture",
-    "root": "cult- = till/grow 耕种/培养 + -ure 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "cult-",
+          "meaning": "耕种/培养"
+        },
+        {
+          "type": "后缀",
+          "text": "-ure",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "cult- 培养 + -ure 名词 ⇒ 培养出来的 ⇒ 文化"
+    }
   },
   {
     "rank": 122,
@@ -1473,7 +1889,21 @@
     "ex_label": "例句",
     "ex": "Please return the book to the library on time.(请按时把书还给图书馆。)",
     "syl": "re·turn",
-    "root": "re- 回 + turn- 转 → 转回来"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "turn-",
+          "meaning": "转"
+        }
+      ],
+      "summary": "re- 回 + turn- 转 ⇒ 转回来 ⇒ 返回"
+    }
   },
   {
     "rank": 124,
@@ -1485,7 +1915,21 @@
     "ex_label": "例句",
     "ex": "I didn't realize it was so late.(我没意识到已经这么晚了。)",
     "syl": "re·al·ize",
-    "root": "real- = real 真实的 + -ize 动词后缀 → 使成为现实"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "real-",
+          "meaning": "真实的"
+        },
+        {
+          "type": "后缀",
+          "text": "-ize",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "real- 真实的 + -ize 动词 ⇒ 使成为现实 ⇒ 实现；意识到"
+    }
   },
   {
     "rank": 125,
@@ -1497,7 +1941,21 @@
     "ex_label": "例句",
     "ex": "Science helps us understand the world.(科学帮助我们理解世界。)",
     "syl": "sci·ence",
-    "root": "sci- = know 知道 + -ence 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "sci-",
+          "meaning": "知道"
+        },
+        {
+          "type": "后缀",
+          "text": "-ence",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "sci- 知道 + -ence 名词 ⇒ 所掌握的知识 ⇒ 科学"
+    }
   },
   {
     "rank": 126,
@@ -1509,7 +1967,21 @@
     "ex_label": "例句",
     "ex": "China is developing very fast.(中国发展得非常快。)",
     "syl": "de·vel·op",
-    "root": "de- 去除 + velop- = wrap 包裹 → 打开包裹 → 展开/发展"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "去除"
+        },
+        {
+          "type": "词根",
+          "text": "velop-",
+          "meaning": "包裹"
+        }
+      ],
+      "summary": "de- 去除 + velop- 包裹 ⇒ 打开包裹 ⇒ 发展"
+    }
   },
   {
     "rank": 127,
@@ -1533,7 +2005,26 @@
     "ex_label": "例句",
     "ex": "We must do something to protect the environment.(我们必须采取行动保护环境。)",
     "syl": "en·vi·ron·ment",
-    "root": "en- 使 + viron- = circle 环绕 + -ment 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "en-",
+          "meaning": "使"
+        },
+        {
+          "type": "词根",
+          "text": "viron-",
+          "meaning": "环绕"
+        },
+        {
+          "type": "后缀",
+          "text": "-ment",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "en- 使 + viron- 环绕 + -ment 名词 ⇒ 环绕四周的 ⇒ 环境"
+    }
   },
   {
     "rank": 129,
@@ -1557,7 +2048,21 @@
     "ex_label": "例句",
     "ex": "Is it possible to finish this today?(今天完成这个有可能吗？)",
     "syl": "pos·si·ble",
-    "root": "poss- = able 能够 + -ible 能…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "poss-",
+          "meaning": "能够"
+        },
+        {
+          "type": "后缀",
+          "text": "-ible",
+          "meaning": "能…的"
+        }
+      ],
+      "summary": "poss- 能够 + -ible 能…的 ⇒ 可能的"
+    }
   },
   {
     "rank": 131,
@@ -1581,7 +2086,21 @@
     "ex_label": "例句",
     "ex": "The students wrote a report about the trip.(学生们写了一篇关于旅行的报告。)",
     "syl": "re·port",
-    "root": "re- 回 + port- = carry 带来 → 带回消息 → 报告"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "port-",
+          "meaning": "带来"
+        }
+      ],
+      "summary": "re- 回 + port- 带来 ⇒ 带回消息 ⇒ 报告"
+    }
   },
   {
     "rank": 133,
@@ -1653,7 +2172,21 @@
     "ex_label": "例句",
     "ex": "We arrived at the airport just in time.(我们刚好及时到达了机场。)",
     "syl": "ar·rive",
-    "root": "ar- = ad- 到 + rive- = shore 岸 → 到达岸边"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ar-",
+          "meaning": "到"
+        },
+        {
+          "type": "词根",
+          "text": "rive-",
+          "meaning": "岸"
+        }
+      ],
+      "summary": "ar- 到 + rive- 岸 ⇒ 到达岸边 ⇒ 到达"
+    }
   },
   {
     "rank": 139,
@@ -1737,7 +2270,21 @@
     "ex_label": "例句",
     "ex": "I invited all my friends to my birthday party.(我邀请了所有朋友来参加我的生日聚会。)",
     "syl": "in·vite",
-    "root": "in- 向内 + vit- = call 召唤 → 召唤进来 → 邀请"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "向内"
+        },
+        {
+          "type": "词根",
+          "text": "vit-",
+          "meaning": "召唤"
+        }
+      ],
+      "summary": "in- 向内 + vit- 召唤 ⇒ 召唤进来 ⇒ 邀请"
+    }
   },
   {
     "rank": 146,
@@ -1773,7 +2320,26 @@
     "ex_label": "例句",
     "ex": "My teacher always encourages me to try new things.(我的老师总是鼓励我尝试新事物。)",
     "syl": "en·cour·age",
-    "root": "en- 使 + cour- = heart 心 + -age 名词后缀 → 使有勇气"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "en-",
+          "meaning": "使"
+        },
+        {
+          "type": "词根",
+          "text": "cour-",
+          "meaning": "心"
+        },
+        {
+          "type": "后缀",
+          "text": "-age",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "en- 使 + cour- 心 + -age 名词 ⇒ 使有勇气 ⇒ 鼓励"
+    }
   },
   {
     "rank": 149,
@@ -1785,7 +2351,21 @@
     "ex_label": "例句",
     "ex": "What is your favorite subject?(你最喜欢的科目是什么？)",
     "syl": "fa·vor·ite",
-    "root": "favor- = favor 喜爱 + -ite 形容词/名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "favor-",
+          "meaning": "喜爱"
+        },
+        {
+          "type": "后缀",
+          "text": "-ite",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "favor- 喜爱 + -ite 形容词 ⇒ 最喜爱的"
+    }
   },
   {
     "rank": 150,
@@ -1857,7 +2437,21 @@
     "ex_label": "例句",
     "ex": "The school provides free lunch for students.(学校为学生提供免费午餐。)",
     "syl": "pro·vide",
-    "root": "pro- 向前 + vide- = see 看 → 预先看到需要 → 供给"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "vide-",
+          "meaning": "看"
+        }
+      ],
+      "summary": "pro- 向前 + vide- 看 ⇒ 预先看到需要 ⇒ 供给"
+    }
   },
   {
     "rank": 156,
@@ -1917,7 +2511,21 @@
     "ex_label": "例句",
     "ex": "Please turn off your mobile phone in class.(请在课堂上关掉手机。)",
     "syl": "mo·bile",
-    "root": "mob- = move 移动 + -ile 能…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "mob-",
+          "meaning": "移动"
+        },
+        {
+          "type": "后缀",
+          "text": "-ile",
+          "meaning": "能…的"
+        }
+      ],
+      "summary": "mob- 移动 + -ile 能…的 ⇒ 能移动的 ⇒ 移动的"
+    }
   },
   {
     "rank": 161,
@@ -1941,7 +2549,21 @@
     "ex_label": "例句",
     "ex": "I often go to the library to borrow books.(我经常去图书馆借书。)",
     "syl": "li·brar·y",
-    "root": "libr- = book 书 + -ary 场所后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "libr-",
+          "meaning": "书"
+        },
+        {
+          "type": "后缀",
+          "text": "-ary",
+          "meaning": "场所"
+        }
+      ],
+      "summary": "libr- 书 + -ary 场所 ⇒ 藏书的地方 ⇒ 图书馆"
+    }
   },
   {
     "rank": 163,
@@ -1989,7 +2611,21 @@
     "ex_label": "例句",
     "ex": "It's dangerous to swim in this river.(在这条河里游泳很危险。)",
     "syl": "dan·ger·ous",
-    "root": "danger- 危险 + -ous 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "danger-",
+          "meaning": "危险"
+        },
+        {
+          "type": "后缀",
+          "text": "-ous",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "danger- 危险 + -ous 形容词 ⇒ 危险的"
+    }
   },
   {
     "rank": 167,
@@ -2001,7 +2637,21 @@
     "ex_label": "例句",
     "ex": "Everyone makes mistakes sometimes.(每个人有时候都会犯错。)",
     "syl": "mis·take",
-    "root": "mis- 错误地 + take 拿 → 拿错 → 犯错"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "mis-",
+          "meaning": "错误地"
+        },
+        {
+          "type": "词",
+          "text": "take",
+          "meaning": "拿"
+        }
+      ],
+      "summary": "mis- 错误地 + take 拿 ⇒ 拿错 ⇒ 犯错；错误"
+    }
   },
   {
     "rank": 168,
@@ -2013,7 +2663,21 @@
     "ex_label": "例句",
     "ex": "The price includes breakfast.(价格包含早餐。)",
     "syl": "in·clude",
-    "root": "in- 进入 + clude- = close 关 → 关进去 → 包含"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "clude-",
+          "meaning": "关"
+        }
+      ],
+      "summary": "in- 进入 + clude- 关 ⇒ 关进去 ⇒ 包含"
+    }
   },
   {
     "rank": 169,
@@ -2025,7 +2689,21 @@
     "ex_label": "例句",
     "ex": "The artist created a beautiful painting.(这位艺术家创作了一幅美丽的画。)",
     "syl": "cre·ate",
-    "root": "cre- = grow/make 生长/创造 + -ate 动词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "cre-",
+          "meaning": "生长/创造"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "cre- 创造 + -ate 动词 ⇒ 创造"
+    }
   },
   {
     "rank": 170,
@@ -2097,7 +2775,21 @@
     "ex_label": "例句",
     "ex": "Did you notice the new painting on the wall?(你注意到墙上那幅新画了吗？)",
     "syl": "no·tice",
-    "root": "not- 知道 + -ice 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "not-",
+          "meaning": "知道"
+        },
+        {
+          "type": "后缀",
+          "text": "-ice",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "not- 知道 + -ice 名词 ⇒ 使知道 ⇒ 注意；通知"
+    }
   },
   {
     "rank": 176,
@@ -2109,7 +2801,21 @@
     "ex_label": "例句",
     "ex": "Practice makes perfect.(熟能生巧。)",
     "syl": "prac·tice",
-    "root": "pract- = do 做 + -ice 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "pract-",
+          "meaning": "做"
+        },
+        {
+          "type": "后缀",
+          "text": "-ice",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "pract- 做 + -ice 名词 ⇒ 反复地做 ⇒ 练习"
+    }
   },
   {
     "rank": 177,
@@ -2145,7 +2851,21 @@
     "ex_label": "例句",
     "ex": "You should learn to control your temper.(你应该学会控制自己的脾气。)",
     "syl": "con·trol",
-    "root": "contra- 相对 + rol- = roll 滚动 → 反向操控"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "contra-",
+          "meaning": "相对"
+        },
+        {
+          "type": "词根",
+          "text": "rol-",
+          "meaning": "滚动"
+        }
+      ],
+      "summary": "contra- 相对 + rol- 滚动 ⇒ 反向操控 ⇒ 控制"
+    }
   },
   {
     "rank": 180,
@@ -2157,7 +2877,21 @@
     "ex_label": "例句",
     "ex": "Hard work is the key to success.(努力是成功的关键。)",
     "syl": "suc·cess",
-    "root": "suc- (sub-) 在下面 + cess- = go 走 → 跟随而上"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "suc-",
+          "meaning": "在下面"
+        },
+        {
+          "type": "词根",
+          "text": "cess-",
+          "meaning": "走"
+        }
+      ],
+      "summary": "suc- 在下面 + cess- 走 ⇒ 跟随而上 ⇒ 成功"
+    }
   },
   {
     "rank": 181,
@@ -2169,7 +2903,21 @@
     "ex_label": "例句",
     "ex": "He studied hard, and as a result he passed the exam.(他努力学习，结果通过了考试。)",
     "syl": "re·sult",
-    "root": "re- 回 + sult- = jump 跳 → 弹回来的东西"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "sult-",
+          "meaning": "跳"
+        }
+      ],
+      "summary": "re- 回 + sult- 跳 ⇒ 弹回来的东西 ⇒ 结果"
+    }
   },
   {
     "rank": 182,
@@ -2193,7 +2941,21 @@
     "ex_label": "例句",
     "ex": "Doing exercise every day is good for your health.(每天锻炼对你的健康有好处。)",
     "syl": "ex·er·cise",
-    "root": "ex- 出 + ercise (arcere) = keep 保持 → 持续操练"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "ercise",
+          "meaning": "保持"
+        }
+      ],
+      "summary": "ex- 出 + ercise 保持 ⇒ 持续操练 ⇒ 锻炼；练习"
+    }
   },
   {
     "rank": 184,
@@ -2205,7 +2967,26 @@
     "ex_label": "例句",
     "ex": "Can you tell the difference between the two pictures?(你能看出这两幅画的区别吗？)",
     "syl": "dif·fer·ence",
-    "root": "dif- (dis-) 分开 + fer- = carry 带 + -ence 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dif-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "fer-",
+          "meaning": "带"
+        },
+        {
+          "type": "后缀",
+          "text": "-ence",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "dif- 分开 + fer- 带 + -ence 名词 ⇒ 带向不同方向 ⇒ 差异"
+    }
   },
   {
     "rank": 185,
@@ -2229,7 +3010,21 @@
     "ex_label": "例句",
     "ex": "We had a wonderful time at the party.(我们在聚会上玩得非常开心。)",
     "syl": "won·der·ful",
-    "root": "wonder 惊奇 + -ful 充满…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "wonder",
+          "meaning": "惊奇"
+        },
+        {
+          "type": "后缀",
+          "text": "-ful",
+          "meaning": "充满…的"
+        }
+      ],
+      "summary": "wonder 惊奇 + -ful 充满…的 ⇒ 令人惊奇的 ⇒ 极好的"
+    }
   },
   {
     "rank": 187,
@@ -2253,7 +3048,21 @@
     "ex_label": "例句",
     "ex": "The bus driver stopped to let the old man get on.(公交车司机停下来让老人上车。)",
     "syl": "driv·er",
-    "root": "drive 驾驶 + -er 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "drive",
+          "meaning": "驾驶"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "drive 驾驶 + -er 做…的人 ⇒ 驾驶的人 ⇒ 司机"
+    }
   },
   {
     "rank": 189,
@@ -2325,7 +3134,26 @@
     "ex_label": "例句",
     "ex": "It is necessary for us to learn English well.(对我们来说学好英语是必要的。)",
     "syl": "nec·es·sa·ry",
-    "root": "ne- 不 + cess- = go 走 + -ary 形容词后缀 → 不可离去的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ne-",
+          "meaning": "不"
+        },
+        {
+          "type": "词根",
+          "text": "cess-",
+          "meaning": "走"
+        },
+        {
+          "type": "后缀",
+          "text": "-ary",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "ne- 不 + cess- 走 + -ary 形容词 ⇒ 不可离去的 ⇒ 必要的"
+    }
   },
   {
     "rank": 195,
@@ -2337,7 +3165,21 @@
     "ex_label": "例句",
     "ex": "The people in this town are very friendly.(这个小镇上的人非常友好。)",
     "syl": "friend·ly",
-    "root": "friend 朋友 + -ly 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "friend",
+          "meaning": "朋友"
+        },
+        {
+          "type": "后缀",
+          "text": "-ly",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "friend 朋友 + -ly 形容词 ⇒ 像朋友的 ⇒ 友好的"
+    }
   },
   {
     "rank": 196,
@@ -2349,7 +3191,21 @@
     "ex_label": "例句",
     "ex": "The museum welcomes thousands of visitors every year.(这座博物馆每年接待数千名游客。)",
     "syl": "vis·i·tor",
-    "root": "visit 参观 + -or 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "visit",
+          "meaning": "参观"
+        },
+        {
+          "type": "后缀",
+          "text": "-or",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "visit 参观 + -or 做…的人 ⇒ 参观的人 ⇒ 访客"
+    }
   },
   {
     "rank": 197,
@@ -2373,7 +3229,26 @@
     "ex_label": "例句",
     "ex": "Many teenagers enjoy listening to pop music.(很多青少年喜欢听流行音乐。)",
     "syl": "teen·ag·er",
-    "root": "teen 十几 + age 年龄 + -er 表示人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "teen",
+          "meaning": "十几"
+        },
+        {
+          "type": "词",
+          "text": "age",
+          "meaning": "年龄"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "表示人"
+        }
+      ],
+      "summary": "teen 十几 + age 年龄 + -er 人 ⇒ 十几岁的人 ⇒ 青少年"
+    }
   },
   {
     "rank": 199,
@@ -2409,7 +3284,26 @@
     "ex_label": "例句",
     "ex": "Please complete the form before you leave.(请在离开前填完这张表。)",
     "syl": "com·plete",
-    "root": "com- 完全 + plet- = fill 填满 + -e"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "com-",
+          "meaning": "完全"
+        },
+        {
+          "type": "词根",
+          "text": "plet-",
+          "meaning": "填满"
+        },
+        {
+          "type": "后缀",
+          "text": "-e",
+          "meaning": ""
+        }
+      ],
+      "summary": "com- 完全 + plet- 填满 ⇒ 完全填满 ⇒ 完成的"
+    }
   },
   {
     "rank": 202,
@@ -2433,7 +3327,21 @@
     "ex_label": "例句",
     "ex": "I have a good memory of my childhood.(我对童年有美好的回忆。)",
     "syl": "mem·o·ry",
-    "root": "memor- = remember 记忆 + -y 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "memor-",
+          "meaning": "记忆"
+        },
+        {
+          "type": "后缀",
+          "text": "-y",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "memor- 记忆 + -y 名词 ⇒ 记忆；回忆"
+    }
   },
   {
     "rank": 204,
@@ -2493,7 +3401,21 @@
     "ex_label": "例句",
     "ex": "Our classroom is on the third floor.(我们的教室在三楼。)",
     "syl": "class·room",
-    "root": "class 班级 + room 房间"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "class",
+          "meaning": "班级"
+        },
+        {
+          "type": "词",
+          "text": "room",
+          "meaning": "房间"
+        }
+      ],
+      "summary": "class 班级 + room 房间 ⇒ 教室"
+    }
   },
   {
     "rank": 209,
@@ -2541,7 +3463,26 @@
     "ex_label": "例句",
     "ex": "English is an important international language.(英语是一门重要的国际语言。)",
     "syl": "in·ter·na·tion·al",
-    "root": "inter- 在…之间 + nation 国家 + -al 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "inter-",
+          "meaning": "在…之间"
+        },
+        {
+          "type": "词",
+          "text": "nation",
+          "meaning": "国家"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "inter- 在…之间 + nation 国家 + -al 形容词 ⇒ 国与国之间的 ⇒ 国际的"
+    }
   },
   {
     "rank": 213,
@@ -2553,7 +3494,21 @@
     "ex_label": "例句",
     "ex": "He didn't reply to my email.(他没有回复我的邮件。)",
     "syl": "re·ply",
-    "root": "re- 回 + ply- = fold 折叠 → 回应"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "ply-",
+          "meaning": "折叠"
+        }
+      ],
+      "summary": "re- 回 + ply- 折叠 ⇒ 折回去 ⇒ 回应"
+    }
   },
   {
     "rank": 214,
@@ -2589,7 +3544,21 @@
     "ex_label": "例句",
     "ex": "Dogs are humans' best friends.(狗是人类最好的朋友。)",
     "syl": "hu·man",
-    "root": "hum- = earth/ground 土地 + -an → 来自泥土的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "hum-",
+          "meaning": "土地"
+        },
+        {
+          "type": "后缀",
+          "text": "-an",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "hum- 土地 + -an 形容词 ⇒ 来自泥土的 ⇒ 人类的"
+    }
   },
   {
     "rank": 217,
@@ -2601,7 +3570,21 @@
     "ex_label": "例句",
     "ex": "I received a birthday card from my friend.(我收到了朋友寄来的生日贺卡。)",
     "syl": "re·ceive",
-    "root": "re- 回 + ceive (cap-) = take 拿 → 拿回来"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "ceive",
+          "meaning": "拿"
+        }
+      ],
+      "summary": "re- 回 + ceive 拿 ⇒ 拿回来 ⇒ 收到"
+    }
   },
   {
     "rank": 218,
@@ -2613,7 +3596,21 @@
     "ex_label": "例句",
     "ex": "The farmer grows rice and vegetables.(这位农民种水稻和蔬菜。)",
     "syl": "farm·er",
-    "root": "farm 农场 + -er 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "farm",
+          "meaning": "农场"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "farm 农场 + -er 做…的人 ⇒ 种田的人 ⇒ 农民"
+    }
   },
   {
     "rank": 219,
@@ -2637,7 +3634,16 @@
     "ex_label": "例句",
     "ex": "Every member of the team worked very hard.(团队的每个成员都非常努力。)",
     "syl": "mem·ber",
-    "root": "membr- = limb 肢体 → 身体的一部分 → 成员"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "membr-",
+          "meaning": "肢体"
+        }
+      ],
+      "summary": "membr- 肢体 ⇒ 身体的一部分 ⇒ 成员"
+    }
   },
   {
     "rank": 221,
@@ -2661,7 +3667,26 @@
     "ex_label": "例句",
     "ex": "Please continue reading from page ten.(请从第十页继续读下去。)",
     "syl": "con·tin·ue",
-    "root": "con- 一起 + tin- = hold 持有 + -ue → 持续不断"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "con-",
+          "meaning": "一起"
+        },
+        {
+          "type": "词根",
+          "text": "tin-",
+          "meaning": "持有"
+        },
+        {
+          "type": "后缀",
+          "text": "-ue",
+          "meaning": ""
+        }
+      ],
+      "summary": "con- 一起 + tin- 持有 ⇒ 持续不断 ⇒ 继续"
+    }
   },
   {
     "rank": 223,
@@ -2673,7 +3698,21 @@
     "ex_label": "例句",
     "ex": "I expect you to finish the work on time.(我期望你按时完成工作。)",
     "syl": "ex·pect",
-    "root": "ex- 出 + pect- = look 看 → 向外看 → 期望"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "pect-",
+          "meaning": "看"
+        }
+      ],
+      "summary": "ex- 出 + pect- 看 ⇒ 向外看 ⇒ 期望"
+    }
   },
   {
     "rank": 224,
@@ -2709,7 +3748,26 @@
     "ex_label": "例句",
     "ex": "There was a traffic accident on the road this morning.(今天早上路上发生了一起交通事故。)",
     "syl": "ac·ci·dent",
-    "root": "ac- (ad-) 向 + cid- = fall 落下 + -ent → 落下来的事 → 意外"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ac-",
+          "meaning": "向"
+        },
+        {
+          "type": "词根",
+          "text": "cid-",
+          "meaning": "落下"
+        },
+        {
+          "type": "后缀",
+          "text": "-ent",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "ac- 向 + cid- 落下 + -ent 名词 ⇒ 落下来的事 ⇒ 意外"
+    }
   },
   {
     "rank": 227,
@@ -2733,7 +3791,21 @@
     "ex_label": "例句",
     "ex": "This factory produces cars.(这家工厂生产汽车。)",
     "syl": "pro·duce",
-    "root": "pro- 向前 + duce- = lead 引导 → 引出 → 生产"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "duce-",
+          "meaning": "引导"
+        }
+      ],
+      "summary": "pro- 向前 + duce- 引导 ⇒ 引出 ⇒ 生产"
+    }
   },
   {
     "rank": 229,
@@ -2745,7 +3817,26 @@
     "ex_label": "例句",
     "ex": "This coat is too expensive for me to buy.(这件外套太贵了，我买不起。)",
     "syl": "ex·pen·sive",
-    "root": "ex- 出 + pens- = pay 支付 + -ive 形容词后缀 → 花费大的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "pens-",
+          "meaning": "支付"
+        },
+        {
+          "type": "后缀",
+          "text": "-ive",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "ex- 出 + pens- 支付 + -ive 形容词 ⇒ 花费大的 ⇒ 昂贵的"
+    }
   },
   {
     "rank": 230,
@@ -2757,7 +3848,31 @@
     "ex_label": "例句",
     "ex": "The Spring Festival is a traditional Chinese holiday.(春节是中国的传统节日。)",
     "syl": "tra·di·tion·al",
-    "root": "tra- (trans-) 越过 + dit- = give 给 + -ion + -al → 代代相传的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "tra-",
+          "meaning": "越过"
+        },
+        {
+          "type": "词根",
+          "text": "dit-",
+          "meaning": "给"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "tra- 越过 + dit- 给 + -ion 名词 + -al 形容词 ⇒ 代代相传的 ⇒ 传统的"
+    }
   },
   {
     "rank": 231,
@@ -2781,7 +3896,21 @@
     "ex_label": "例句",
     "ex": "Be careful when you cross the road.(过马路时要小心。)",
     "syl": "care·ful",
-    "root": "care 关心 + -ful 充满…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "care",
+          "meaning": "关心"
+        },
+        {
+          "type": "后缀",
+          "text": "-ful",
+          "meaning": "充满…的"
+        }
+      ],
+      "summary": "care 关心 + -ful 充满…的 ⇒ 充满关心的 ⇒ 仔细的"
+    }
   },
   {
     "rank": 233,
@@ -2817,7 +3946,21 @@
     "ex_label": "例句",
     "ex": "We plan to climb the mountain this weekend.(我们计划这个周末去爬山。)",
     "syl": "moun·tain",
-    "root": "mount- = 山 + -ain 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "mount-",
+          "meaning": "山"
+        },
+        {
+          "type": "后缀",
+          "text": "-ain",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "mount- 山 + -ain 名词 ⇒ 高山"
+    }
   },
   {
     "rank": 236,
@@ -2829,7 +3972,26 @@
     "ex_label": "例句",
     "ex": "October 1st is China's National Day.(十月一日是中国的国庆节。)",
     "syl": "na·tion·al",
-    "root": "nat- = born 出生 + -ion + -al → 出生之地的 → 国家的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "nat-",
+          "meaning": "出生"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "nat- 出生 + -ion 名词 + -al 形容词 ⇒ 出生之地的 ⇒ 国家的"
+    }
   },
   {
     "rank": 237,
@@ -2841,7 +4003,21 @@
     "ex_label": "例句",
     "ex": "What a lovely day it is!(多么美好的一天啊！)",
     "syl": "love·ly",
-    "root": "love 爱 + -ly 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "love",
+          "meaning": "爱"
+        },
+        {
+          "type": "后缀",
+          "text": "-ly",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "love 爱 + -ly 形容词 ⇒ 惹人爱的 ⇒ 可爱的"
+    }
   },
   {
     "rank": 238,
@@ -2865,7 +4041,21 @@
     "ex_label": "例句",
     "ex": "Can you imagine life without the Internet?(你能想象没有互联网的生活吗？)",
     "syl": "i·mag·ine",
-    "root": "imag- = image 形象 + -ine 动词后缀 → 在脑中成像"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "imag-",
+          "meaning": "形象"
+        },
+        {
+          "type": "后缀",
+          "text": "-ine",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "imag- 形象 + -ine 动词 ⇒ 在脑中成像 ⇒ 想象"
+    }
   },
   {
     "rank": 240,
@@ -2877,7 +4067,26 @@
     "ex_label": "例句",
     "ex": "She is a successful businesswoman.(她是一位成功的女商人。)",
     "syl": "suc·cess·ful",
-    "root": "suc- (sub-) 在下面 + cess- = go 走 + -ful 充满…的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "suc-",
+          "meaning": "在下面"
+        },
+        {
+          "type": "词根",
+          "text": "cess-",
+          "meaning": "走"
+        },
+        {
+          "type": "后缀",
+          "text": "-ful",
+          "meaning": "充满…的"
+        }
+      ],
+      "summary": "suc- 在下面 + cess- 走 + -ful 充满…的 ⇒ 跟随而上的 ⇒ 成功的"
+    }
   },
   {
     "rank": 241,
@@ -2889,7 +4098,21 @@
     "ex_label": "例句",
     "ex": "Wait a moment, please — I'll be right back.(请等一下——我马上回来。)",
     "syl": "mo·ment",
-    "root": "mov-/mot- = move 移动 + -ment 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "mov-",
+          "meaning": "移动"
+        },
+        {
+          "type": "后缀",
+          "text": "-ment",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "mov- 移动 + -ment 名词 ⇒ 移动的瞬间 ⇒ 时刻"
+    }
   },
   {
     "rank": 242,
@@ -2901,7 +4124,21 @@
     "ex_label": "例句",
     "ex": "It's a pleasure to meet you.(很高兴见到你。)",
     "syl": "pleas·ure",
-    "root": "pleas- = please 使高兴 + -ure 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "pleas-",
+          "meaning": "使高兴"
+        },
+        {
+          "type": "后缀",
+          "text": "-ure",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "pleas- 使高兴 + -ure 名词 ⇒ 令人高兴的 ⇒ 愉快"
+    }
   },
   {
     "rank": 243,
@@ -2913,7 +4150,21 @@
     "ex_label": "例句",
     "ex": "The food in that restaurant was terrible.(那家餐厅的食物太糟糕了。)",
     "syl": "ter·ri·ble",
-    "root": "terr- = frighten 使害怕 + -ible 能…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "terr-",
+          "meaning": "使害怕"
+        },
+        {
+          "type": "后缀",
+          "text": "-ible",
+          "meaning": "能…的"
+        }
+      ],
+      "summary": "terr- 使害怕 + -ible 能…的 ⇒ 令人害怕的 ⇒ 可怕的"
+    }
   },
   {
     "rank": 244,
@@ -2937,7 +4188,21 @@
     "ex_label": "例句",
     "ex": "The service in this hotel is excellent.(这家酒店的服务非常好。)",
     "syl": "serv·ice",
-    "root": "serv- = serve 服务 + -ice 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "serv-",
+          "meaning": "服务"
+        },
+        {
+          "type": "后缀",
+          "text": "-ice",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "serv- 服务 + -ice 名词 ⇒ 服务"
+    }
   },
   {
     "rank": 246,
@@ -2949,7 +4214,21 @@
     "ex_label": "例句",
     "ex": "She has a beautiful singing voice.(她有一副美妙的歌喉。)",
     "syl": "voice",
-    "root": "voc- = call 叫 + -e → 发出声音"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "voc-",
+          "meaning": "叫"
+        },
+        {
+          "type": "后缀",
+          "text": "-e",
+          "meaning": ""
+        }
+      ],
+      "summary": "voc- 叫 ⇒ 发出声音 ⇒ 嗓音"
+    }
   },
   {
     "rank": 247,
@@ -2961,7 +4240,21 @@
     "ex_label": "例句",
     "ex": "The sun appeared from behind the clouds.(太阳从云层后面出现了。)",
     "syl": "ap·pear",
-    "root": "ap- (ad-) 向 + pear- = show 显示 → 显现"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ap-",
+          "meaning": "向"
+        },
+        {
+          "type": "词根",
+          "text": "pear-",
+          "meaning": "显示"
+        }
+      ],
+      "summary": "ap- 向 + pear- 显示 ⇒ 显现 ⇒ 出现"
+    }
   },
   {
     "rank": 248,
@@ -2973,7 +4266,21 @@
     "ex_label": "例句",
     "ex": "I prefer tea to coffee.(比起咖啡，我更喜欢茶。)",
     "syl": "pre·fer",
-    "root": "pre- 在前 + fer- = carry 带 → 放在前面 → 更喜欢"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pre-",
+          "meaning": "在前"
+        },
+        {
+          "type": "词根",
+          "text": "fer-",
+          "meaning": "带"
+        }
+      ],
+      "summary": "pre- 在前 + fer- 带 ⇒ 放在前面 ⇒ 更喜欢"
+    }
   },
   {
     "rank": 249,
@@ -2985,7 +4292,21 @@
     "ex_label": "例句",
     "ex": "How do you celebrate the Spring Festival?(你们怎么庆祝春节？)",
     "syl": "cel·e·brate",
-    "root": "celebr- = honor 尊崇 + -ate 动词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "celebr-",
+          "meaning": "尊崇"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "celebr- 尊崇 + -ate 动词 ⇒ 隆重对待 ⇒ 庆祝"
+    }
   },
   {
     "rank": 250,
@@ -2997,7 +4318,21 @@
     "ex_label": "例句",
     "ex": "Excuse me, could you tell me the way to the station?(打扰一下，你能告诉我去车站的路吗？)",
     "syl": "ex·cuse",
-    "root": "ex- 出 + cuse- = cause 原因 → 给出理由 → 原谅"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "cuse-",
+          "meaning": "原因"
+        }
+      ],
+      "summary": "ex- 出 + cuse- 原因 ⇒ 给出理由 ⇒ 原谅"
+    }
   },
   {
     "rank": 251,
@@ -3009,7 +4344,21 @@
     "ex_label": "例句",
     "ex": "This company makes high-quality products.(这家公司生产高质量的产品。)",
     "syl": "prod·uct",
-    "root": "pro- 向前 + duct- = lead 引导 → 引出来的东西"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "duct-",
+          "meaning": "引导"
+        }
+      ],
+      "summary": "pro- 向前 + duct- 引导 ⇒ 引出来的东西 ⇒ 产品"
+    }
   },
   {
     "rank": 252,
@@ -3045,7 +4394,21 @@
     "ex_label": "例句",
     "ex": "My grandfather likes listening to the radio every evening.(我爷爷每天晚上喜欢听收音机。)",
     "syl": "ra·di·o",
-    "root": "radi- = ray 光线 + -o → 用无线电波传播"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "radi-",
+          "meaning": "光线"
+        },
+        {
+          "type": "后缀",
+          "text": "-o",
+          "meaning": ""
+        }
+      ],
+      "summary": "radi- 光线 ⇒ 用无线电波传播 ⇒ 收音机"
+    }
   },
   {
     "rank": 255,
@@ -3069,7 +4432,16 @@
     "ex_label": "例句",
     "ex": "We must act now to protect the environment.(我们必须现在就行动起来保护环境。)",
     "syl": "act",
-    "root": "act- = do/drive 做/驱动"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "act-",
+          "meaning": "做/驱动"
+        }
+      ],
+      "summary": "act- 做 ⇒ 行动；表演"
+    }
   },
   {
     "rank": 257,
@@ -3081,7 +4453,21 @@
     "ex_label": "例句",
     "ex": "He told us a funny story and we all laughed.(他给我们讲了一个有趣的故事，我们都笑了。)",
     "syl": "fun·ny",
-    "root": "fun 乐趣 + -ny 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "fun",
+          "meaning": "乐趣"
+        },
+        {
+          "type": "后缀",
+          "text": "-ny",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "fun 乐趣 + -ny 形容词 ⇒ 充满乐趣的 ⇒ 有趣的"
+    }
   },
   {
     "rank": 258,
@@ -3141,7 +4527,21 @@
     "ex_label": "例句",
     "ex": "Can you explain this math problem to me?(你能给我解释一下这道数学题吗？)",
     "syl": "ex·plain",
-    "root": "ex- 出 + plain- = make clear 使明白"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "plain-",
+          "meaning": "使明白"
+        }
+      ],
+      "summary": "ex- 出 + plain- 使明白 ⇒ 讲清楚 ⇒ 解释"
+    }
   },
   {
     "rank": 263,
@@ -3213,7 +4613,21 @@
     "ex_label": "例句",
     "ex": "He refused to lend me his bicycle.(他拒绝把自行车借给我。)",
     "syl": "re·fuse",
-    "root": "re- 回 + fuse- = pour 倒回 → 拒绝"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "fuse-",
+          "meaning": "倒"
+        }
+      ],
+      "summary": "re- 回 + fuse- 倒 ⇒ 倒回去 ⇒ 拒绝"
+    }
   },
   {
     "rank": 269,
@@ -3237,7 +4651,21 @@
     "ex_label": "例句",
     "ex": "We need to prepare for the final exam.(我们需要为期末考试做准备。)",
     "syl": "pre·pare",
-    "root": "pre- 预先 + pare- = make ready 准备"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pre-",
+          "meaning": "预先"
+        },
+        {
+          "type": "词根",
+          "text": "pare-",
+          "meaning": "准备"
+        }
+      ],
+      "summary": "pre- 预先 + pare- 准备 ⇒ 事先备好 ⇒ 准备"
+    }
   },
   {
     "rank": 271,
@@ -3249,7 +4677,21 @@
     "ex_label": "例句",
     "ex": "I always feel nervous before giving a speech.(演讲前我总是感到紧张。)",
     "syl": "nerv·ous",
-    "root": "nerv- 神经 + -ous 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "nerv-",
+          "meaning": "神经"
+        },
+        {
+          "type": "后缀",
+          "text": "-ous",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "nerv- 神经 + -ous 形容词 ⇒ 神经紧绷的 ⇒ 紧张的"
+    }
   },
   {
     "rank": 272,
@@ -3273,7 +4715,21 @@
     "ex_label": "例句",
     "ex": "Let me introduce my friend to you.(让我把我的朋友介绍给你。)",
     "syl": "in·tro·duce",
-    "root": "intro- 向内 + duce- = lead 引导 → 引入"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "intro-",
+          "meaning": "向内"
+        },
+        {
+          "type": "词根",
+          "text": "duce-",
+          "meaning": "引导"
+        }
+      ],
+      "summary": "intro- 向内 + duce- 引导 ⇒ 引入 ⇒ 介绍"
+    }
   },
   {
     "rank": 274,
@@ -3297,7 +4753,21 @@
     "ex_label": "例句",
     "ex": "This dictionary is very useful for learning English.(这本词典对学英语很有用。)",
     "syl": "use·ful",
-    "root": "use 使用 + -ful 充满…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "use",
+          "meaning": "使用"
+        },
+        {
+          "type": "后缀",
+          "text": "-ful",
+          "meaning": "充满…的"
+        }
+      ],
+      "summary": "use 使用 + -ful 充满…的 ⇒ 有用处的 ⇒ 有用的"
+    }
   },
   {
     "rank": 276,
@@ -3321,7 +4791,21 @@
     "ex_label": "例句",
     "ex": "Shall we go to the cinema this weekend?(这个周末我们去看电影好吗？)",
     "syl": "cin·e·ma",
-    "root": "cine- 运动（源自希腊语 kinema）+ -ma"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "cine-",
+          "meaning": "运动"
+        },
+        {
+          "type": "后缀",
+          "text": "-ma",
+          "meaning": ""
+        }
+      ],
+      "summary": "cine- 运动 + -ma ⇒ 放映活动影像 ⇒ 电影院"
+    }
   },
   {
     "rank": 278,
@@ -3333,7 +4817,21 @@
     "ex_label": "例句",
     "ex": "We went to a concert in the park last Sunday.(上周日我们去公园听了一场音乐会。)",
     "syl": "con·cert",
-    "root": "con- 共同 + cert- = strive 努力 → 协力演出"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "con-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "cert-",
+          "meaning": "努力"
+        }
+      ],
+      "summary": "con- 共同 + cert- 努力 ⇒ 协力演出 ⇒ 音乐会"
+    }
   },
   {
     "rank": 279,
@@ -3357,7 +4855,21 @@
     "ex_label": "例句",
     "ex": "She accepted my invitation to the birthday party.(她接受了我的生日聚会邀请。)",
     "syl": "ac·cept",
-    "root": "ac- 向 + cept- = take 拿 → 接受"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ac-",
+          "meaning": "向"
+        },
+        {
+          "type": "词根",
+          "text": "cept-",
+          "meaning": "拿"
+        }
+      ],
+      "summary": "ac- 向 + cept- 拿 ⇒ 拿过来 ⇒ 接受"
+    }
   },
   {
     "rank": 281,
@@ -3381,7 +4893,26 @@
     "ex_label": "例句",
     "ex": "I haven't seen him recently.(我最近没见过他。)",
     "syl": "re·cent·ly",
-    "root": "re- 回 + cent- = new 新的 + -ly"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "cent-",
+          "meaning": "新的"
+        },
+        {
+          "type": "后缀",
+          "text": "-ly",
+          "meaning": "副词"
+        }
+      ],
+      "summary": "re- 回 + cent- 新的 + -ly 副词 ⇒ 不久前 ⇒ 最近"
+    }
   },
   {
     "rank": 283,
@@ -3405,7 +4936,21 @@
     "ex_label": "例句",
     "ex": "The workers in the factory are very hard-working.(工厂里的工人非常勤劳。)",
     "syl": "work·er",
-    "root": "work 工作 + -er 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "work",
+          "meaning": "工作"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "work 工作 + -er 做…的人 ⇒ 工人"
+    }
   },
   {
     "rank": 285,
@@ -3429,7 +4974,21 @@
     "ex_label": "例句",
     "ex": "My parents always support me in whatever I do.(无论我做什么，父母总是支持我。)",
     "syl": "sup·port",
-    "root": "sup- (sub-) 在下 + port- = carry 承载 → 支撑"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "sup-",
+          "meaning": "在下"
+        },
+        {
+          "type": "词根",
+          "text": "port-",
+          "meaning": "承载"
+        }
+      ],
+      "summary": "sup- 在下 + port- 承载 ⇒ 从下面托住 ⇒ 支撑"
+    }
   },
   {
     "rank": 287,
@@ -3441,7 +5000,21 @@
     "ex_label": "例句",
     "ex": "Can you describe what the man looked like?(你能描述一下那个人长什么样吗？)",
     "syl": "de·scribe",
-    "root": "de- 向下 + scribe- = write 写 → 描写"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "向下"
+        },
+        {
+          "type": "词根",
+          "text": "scribe-",
+          "meaning": "写"
+        }
+      ],
+      "summary": "de- 向下 + scribe- 写 ⇒ 写下来 ⇒ 描写"
+    }
   },
   {
     "rank": 288,
@@ -3501,7 +5074,16 @@
     "ex_label": "例句",
     "ex": "There is a shopping center near my home.(我家附近有一个购物中心。)",
     "syl": "cen·ter",
-    "root": "centr- 中心（源自拉丁语 centrum）"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "centr-",
+          "meaning": "中心"
+        }
+      ],
+      "summary": "centr- 中心 ⇒ 中央"
+    }
   },
   {
     "rank": 293,
@@ -3525,7 +5107,21 @@
     "ex_label": "例句",
     "ex": "We need to discuss this problem with our teacher.(我们需要和老师讨论这个问题。)",
     "syl": "dis·cuss",
-    "root": "dis- 分开 + cuss- = shake 摇动 → 分析讨论"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "cuss-",
+          "meaning": "摇动"
+        }
+      ],
+      "summary": "dis- 分开 + cuss- 摇动 ⇒ 分析辨明 ⇒ 讨论"
+    }
   },
   {
     "rank": 295,
@@ -3537,7 +5133,21 @@
     "ex_label": "例句",
     "ex": "He is very active in class and always answers questions.(他上课很活跃，总是回答问题。)",
     "syl": "ac·tive",
-    "root": "act- 行动 + -ive 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "act-",
+          "meaning": "行动"
+        },
+        {
+          "type": "后缀",
+          "text": "-ive",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "act- 行动 + -ive 形容词 ⇒ 爱行动的 ⇒ 积极的"
+    }
   },
   {
     "rank": 296,
@@ -3549,7 +5159,21 @@
     "ex_label": "例句",
     "ex": "It is natural to feel nervous on the first day of school.(开学第一天感到紧张是很自然的。)",
     "syl": "nat·u·ral",
-    "root": "nat- 出生; 天生 + -ural 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "nat-",
+          "meaning": "出生; 天生"
+        },
+        {
+          "type": "后缀",
+          "text": "-ural",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "nat- 天生 + -ural 形容词 ⇒ 天生的 ⇒ 自然的"
+    }
   },
   {
     "rank": 297,
@@ -3561,7 +5185,26 @@
     "ex_label": "例句",
     "ex": "Making the right decision is not always easy.(做出正确的决定并不总是容易的。)",
     "syl": "de·ci·sion",
-    "root": "de- 离开 + cis- = cut 切 + -ion → 切断犹豫 → 决定"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "离开"
+        },
+        {
+          "type": "词根",
+          "text": "cis-",
+          "meaning": "切"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "de- 离开 + cis- 切 + -ion 名词 ⇒ 切断犹豫 ⇒ 决定"
+    }
   },
   {
     "rank": 298,
@@ -3573,7 +5216,21 @@
     "ex_label": "例句",
     "ex": "Thomas Edison invented the light bulb.(托马斯·爱迪生发明了电灯泡。)",
     "syl": "in·vent",
-    "root": "in- 进入 + vent- = come 来 → 创造出来"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "vent-",
+          "meaning": "来"
+        }
+      ],
+      "summary": "in- 进入 + vent- 来 ⇒ 创造出来 ⇒ 发明"
+    }
   },
   {
     "rank": 299,
@@ -3585,7 +5242,16 @@
     "ex_label": "例句",
     "ex": "Can you help me solve this math problem?(你能帮我解答这道数学题吗？)",
     "syl": "solve",
-    "root": "solv- = loosen 松开 → 解开"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "solv-",
+          "meaning": "松开"
+        }
+      ],
+      "summary": "solv- 松开 ⇒ 解开难题 ⇒ 解决"
+    }
   },
   {
     "rank": 300,
@@ -3609,7 +5275,21 @@
     "ex_label": "例句",
     "ex": "Can you keep a secret for me?(你能替我保守秘密吗？)",
     "syl": "se·cret",
-    "root": "se- 分开 + cret- = separate 分离 → 隐藏"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "se-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "cret-",
+          "meaning": "分离"
+        }
+      ],
+      "summary": "se- 分开 + cret- 分离 ⇒ 分开藏起 ⇒ 秘密"
+    }
   },
   {
     "rank": 302,
@@ -3621,7 +5301,26 @@
     "ex_label": "例句",
     "ex": "Good communication is important in a team.(良好的沟通在团队中很重要。)",
     "syl": "com·mu·ni·ca·tion",
-    "root": "com- 共同 + muni- = serve 服务 + -cation → 共同交流"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "com-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "muni-",
+          "meaning": "服务"
+        },
+        {
+          "type": "后缀",
+          "text": "-cation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "com- 共同 + muni- 服务 + -cation 名词 ⇒ 共同交流 ⇒ 沟通"
+    }
   },
   {
     "rank": 303,
@@ -3633,7 +5332,21 @@
     "ex_label": "例句",
     "ex": "Air pollution is a serious problem in some cities.(空气污染在一些城市是个严重的问题。)",
     "syl": "pol·lu·tion",
-    "root": "pollut- = make dirty 弄脏 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "pollut-",
+          "meaning": "弄脏"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "pollut- 弄脏 + -ion 名词 ⇒ 污染"
+    }
   },
   {
     "rank": 304,
@@ -3645,7 +5358,21 @@
     "ex_label": "例句",
     "ex": "We must find a way to improve the situation.(我们必须想办法改善这种情况。)",
     "syl": "sit·u·a·tion",
-    "root": "situ- = place 位置 + -ation 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "situ-",
+          "meaning": "位置"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "situ- 位置 + -ation 名词 ⇒ 所处的位置 ⇒ 情况"
+    }
   },
   {
     "rank": 305,
@@ -3669,7 +5396,21 @@
     "ex_label": "例句",
     "ex": "It's hard to express my feelings in words.(很难用语言表达我的感受。)",
     "syl": "ex·press",
-    "root": "ex- 出 + press- = push 压 → 压出来 → 表达"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "press-",
+          "meaning": "压"
+        }
+      ],
+      "summary": "ex- 出 + press- 压 ⇒ 压出来 ⇒ 表达"
+    }
   },
   {
     "rank": 307,
@@ -3705,7 +5446,26 @@
     "ex_label": "例句",
     "ex": "The telephone is one of the greatest inventions in history.(电话是历史上最伟大的发明之一。)",
     "syl": "in·ven·tion",
-    "root": "in- 进入 + vent- = come 来 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "vent-",
+          "meaning": "来"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "in- 进入 + vent- 来 + -ion 名词 ⇒ 创造出来的东西 ⇒ 发明"
+    }
   },
   {
     "rank": 310,
@@ -3717,7 +5477,21 @@
     "ex_label": "例句",
     "ex": "My uncle works in a car factory.(我叔叔在一家汽车工厂工作。)",
     "syl": "fac·to·ry",
-    "root": "fact- = make 制造 + -ory 场所 → 制造的地方"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "fact-",
+          "meaning": "制造"
+        },
+        {
+          "type": "后缀",
+          "text": "-ory",
+          "meaning": "场所"
+        }
+      ],
+      "summary": "fact- 制造 + -ory 场所 ⇒ 制造东西的地方 ⇒ 工厂"
+    }
   },
   {
     "rank": 311,
@@ -3729,7 +5503,21 @@
     "ex_label": "例句",
     "ex": "I'm certain that he will come to the meeting.(我确定他会来参加会议。)",
     "syl": "cer·tain",
-    "root": "cert- = sure 确定 + -ain"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "cert-",
+          "meaning": "确定"
+        },
+        {
+          "type": "后缀",
+          "text": "-ain",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "cert- 确定 + -ain 形容词 ⇒ 确定的"
+    }
   },
   {
     "rank": 312,
@@ -3777,7 +5565,26 @@
     "ex_label": "例句",
     "ex": "Parents have a great influence on their children.(父母对孩子有很大的影响。)",
     "syl": "in·flu·ence",
-    "root": "in- 进入 + flu- = flow 流 + -ence → 流入 → 影响"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "flu-",
+          "meaning": "流"
+        },
+        {
+          "type": "后缀",
+          "text": "-ence",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "in- 进入 + flu- 流 + -ence 名词 ⇒ 流入 ⇒ 影响"
+    }
   },
   {
     "rank": 316,
@@ -3813,7 +5620,26 @@
     "ex_label": "例句",
     "ex": "This chair is very comfortable to sit in.(这把椅子坐着很舒服。)",
     "syl": "com·fort·a·ble",
-    "root": "com- 加强 + fort- = strong 强 + -able → 令人舒适的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "com-",
+          "meaning": "加强"
+        },
+        {
+          "type": "词根",
+          "text": "fort-",
+          "meaning": "强"
+        },
+        {
+          "type": "后缀",
+          "text": "-able",
+          "meaning": "能…的"
+        }
+      ],
+      "summary": "com- 加强 + fort- 强 + -able 能…的 ⇒ 令人有力的 ⇒ 舒适的"
+    }
   },
   {
     "rank": 319,
@@ -3825,7 +5651,21 @@
     "ex_label": "例句",
     "ex": "Nobody is perfect in this world.(这个世界上没有人是完美的。)",
     "syl": "per·fect",
-    "root": "per- 完全 + fect- = make 做 → 完全做好 → 完美"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "per-",
+          "meaning": "完全"
+        },
+        {
+          "type": "词根",
+          "text": "fect-",
+          "meaning": "做"
+        }
+      ],
+      "summary": "per- 完全 + fect- 做 ⇒ 完全做好 ⇒ 完美的"
+    }
   },
   {
     "rank": 320,
@@ -3837,7 +5677,21 @@
     "ex_label": "例句",
     "ex": "It's a sunny day. Let's go for a walk.(今天阳光明媚，我们去散步吧。)",
     "syl": "sun·ny",
-    "root": "sun 太阳 + -ny"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "sun",
+          "meaning": "太阳"
+        },
+        {
+          "type": "后缀",
+          "text": "-ny",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "sun 太阳 + -ny 形容词 ⇒ 有阳光的 ⇒ 晴朗的"
+    }
   },
   {
     "rank": 321,
@@ -3873,7 +5727,21 @@
     "ex_label": "例句",
     "ex": "She has the ability to learn languages quickly.(她有快速学习语言的能力。)",
     "syl": "a·bil·i·ty",
-    "root": "abil- (able 能) + -ity 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "abil-",
+          "meaning": "能"
+        },
+        {
+          "type": "后缀",
+          "text": "-ity",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "abil- 能 + -ity 名词 ⇒ 能做的本领 ⇒ 能力"
+    }
   },
   {
     "rank": 324,
@@ -3897,7 +5765,21 @@
     "ex_label": "例句",
     "ex": "If you work hard, you will succeed.(如果你努力，你就会成功。)",
     "syl": "suc·ceed",
-    "root": "suc- (sub-) 在后 + ceed- = go 走 → 跟随而上 → 成功"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "suc-",
+          "meaning": "在后"
+        },
+        {
+          "type": "词根",
+          "text": "ceed-",
+          "meaning": "走"
+        }
+      ],
+      "summary": "suc- 在后 + ceed- 走 ⇒ 跟随而上 ⇒ 成功"
+    }
   },
   {
     "rank": 326,
@@ -3921,7 +5803,21 @@
     "ex_label": "例句",
     "ex": "Your bag is similar to mine.(你的包和我的很相似。)",
     "syl": "sim·i·lar",
-    "root": "simil- = like 相似 + -ar 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "simil-",
+          "meaning": "相似"
+        },
+        {
+          "type": "后缀",
+          "text": "-ar",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "simil- 相似 + -ar 形容词 ⇒ 相似的"
+    }
   },
   {
     "rank": 328,
@@ -3933,7 +5829,21 @@
     "ex_label": "例句",
     "ex": "A good teacher must be patient with students.(一个好老师必须对学生有耐心。)",
     "syl": "pa·tient",
-    "root": "pati- = suffer 忍受 + -ent → 能忍受的 → 耐心的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "pati-",
+          "meaning": "忍受"
+        },
+        {
+          "type": "后缀",
+          "text": "-ent",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "pati- 忍受 + -ent 形容词 ⇒ 能忍受的 ⇒ 耐心的"
+    }
   },
   {
     "rank": 329,
@@ -3969,7 +5879,21 @@
     "ex_label": "例句",
     "ex": "She broke the school record in the 100-meter race.(她在百米赛跑中打破了学校纪录。)",
     "syl": "rec·ord",
-    "root": "re- 再 + cord- = heart 心 → 记在心上 → 记录"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "cord-",
+          "meaning": "心"
+        }
+      ],
+      "summary": "re- 再 + cord- 心 ⇒ 记在心上 ⇒ 记录"
+    }
   },
   {
     "rank": 332,
@@ -3981,7 +5905,26 @@
     "ex_label": "例句",
     "ex": "Thank you for your suggestion. I'll think about it.(谢谢你的建议，我会考虑的。)",
     "syl": "sug·ges·tion",
-    "root": "sug- (sub-) 在下 + gest- = carry 带 + -ion → 从下面带出 → 建议"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "sug-",
+          "meaning": "在下"
+        },
+        {
+          "type": "词根",
+          "text": "gest-",
+          "meaning": "带"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "sug- 在下 + gest- 带 + -ion 名词 ⇒ 从下面带出 ⇒ 建议"
+    }
   },
   {
     "rank": 333,
@@ -3993,7 +5936,21 @@
     "ex_label": "例句",
     "ex": "We should reduce the use of plastic bags.(我们应该减少使用塑料袋。)",
     "syl": "re·duce",
-    "root": "re- 回 + duce- = lead 引导 → 引回 → 减少"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "duce-",
+          "meaning": "引导"
+        }
+      ],
+      "summary": "re- 回 + duce- 引导 ⇒ 引回 ⇒ 减少"
+    }
   },
   {
     "rank": 334,
@@ -4029,7 +5986,21 @@
     "ex_label": "例句",
     "ex": "The number of students in our school has increased this year.(今年我们学校的学生人数增加了。)",
     "syl": "in·crease",
-    "root": "in- 进入 + crease- = grow 增长 → 增加"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "crease-",
+          "meaning": "增长"
+        }
+      ],
+      "summary": "in- 进入 + crease- 增长 ⇒ 往里长 ⇒ 增加"
+    }
   },
   {
     "rank": 337,
@@ -4041,7 +6012,21 @@
     "ex_label": "例句",
     "ex": "He missed a lot of school because of his illness.(他因为生病缺了很多课。)",
     "syl": "ill·ness",
-    "root": "ill 生病的 + -ness 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "ill",
+          "meaning": "生病的"
+        },
+        {
+          "type": "后缀",
+          "text": "-ness",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "ill 生病的 + -ness 名词 ⇒ 疾病"
+    }
   },
   {
     "rank": 338,
@@ -4065,7 +6050,21 @@
     "ex_label": "例句",
     "ex": "The bridge connects the two sides of the river.(这座桥连接了河的两岸。)",
     "syl": "con·nect",
-    "root": "con- 共同 + nect- = bind 绑 → 绑在一起 → 连接"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "con-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "nect-",
+          "meaning": "绑"
+        }
+      ],
+      "summary": "con- 共同 + nect- 绑 ⇒ 绑在一起 ⇒ 连接"
+    }
   },
   {
     "rank": 340,
@@ -4089,7 +6088,21 @@
     "ex_label": "例句",
     "ex": "Alexander Graham Bell invented the telephone in 1876.(亚历山大·格拉汉姆·贝尔于1876年发明了电话。)",
     "syl": "tel·e·phone",
-    "root": "tele- 远 + phone- = sound 声音 → 远处传声"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "tele-",
+          "meaning": "远"
+        },
+        {
+          "type": "词根",
+          "text": "phone-",
+          "meaning": "声音"
+        }
+      ],
+      "summary": "tele- 远 + phone- 声音 ⇒ 远处传声 ⇒ 电话"
+    }
   },
   {
     "rank": 342,
@@ -4113,7 +6126,26 @@
     "ex_label": "例句",
     "ex": "I had a long conversation with my best friend yesterday.(昨天我和我最好的朋友长谈了一次。)",
     "syl": "con·ver·sa·tion",
-    "root": "con- 共同 + vers- = turn 转 + -ation → 相互交谈"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "con-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "vers-",
+          "meaning": "转"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "con- 共同 + vers- 转 + -ation 名词 ⇒ 相互交谈 ⇒ 对话"
+    }
   },
   {
     "rank": 344,
@@ -4136,7 +6168,21 @@
     "def": "v.消失; 不见.",
     "ex": "The sun disappeared behind the clouds.(太阳消失在云层后面。)",
     "syl": "dis·ap·pear",
-    "root": "dis- 不 + ap·pear 出现 → 不再出现",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "不"
+        },
+        {
+          "type": "词",
+          "text": "appear",
+          "meaning": "出现"
+        }
+      ],
+      "summary": "dis- 不 + appear 出现 ⇒ 不再出现 ⇒ 消失"
+    },
     "ex_label": "例句"
   },
   {
@@ -4148,7 +6194,21 @@
     "def": "v.依靠; 取决于.",
     "ex": "Whether we go out depends on the weather.(我们是否出去取决于天气。)",
     "syl": "de·pend",
-    "root": "de- 向下 + pend- = hang 悬挂 → 悬挂于…之上",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "向下"
+        },
+        {
+          "type": "词根",
+          "text": "pend-",
+          "meaning": "悬挂"
+        }
+      ],
+      "summary": "de- 向下 + pend- 悬挂 ⇒ 悬挂于…之上 ⇒ 依靠"
+    },
     "ex_label": "例句"
   },
   {
@@ -4208,7 +6268,21 @@
     "def": "v.劝告; 建议.",
     "ex": "The teacher advised us to read more books.(老师建议我们多读书。)",
     "syl": "ad·vise",
-    "root": "ad- 朝向 + vis- = see 看 → 帮人看清方向",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ad-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "vis-",
+          "meaning": "看"
+        }
+      ],
+      "summary": "ad- 朝向 + vis- 看 ⇒ 帮人看清方向 ⇒ 建议"
+    },
     "ex_label": "例句"
   },
   {
@@ -4316,7 +6390,21 @@
     "def": "adj.有价值的; 贵重的.",
     "ex": "Time is the most valuable thing we have.(时间是我们拥有的最宝贵的东西。)",
     "syl": "val·u·a·ble",
-    "root": "valu- = value 价值 + -able 可…的",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "valu-",
+          "meaning": "价值"
+        },
+        {
+          "type": "后缀",
+          "text": "-able",
+          "meaning": "可…的"
+        }
+      ],
+      "summary": "valu- 价值 + -able 可…的 ⇒ 有价值的 ⇒ 贵重的"
+    },
     "ex_label": "例句"
   },
   {
@@ -4328,7 +6416,21 @@
     "def": "v.修理; 补救. n.修理.",
     "ex": "My father repaired the broken chair by himself.(我父亲自己修好了那把坏椅子。)",
     "syl": "re·pair",
-    "root": "re- 再次 + pair- 准备 → 重新弄好",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再次"
+        },
+        {
+          "type": "词根",
+          "text": "pair-",
+          "meaning": "准备"
+        }
+      ],
+      "summary": "re- 再次 + pair- 准备 ⇒ 重新弄好 ⇒ 修理"
+    },
     "ex_label": "例句"
   },
   {
@@ -4364,7 +6466,26 @@
     "def": "n.组织; 机构.",
     "ex": "She joined an organization that helps protect the environment.(她加入了一个帮助保护环境的组织。)",
     "syl": "or·gan·i·za·tion",
-    "root": "organ- 器官; 组织 + -ize 使… + -ation 名词后缀",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "organ-",
+          "meaning": "器官; 组织"
+        },
+        {
+          "type": "后缀",
+          "text": "-ize",
+          "meaning": "使…"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "organ- 组织 + -ize 使… + -ation 名词 ⇒ 组织起来的整体 ⇒ 组织；机构"
+    },
     "ex_label": "例句"
   },
   {
@@ -4388,7 +6509,21 @@
     "def": "adj.年少的; 初级的. n.晚辈.",
     "ex": "He is a junior high school student.(他是一名初中生。)",
     "syl": "jun·ior",
-    "root": "jun- = young 年轻 + -ior 比较级后缀",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "jun-",
+          "meaning": "年轻"
+        },
+        {
+          "type": "后缀",
+          "text": "-ior",
+          "meaning": "比较级"
+        }
+      ],
+      "summary": "jun- 年轻 + -ior 比较级 ⇒ 更年轻的 ⇒ 年少的"
+    },
     "ex_label": "例句"
   },
   {
@@ -4400,7 +6535,21 @@
     "def": "n.人口; 群体.",
     "ex": "The population of our city is about five million.(我们城市的人口大约五百万。)",
     "syl": "pop·u·la·tion",
-    "root": "popul- = people 人民 + -ation 名词后缀",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "popul-",
+          "meaning": "人民"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "popul- 人民 + -ation 名词 ⇒ 全体人民 ⇒ 人口"
+    },
     "ex_label": "例句"
   },
   {
@@ -4436,7 +6585,21 @@
     "def": "n.艺术家; 美术家.",
     "ex": "The artist painted a beautiful picture of the mountains.(那位艺术家画了一幅美丽的山景画。)",
     "syl": "art·ist",
-    "root": "art- 艺术 + -ist 从事…的人",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "art-",
+          "meaning": "艺术"
+        },
+        {
+          "type": "后缀",
+          "text": "-ist",
+          "meaning": "从事…的人"
+        }
+      ],
+      "summary": "art- 艺术 + -ist 从事…的人 ⇒ 艺术家"
+    },
     "ex_label": "例句"
   },
   {
@@ -4448,7 +6611,21 @@
     "def": "v.满足; 使满意.",
     "ex": "The result of the exam satisfied his parents.(考试结果让他的父母很满意。)",
     "syl": "sat·is·fy",
-    "root": "sat- = enough 足够 + -fy 使…",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "sat-",
+          "meaning": "足够"
+        },
+        {
+          "type": "后缀",
+          "text": "-fy",
+          "meaning": "使…"
+        }
+      ],
+      "summary": "sat- 足够 + -fy 使… ⇒ 使足够 ⇒ 使满意"
+    },
     "ex_label": "例句"
   },
   {
@@ -4520,7 +6697,21 @@
     "def": "v.承诺; 答应. n.诺言.",
     "ex": "I promise I will come to your birthday party.(我保证我会来参加你的生日派对。)",
     "syl": "prom·ise",
-    "root": "pro- 向前 + mis- = send 送出 → 提前送出的话",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "mis-",
+          "meaning": "送出"
+        }
+      ],
+      "summary": "pro- 向前 + mis- 送出 ⇒ 提前送出的话 ⇒ 承诺"
+    },
     "ex_label": "例句"
   },
   {
@@ -4532,7 +6723,21 @@
     "def": "v.设计; 构思. n.设计; 图案.",
     "ex": "She designed a beautiful poster for the school event.(她为学校活动设计了一张漂亮的海报。)",
     "syl": "de·sign",
-    "root": "de- 出 + sign- = mark 标记 → 画出标记",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "sign-",
+          "meaning": "标记"
+        }
+      ],
+      "summary": "de- 出 + sign- 标记 ⇒ 画出标记 ⇒ 设计"
+    },
     "ex_label": "例句"
   },
   {
@@ -4556,7 +6761,26 @@
     "def": "n.距离; 远方.",
     "ex": "The distance from my home to school is about two kilometers.(从我家到学校的距离大约两公里。)",
     "syl": "dis·tance",
-    "root": "di- 分开 + st- = stand 站 + -ance 名词后缀 → 分开站立的间距",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "di-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "st-",
+          "meaning": "站"
+        },
+        {
+          "type": "后缀",
+          "text": "-ance",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "di- 分开 + st- 站 + -ance 名词 ⇒ 分开站立的间隔 ⇒ 距离"
+    },
     "ex_label": "例句"
   },
   {
@@ -4604,7 +6828,21 @@
     "def": "v.复习; 回顾. n.复习; 评论.",
     "ex": "Let's review what we learned today.(让我们复习一下今天学的内容。)",
     "syl": "re·view",
-    "root": "re- 再次 + view 看 → 再看一遍",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再次"
+        },
+        {
+          "type": "词",
+          "text": "view",
+          "meaning": "看"
+        }
+      ],
+      "summary": "re- 再次 + view 看 ⇒ 再看一遍 ⇒ 复习；评论"
+    },
     "ex_label": "例句"
   },
   {
@@ -4628,7 +6866,21 @@
     "def": "v.建议; 暗示.",
     "ex": "I suggest that we go to the park this afternoon.(我建议今天下午我们去公园。)",
     "syl": "sug·gest",
-    "root": "sug- (= sub- 在下面) + gest- = carry 携带 → 从下面递上想法",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "sug-",
+          "meaning": "在下面"
+        },
+        {
+          "type": "词根",
+          "text": "gest-",
+          "meaning": "携带"
+        }
+      ],
+      "summary": "sug- 在下面 + gest- 携带 ⇒ 从下面递上想法 ⇒ 建议"
+    },
     "ex_label": "例句"
   },
   {
@@ -4652,7 +6904,26 @@
     "def": "adj.优秀的; 杰出的.",
     "ex": "You did an excellent job on the exam.(你考试考得非常棒。)",
     "syl": "ex·cel·lent",
-    "root": "ex- 出; 超越 + cel- = rise 升起 + -ent 形容词后缀 → 超出一般",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "超越"
+        },
+        {
+          "type": "词根",
+          "text": "cel-",
+          "meaning": "升起"
+        },
+        {
+          "type": "后缀",
+          "text": "-ent",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "ex- 超越 + cel- 升起 + -ent 形容词 ⇒ 超出一般 ⇒ 优秀的"
+    },
     "ex_label": "例句"
   },
   {
@@ -4664,7 +6935,21 @@
     "def": "adj.正确的. v.纠正; 改正.",
     "ex": "All your answers are correct.(你所有的答案都是正确的。)",
     "syl": "cor·rect",
-    "root": "cor- (= con- 共同) + rect- = right 正; 直 → 使之归正",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "cor-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "rect-",
+          "meaning": "正; 直"
+        }
+      ],
+      "summary": "cor- 共同 + rect- 正 ⇒ 使之归正 ⇒ 正确的；改正"
+    },
     "ex_label": "例句"
   },
   {
@@ -4676,7 +6961,21 @@
     "def": "n.尊敬; 尊重. v.尊敬; 尊重.",
     "ex": "We should respect our teachers and parents.(我们应该尊敬老师和父母。)",
     "syl": "re·spect",
-    "root": "re- 再; 回 + spect- = look 看 → 值得再看一眼",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "spect-",
+          "meaning": "看"
+        }
+      ],
+      "summary": "re- 再 + spect- 看 ⇒ 值得再看一眼 ⇒ 尊敬"
+    },
     "ex_label": "例句"
   },
   {
@@ -4688,7 +6987,21 @@
     "def": "n.千米; 公里.",
     "ex": "My home is about three kilometers from the school.(我家离学校大约三公里。)",
     "syl": "ki·lo·me·ter",
-    "root": "kilo- 千 + meter 米",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "kilo-",
+          "meaning": "千"
+        },
+        {
+          "type": "词",
+          "text": "meter",
+          "meaning": "米"
+        }
+      ],
+      "summary": "kilo- 千 + meter 米 ⇒ 一千米 ⇒ 千米"
+    },
     "ex_label": "例句"
   },
   {
@@ -4700,7 +7013,26 @@
     "def": "n.条件; 状况; 情况.",
     "ex": "The old house is in poor condition.(那座老房子状况很差。)",
     "syl": "con·di·tion",
-    "root": "con- 共同 + dit- = give 给 + -ion 名词后缀",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "con-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "dit-",
+          "meaning": "给"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "con- 共同 + dit- 给 + -ion 名词 ⇒ 共同约定的 ⇒ 条件；状况"
+    },
     "ex_label": "例句"
   },
   {
@@ -4712,7 +7044,21 @@
     "def": "v.猜想; 认为; 假设.",
     "ex": "I suppose he is right about this matter.(我认为他在这件事上是对的。)",
     "syl": "sup·pose",
-    "root": "sup- (= sub- 在下面) + pos- = put 放 → 放在心底想",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "sup-",
+          "meaning": "在下面"
+        },
+        {
+          "type": "词根",
+          "text": "pos-",
+          "meaning": "放"
+        }
+      ],
+      "summary": "sup- 在下面 + pos- 放 ⇒ 放在心底想 ⇒ 假设；认为"
+    },
     "ex_label": "例句"
   },
   {
@@ -4724,7 +7070,21 @@
     "def": "v.出席; 参加; 照料.",
     "ex": "All students must attend the school meeting.(所有学生必须参加学校会议。)",
     "syl": "at·tend",
-    "root": "at- (= ad- 朝向) + tend- = stretch 伸展 → 把注意力伸向",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "at-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "tend-",
+          "meaning": "伸展"
+        }
+      ],
+      "summary": "at- 朝向 + tend- 伸展 ⇒ 把注意力伸向 ⇒ 出席；照料"
+    },
     "ex_label": "例句"
   },
   {
@@ -4808,7 +7168,21 @@
     "def": "n.疾病; 病.",
     "ex": "Washing hands often can prevent disease.(经常洗手可以预防疾病。)",
     "syl": "dis·ease",
-    "root": "dis- 不 + ease 舒适 → 不舒适",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "不"
+        },
+        {
+          "type": "词",
+          "text": "ease",
+          "meaning": "舒适"
+        }
+      ],
+      "summary": "dis- 不 + ease 舒适 ⇒ 不舒适 ⇒ 疾病"
+    },
     "ex_label": "例句"
   },
   {
@@ -4820,7 +7194,26 @@
     "def": "n.记者; 通讯员.",
     "ex": "The reporter interviewed the famous scientist.(记者采访了那位著名的科学家。)",
     "syl": "re·port·er",
-    "root": "re- 回 + port- = carry 携带 + -er 人 → 把消息带回来的人",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "port-",
+          "meaning": "携带"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "人"
+        }
+      ],
+      "summary": "re- 回 + port- 携带 + -er 人 ⇒ 把消息带回来的人 ⇒ 记者"
+    },
     "ex_label": "例句"
   },
   {
@@ -4856,7 +7249,21 @@
     "def": "n.勇气; 胆量.",
     "ex": "It takes courage to stand up and speak in front of everyone.(站起来在大家面前讲话需要勇气。)",
     "syl": "cour·age",
-    "root": "cor- = heart 心 + -age 名词后缀 → 发自内心的勇气",
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "cor-",
+          "meaning": "心"
+        },
+        {
+          "type": "后缀",
+          "text": "-age",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "cor- 心 + -age 名词 ⇒ 发自内心的 ⇒ 勇气"
+    },
     "ex_label": "例句"
   },
   {
@@ -4904,7 +7311,21 @@
     "def": "n.地址; 演讲. v.写地址; 演说.",
     "ex": "Please write your address on this form.(请在这张表格上写下你的地址。)",
     "syl": "ad·dress",
-    "root": "ad- 朝向 + dress- = direct 引导 → 指向某处",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ad-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "dress-",
+          "meaning": "引导"
+        }
+      ],
+      "summary": "ad- 朝向 + dress- 引导 ⇒ 指向某处 ⇒ 地址；演讲"
+    },
     "ex_label": "例句"
   },
   {
@@ -4964,7 +7385,21 @@
     "def": "v.预防; 防止; 阻止.",
     "ex": "We should take action to prevent pollution.(我们应该采取行动来防止污染。)",
     "syl": "pre·vent",
-    "root": "pre- 预先 + vent- = come 来 → 预先到来以阻止",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pre-",
+          "meaning": "预先"
+        },
+        {
+          "type": "词根",
+          "text": "vent-",
+          "meaning": "来"
+        }
+      ],
+      "summary": "pre- 预先 + vent- 来 ⇒ 预先到来以阻止 ⇒ 预防"
+    },
     "ex_label": "例句"
   },
   {
@@ -4976,7 +7411,21 @@
     "def": "adj.不寻常的; 独特的.",
     "ex": "It is unusual to see snow in this city.(在这座城市看到雪是不寻常的。)",
     "syl": "un·u·su·al",
-    "root": "un- 不 + usual 通常的",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "un-",
+          "meaning": "不"
+        },
+        {
+          "type": "词",
+          "text": "usual",
+          "meaning": "通常的"
+        }
+      ],
+      "summary": "un- 不 + usual 通常的 ⇒ 不寻常的"
+    },
     "ex_label": "例句"
   },
   {
@@ -4988,7 +7437,26 @@
     "def": "adj.可用的; 可获得的.",
     "ex": "Is this seat available?(这个座位有人吗？)",
     "syl": "a·vail·a·ble",
-    "root": "a- 朝向 + vail- = value 价值 + -able 可…的 → 可以利用的",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "a-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "vail-",
+          "meaning": "价值"
+        },
+        {
+          "type": "后缀",
+          "text": "-able",
+          "meaning": "可…的"
+        }
+      ],
+      "summary": "a- 朝向 + vail- 价值 + -able 可…的 ⇒ 可以利用的 ⇒ 可获得的"
+    },
     "ex_label": "例句"
   },
   {
@@ -5048,7 +7516,21 @@
     "def": "prep.除……之外. conj.除非.",
     "ex": "Everyone passed the test except Tom.(除了汤姆，每个人都通过了考试。)",
     "syl": "ex·cept",
-    "root": "ex- 出 + cept- = take 拿 → 拿出去; 排除在外",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "cept-",
+          "meaning": "拿"
+        }
+      ],
+      "summary": "ex- 出 + cept- 拿 ⇒ 拿出去 ⇒ 除…之外"
+    },
     "ex_label": "例句"
   },
   {
@@ -5060,7 +7542,21 @@
     "def": "v.比较; 对比.",
     "ex": "If you compare the two pictures, you will find five differences.(如果你比较这两幅图片，你会发现五处不同。)",
     "syl": "com·pare",
-    "root": "com- 共同 + par- = equal 平等 → 放在一起看是否相等",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "com-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "par-",
+          "meaning": "平等"
+        }
+      ],
+      "summary": "com- 共同 + par- 平等 ⇒ 放在一起看 ⇒ 比较"
+    },
     "ex_label": "例句"
   },
   {
@@ -5072,7 +7568,21 @@
     "def": "v.保持; 留下; 剩余.",
     "ex": "Please remain in your seats until the bus stops.(请留在座位上直到公交车停下。)",
     "syl": "re·main",
-    "root": "re- 回 + main- = stay 停留",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "main-",
+          "meaning": "停留"
+        }
+      ],
+      "summary": "re- 回 + main- 停留 ⇒ 留下来 ⇒ 保持；剩下"
+    },
     "ex_label": "例句"
   },
   {
@@ -5084,7 +7594,21 @@
     "def": "v.分; 划分; 除.",
     "ex": "The teacher divided the class into four groups.(老师把全班分成了四组。)",
     "syl": "di·vide",
-    "root": "di- 分开 + vid- = separate 分离",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "di-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "vid-",
+          "meaning": "分离"
+        }
+      ],
+      "summary": "di- 分开 + vid- 分离 ⇒ 分开 ⇒ 划分"
+    },
     "ex_label": "例句"
   },
   {
@@ -5096,7 +7620,21 @@
     "def": "v.要求; 需要.",
     "ex": "This job requires a lot of patience.(这份工作需要很大的耐心。)",
     "syl": "re·quire",
-    "root": "re- 再 + quir- = seek 寻求 → 反复寻求",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "quir-",
+          "meaning": "寻求"
+        }
+      ],
+      "summary": "re- 再 + quir- 寻求 ⇒ 反复寻求 ⇒ 要求；需要"
+    },
     "ex_label": "例句"
   },
   {
@@ -5132,7 +7670,31 @@
     "def": "n.广告.",
     "ex": "I saw an advertisement for the new phone on TV.(我在电视上看到了新手机的广告。)",
     "syl": "ad·ver·tise·ment",
-    "root": "ad- 朝向 + vert- = turn 转 + -ise + -ment → 使人转过头来关注",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ad-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "vert-",
+          "meaning": "转"
+        },
+        {
+          "type": "后缀",
+          "text": "-ise",
+          "meaning": "动词"
+        },
+        {
+          "type": "后缀",
+          "text": "-ment",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "ad- 朝向 + vert- 转 + -ise 动词 + -ment 名词 ⇒ 使人转头关注 ⇒ 广告"
+    },
     "ex_label": "例句"
   },
   {
@@ -5156,7 +7718,21 @@
     "def": "v.吸引; 引起.",
     "ex": "The beautiful flowers attracted many bees.(美丽的花朵吸引了许多蜜蜂。)",
     "syl": "at·tract",
-    "root": "at- (= ad- 朝向) + tract- = draw 拉 → 拉向自己",
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "at-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "tract-",
+          "meaning": "拉"
+        }
+      ],
+      "summary": "at- 朝向 + tract- 拉 ⇒ 拉向自己 ⇒ 吸引"
+    },
     "ex_label": "例句"
   },
   {
@@ -5205,7 +7781,26 @@
     "ex_label": "例句",
     "ex": "There was a surprised expression on her face.(她脸上露出惊讶的表情。)",
     "syl": "ex·pres·sion",
-    "root": "ex- 出 + press- = push 压 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "press-",
+          "meaning": "压"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "ex- 出 + press- 压 + -ion 名词 ⇒ 压出来的 ⇒ 表达；表情"
+    }
   },
   {
     "rank": 435,
@@ -5241,7 +7836,21 @@
     "ex_label": "例句",
     "ex": "The manager of the hotel is very friendly.(酒店经理非常友好。)",
     "syl": "man·ag·er",
-    "root": "manage 管理 + -er 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "manage",
+          "meaning": "管理"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "manage 管理 + -er 做…的人 ⇒ 管理的人 ⇒ 经理"
+    }
   },
   {
     "rank": 438,
@@ -5289,7 +7898,21 @@
     "ex_label": "例句",
     "ex": "We should help disabled people in our daily life.(我们应该在日常生活中帮助残疾人。)",
     "syl": "dis·a·ble",
-    "root": "dis- 不 + able 能够的 → 使不能"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "不"
+        },
+        {
+          "type": "词",
+          "text": "able",
+          "meaning": "能够的"
+        }
+      ],
+      "summary": "dis- 不 + able 能够的 ⇒ 使不能 ⇒ 使残疾"
+    }
   },
   {
     "rank": 442,
@@ -5313,7 +7936,21 @@
     "ex_label": "例句",
     "ex": "Who organized this school trip?(谁组织了这次学校旅行？)",
     "syl": "or·gan·ize",
-    "root": "organ- 器官/组织 + -ize 使…"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "organ-",
+          "meaning": "器官/组织"
+        },
+        {
+          "type": "后缀",
+          "text": "-ize",
+          "meaning": "使…"
+        }
+      ],
+      "summary": "organ- 组织 + -ize 使… ⇒ 使成体系 ⇒ 组织"
+    }
   },
   {
     "rank": 444,
@@ -5349,7 +7986,21 @@
     "ex_label": "例句",
     "ex": "It is normal to feel nervous before an exam.(考试前感到紧张是正常的。)",
     "syl": "nor·mal",
-    "root": "norm- = rule 规则 + -al 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "norm-",
+          "meaning": "规则"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "norm- 规则 + -al 形容词 ⇒ 合规则的 ⇒ 正常的"
+    }
   },
   {
     "rank": 447,
@@ -5361,7 +8012,31 @@
     "ex_label": "例句",
     "ex": "Please come here immediately.(请立刻到这里来。)",
     "syl": "im·me·di·ate·ly",
-    "root": "im- 不 + medi- = middle 中间 + -ate + -ly → 没有中间过程 → 立刻"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "im-",
+          "meaning": "不"
+        },
+        {
+          "type": "词根",
+          "text": "medi-",
+          "meaning": "中间"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "形容词"
+        },
+        {
+          "type": "后缀",
+          "text": "-ly",
+          "meaning": "副词"
+        }
+      ],
+      "summary": "im- 不 + medi- 中间 + -ate 形容词 + -ly 副词 ⇒ 没有中间过程 ⇒ 立刻"
+    }
   },
   {
     "rank": 448,
@@ -5385,7 +8060,21 @@
     "ex_label": "例句",
     "ex": "Could you please repeat the question?(你能重复一下这个问题吗？)",
     "syl": "re·peat",
-    "root": "re- 再次 + peat- (pet-) = seek 寻求 → 再次寻求"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再次"
+        },
+        {
+          "type": "词根",
+          "text": "peat-",
+          "meaning": "寻求"
+        }
+      ],
+      "summary": "re- 再次 + peat- 寻求 ⇒ 再次寻求 ⇒ 重复"
+    }
   },
   {
     "rank": 450,
@@ -5397,7 +8086,21 @@
     "ex_label": "例句",
     "ex": "What is the best method of learning English?(学习英语最好的方法是什么？)",
     "syl": "meth·od",
-    "root": "meta- 沿着 + hod- = way 路 → 沿着道路走的方式"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "meta-",
+          "meaning": "沿着"
+        },
+        {
+          "type": "词根",
+          "text": "hod-",
+          "meaning": "路"
+        }
+      ],
+      "summary": "meta- 沿着 + hod- 路 ⇒ 沿路而行的方式 ⇒ 方法"
+    }
   },
   {
     "rank": 451,
@@ -5445,7 +8148,21 @@
     "ex_label": "例句",
     "ex": "You should make an effort to improve your grades.(你应该努力提高你的成绩。)",
     "syl": "ef·fort",
-    "root": "ef- (ex-) 出 + fort- = strong 强 → 用出力量"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ef-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "fort-",
+          "meaning": "强"
+        }
+      ],
+      "summary": "ef- 出 + fort- 强 ⇒ 用出力量 ⇒ 努力"
+    }
   },
   {
     "rank": 455,
@@ -5469,7 +8186,21 @@
     "ex_label": "例句",
     "ex": "The waiter brought us the menu.(服务员给我们拿来了菜单。)",
     "syl": "wait·er",
-    "root": "wait 等待 + -er 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "wait",
+          "meaning": "等待"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "wait 等待 + -er 做…的人 ⇒ 侍候的人 ⇒ 服务员"
+    }
   },
   {
     "rank": 457,
@@ -5481,7 +8212,21 @@
     "ex_label": "例句",
     "ex": "We should use fewer plastic bags to protect the environment.(我们应该少用塑料袋来保护环境。)",
     "syl": "plas·tic",
-    "root": "plast- = mold 塑造 + -ic 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "plast-",
+          "meaning": "塑造"
+        },
+        {
+          "type": "后缀",
+          "text": "-ic",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "plast- 塑造 + -ic 形容词 ⇒ 可塑的 ⇒ 塑料"
+    }
   },
   {
     "rank": 458,
@@ -5517,7 +8262,21 @@
     "ex_label": "例句",
     "ex": "The final exam is next week.(期末考试在下周。)",
     "syl": "fi·nal",
-    "root": "fin- = end 结束 + -al 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "fin-",
+          "meaning": "结束"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "fin- 结束 + -al 形容词 ⇒ 最后的"
+    }
   },
   {
     "rank": 461,
@@ -5529,7 +8288,21 @@
     "ex_label": "例句",
     "ex": "She has made great progress in English this term.(她这学期英语进步很大。)",
     "syl": "prog·ress",
-    "root": "pro- 向前 + gress- = step 走 → 向前走"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "gress-",
+          "meaning": "走"
+        }
+      ],
+      "summary": "pro- 向前 + gress- 走 ⇒ 向前走 ⇒ 进步"
+    }
   },
   {
     "rank": 462,
@@ -5541,7 +8314,21 @@
     "ex_label": "例句",
     "ex": "We should value the time we spend with our family.(我们应该珍惜和家人在一起的时光。)",
     "syl": "val·ue",
-    "root": "val- = worth 价值 + -ue"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "val-",
+          "meaning": "价值"
+        },
+        {
+          "type": "后缀",
+          "text": "-ue",
+          "meaning": ""
+        }
+      ],
+      "summary": "val- 价值 ⇒ 值多少 ⇒ 价值"
+    }
   },
   {
     "rank": 463,
@@ -5553,7 +8340,16 @@
     "ex_label": "例句",
     "ex": "Don't force children to eat food they don't like.(不要强迫孩子吃他们不喜欢的食物。)",
     "syl": "force",
-    "root": "fort- = strong 强 → 力量"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "fort-",
+          "meaning": "强"
+        }
+      ],
+      "summary": "fort- 强 ⇒ 力量 ⇒ 强迫"
+    }
   },
   {
     "rank": 464,
@@ -5625,7 +8421,21 @@
     "ex_label": "例句",
     "ex": "You need to learn the basic rules of grammar first.(你需要先学习基本的语法规则。)",
     "syl": "ba·sic",
-    "root": "bas- = base 基础 + -ic 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "bas-",
+          "meaning": "基础"
+        },
+        {
+          "type": "后缀",
+          "text": "-ic",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "bas- 基础 + -ic 形容词 ⇒ 基础的"
+    }
   },
   {
     "rank": 470,
@@ -5637,7 +8447,21 @@
     "ex_label": "例句",
     "ex": "The weather was awful yesterday.(昨天天气糟透了。)",
     "syl": "aw·ful",
-    "root": "awe 敬畏 + -ful 充满…的"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "awe",
+          "meaning": "敬畏"
+        },
+        {
+          "type": "后缀",
+          "text": "-ful",
+          "meaning": "充满…的"
+        }
+      ],
+      "summary": "awe 敬畏 + -ful 充满…的 ⇒ 令人敬畏的 ⇒ 糟糕的"
+    }
   },
   {
     "rank": 471,
@@ -5661,7 +8485,26 @@
     "ex_label": "例句",
     "ex": "The bank is opposite the supermarket.(银行在超市对面。)",
     "syl": "op·po·site",
-    "root": "op- (ob-) 对面 + pos- = place 放 + -ite → 放在对面"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "op-",
+          "meaning": "对面"
+        },
+        {
+          "type": "词根",
+          "text": "pos-",
+          "meaning": "放"
+        },
+        {
+          "type": "后缀",
+          "text": "-ite",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "op- 对面 + pos- 放 + -ite 形容词 ⇒ 放在对面的 ⇒ 相反的"
+    }
   },
   {
     "rank": 473,
@@ -5709,7 +8552,21 @@
     "ex_label": "例句",
     "ex": "We should all try to make society a better place.(我们都应该努力让社会变得更好。)",
     "syl": "so·ci·e·ty",
-    "root": "soci- = companion 同伴 + -ety 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "soci-",
+          "meaning": "同伴"
+        },
+        {
+          "type": "后缀",
+          "text": "-ety",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "soci- 同伴 + -ety 名词 ⇒ 结伴而成的群体 ⇒ 社会"
+    }
   },
   {
     "rank": 477,
@@ -5733,7 +8590,26 @@
     "ex_label": "例句",
     "ex": "We did a science experiment in class today.(我们今天在课上做了一个科学实验。)",
     "syl": "ex·per·i·ment",
-    "root": "ex- 出 + peri- = try 尝试 + -ment 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "peri-",
+          "meaning": "尝试"
+        },
+        {
+          "type": "后缀",
+          "text": "-ment",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "ex- 出 + peri- 尝试 + -ment 名词 ⇒ 试出来的 ⇒ 实验"
+    }
   },
   {
     "rank": 479,
@@ -5757,7 +8633,16 @@
     "ex_label": "例句",
     "ex": "The government has a new policy on education.(政府出台了新的教育政策。)",
     "syl": "pol·i·cy",
-    "root": "poli- = city/state 城市/国家"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "poli-",
+          "meaning": "城市/国家"
+        }
+      ],
+      "summary": "poli- 城市/国家 ⇒ 治国之道 ⇒ 政策"
+    }
   },
   {
     "rank": 481,
@@ -5769,7 +8654,21 @@
     "ex_label": "例句",
     "ex": "The two schools exchange students every year.(两所学校每年交换学生。)",
     "syl": "ex·change",
-    "root": "ex- 出 + change 改变 → 互相交出"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词",
+          "text": "change",
+          "meaning": "改变"
+        }
+      ],
+      "summary": "ex- 出 + change 改变 ⇒ 互相交出 ⇒ 交换"
+    }
   },
   {
     "rank": 482,
@@ -5781,7 +8680,21 @@
     "ex_label": "例句",
     "ex": "He often complains about the food in the canteen.(他经常抱怨食堂的饭菜。)",
     "syl": "com·plain",
-    "root": "com- 加强 + plain- = beat breast 捶胸 → 大声抱怨"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "com-",
+          "meaning": "加强"
+        },
+        {
+          "type": "词根",
+          "text": "plain-",
+          "meaning": "捶胸"
+        }
+      ],
+      "summary": "com- 加强 + plain- 捶胸 ⇒ 捶胸叫喊 ⇒ 抱怨"
+    }
   },
   {
     "rank": 483,
@@ -5805,7 +8718,16 @@
     "ex_label": "例句",
     "ex": "The view from the top of the mountain is wonderful.(山顶上的景色太美了。)",
     "syl": "view",
-    "root": "vid-/vis- = see 看"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "vid-",
+          "meaning": "看"
+        }
+      ],
+      "summary": "vid- 看 ⇒ 所看到的 ⇒ 景色；观点"
+    }
   },
   {
     "rank": 485,
@@ -5829,7 +8751,21 @@
     "ex_label": "例句",
     "ex": "I went to a primary school near my home.(我上的是家附近的一所小学。)",
     "syl": "pri·ma·ry",
-    "root": "prim- = first 第一 + -ary 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "prim-",
+          "meaning": "第一"
+        },
+        {
+          "type": "后缀",
+          "text": "-ary",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "prim- 第一 + -ary 形容词 ⇒ 首要的 ⇒ 主要的；初级的"
+    }
   },
   {
     "rank": 487,
@@ -5853,7 +8789,21 @@
     "ex_label": "例句",
     "ex": "Students are under a lot of pressure before exams.(学生们在考试前压力很大。)",
     "syl": "pres·sure",
-    "root": "press- = push 压 + -ure 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "press-",
+          "meaning": "压"
+        },
+        {
+          "type": "后缀",
+          "text": "-ure",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "press- 压 + -ure 名词 ⇒ 压的力量 ⇒ 压力"
+    }
   },
   {
     "rank": 489,
@@ -5865,7 +8815,21 @@
     "ex_label": "例句",
     "ex": "Pollution is a major problem in many cities.(污染是许多城市的一个主要问题。)",
     "syl": "ma·jor",
-    "root": "maj- = great 大 + -or 比较级后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "maj-",
+          "meaning": "大"
+        },
+        {
+          "type": "后缀",
+          "text": "-or",
+          "meaning": "比较级"
+        }
+      ],
+      "summary": "maj- 大 + -or 比较级 ⇒ 较大的 ⇒ 主要的"
+    }
   },
   {
     "rank": 490,
@@ -5901,7 +8865,26 @@
     "ex_label": "例句",
     "ex": "Can you tell me the direction to the train station?(你能告诉我去火车站的方向吗？)",
     "syl": "di·rec·tion",
-    "root": "di- (dis-) 分开 + rect- = straight 直 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "di-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "rect-",
+          "meaning": "直"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "di- 分开 + rect- 直 + -ion 名词 ⇒ 引导的方向 ⇒ 方向；指示"
+    }
   },
   {
     "rank": 493,
@@ -5961,7 +8944,21 @@
     "ex_label": "例句",
     "ex": "We went to the theater to watch a play last night.(昨晚我们去剧院看了一场戏。)",
     "syl": "the·a·ter",
-    "root": "thea- = view 观看 + -ter 场所后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "thea-",
+          "meaning": "观看"
+        },
+        {
+          "type": "后缀",
+          "text": "-ter",
+          "meaning": "场所"
+        }
+      ],
+      "summary": "thea- 观看 + -ter 场所 ⇒ 观看的场所 ⇒ 剧场"
+    }
   },
   {
     "rank": 498,
@@ -5985,7 +8982,21 @@
     "ex_label": "例句",
     "ex": "Smoking has a bad effect on your health.(吸烟对你的健康有不良影响。)",
     "syl": "ef·fect",
-    "root": "ef- (ex-) 出 + fect- = make 做 → 做出来的结果"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ef-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "fect-",
+          "meaning": "做"
+        }
+      ],
+      "summary": "ef- 出 + fect- 做 ⇒ 做出来的结果 ⇒ 效果"
+    }
   },
   {
     "rank": 500,
@@ -6009,7 +9020,21 @@
     "ex_label": "例句",
     "ex": "The students performed a play at the school festival.(学生们在学校文化节上表演了一出话剧。)",
     "syl": "per·form",
-    "root": "per- 完全 + form- = shape 形成 → 完整呈现"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "per-",
+          "meaning": "完全"
+        },
+        {
+          "type": "词根",
+          "text": "form-",
+          "meaning": "形成"
+        }
+      ],
+      "summary": "per- 完全 + form- 形成 ⇒ 完整呈现 ⇒ 表演；执行"
+    }
   },
   {
     "rank": 502,
@@ -6057,7 +9082,16 @@
     "ex_label": "例句",
     "ex": "There is no doubt that he is a good student.(毫无疑问他是个好学生。)",
     "syl": "doubt",
-    "root": "dub- = two 二 → 二心 → 犹豫怀疑"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "dub-",
+          "meaning": "二"
+        }
+      ],
+      "summary": "dub- 二 ⇒ 二心 ⇒ 怀疑"
+    }
   },
   {
     "rank": 506,
@@ -6093,7 +9127,21 @@
     "ex_label": "例句",
     "ex": "We bought a new rice cooker for the kitchen.(我们给厨房买了一个新的电饭锅。)",
     "syl": "cook·er",
-    "root": "cook 烹饪 + -er 器具"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "cook",
+          "meaning": "烹饪"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "器具"
+        }
+      ],
+      "summary": "cook 烹饪 + -er 器具 ⇒ 烹饪的器具 ⇒ 炊具"
+    }
   },
   {
     "rank": 509,
@@ -6129,7 +9177,21 @@
     "ex_label": "例句",
     "ex": "China is a great nation with a long history.(中国是一个有着悠久历史的伟大国家。)",
     "syl": "na·tion",
-    "root": "nat- = born 出生 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "nat-",
+          "meaning": "出生"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "nat- 出生 + -ion 名词 ⇒ 同一出生地的人 ⇒ 国家；民族"
+    }
   },
   {
     "rank": 512,
@@ -6165,7 +9227,21 @@
     "ex_label": "例句",
     "ex": "The final examination will be held next Monday.(期末考试将在下周一举行。)",
     "syl": "ex·am·i·na·tion",
-    "root": "examin- = test 检验 + -ation 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "examin-",
+          "meaning": "检验"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "examin- 检验 + -ation 名词 ⇒ 检验 ⇒ 考试；检查"
+    }
   },
   {
     "rank": 515,
@@ -6189,7 +9265,21 @@
     "ex_label": "例句",
     "ex": "Your attitude towards study will decide your future.(你对学习的态度将决定你的未来。)",
     "syl": "at·ti·tude",
-    "root": "apt- = fit 适合 + -itude 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "apt-",
+          "meaning": "适合"
+        },
+        {
+          "type": "后缀",
+          "text": "-itude",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "apt- 适合 + -itude 名词 ⇒ 应对的姿态 ⇒ 态度"
+    }
   },
   {
     "rank": 517,
@@ -6201,7 +9291,21 @@
     "ex_label": "例句",
     "ex": "I have a terrible toothache and need to see a dentist.(我牙疼得厉害，需要去看牙医。)",
     "syl": "tooth·ache",
-    "root": "tooth(牙齿)+ache(疼痛) → 牙痛"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "tooth",
+          "meaning": "牙齿"
+        },
+        {
+          "type": "词",
+          "text": "ache",
+          "meaning": "疼痛"
+        }
+      ],
+      "summary": "tooth 牙齿 + ache 疼痛 ⇒ 牙痛"
+    }
   },
   {
     "rank": 518,
@@ -6213,7 +9317,26 @@
     "ex_label": "例句",
     "ex": "Thank you for your invitation to the birthday party.(谢谢你邀请我参加生日聚会。)",
     "syl": "in·vi·ta·tion",
-    "root": "in-(进入)+vit(召唤)+-ation(名词后缀) → 邀请"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "vit",
+          "meaning": "召唤"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "in- 进入 + vit 召唤 + -ation 名词 ⇒ 召唤进来 ⇒ 邀请"
+    }
   },
   {
     "rank": 519,
@@ -6225,7 +9348,21 @@
     "ex_label": "例句",
     "ex": "We all regard him as the best teacher in our school.(我们都把他看作学校里最好的老师。)",
     "syl": "re·gard",
-    "root": "re-(再)+gard(看) → 反复看 → 看作；尊敬"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "gard",
+          "meaning": "看"
+        }
+      ],
+      "summary": "re- 再 + gard 看 ⇒ 反复看 ⇒ 看作；尊敬"
+    }
   },
   {
     "rank": 520,
@@ -6237,7 +9374,21 @@
     "ex_label": "例句",
     "ex": "Factories pollute the rivers and the air around the city.(工厂污染了城市周围的河流和空气。)",
     "syl": "pol·lute",
-    "root": "pol-(=pro-,前)+lut(冲洗) → 往前冲脏 → 污染"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pol-",
+          "meaning": "前"
+        },
+        {
+          "type": "词根",
+          "text": "lut",
+          "meaning": "冲洗"
+        }
+      ],
+      "summary": "pol- 前 + lut 冲洗 ⇒ 往前冲脏 ⇒ 污染"
+    }
   },
   {
     "rank": 521,
@@ -6249,7 +9400,21 @@
     "ex_label": "例句",
     "ex": "Many people suffered from the cold weather last winter.(去年冬天很多人遭受了寒冷天气之苦。)",
     "syl": "suf·fer",
-    "root": "suf-(=sub-,在下)+fer(承受) → 在下面承受 → 遭受"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "suf-",
+          "meaning": "在下"
+        },
+        {
+          "type": "词根",
+          "text": "fer",
+          "meaning": "承受"
+        }
+      ],
+      "summary": "suf- 在下 + fer 承受 ⇒ 在下面承受 ⇒ 遭受"
+    }
   },
   {
     "rank": 522,
@@ -6261,7 +9426,21 @@
     "ex_label": "例句",
     "ex": "My father bought an electric bike to ride to work.(我爸爸买了一辆电动自行车去上班。)",
     "syl": "e·lec·tric",
-    "root": "electr(电)+-ic(形容词后缀) → 电的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "electr",
+          "meaning": "电"
+        },
+        {
+          "type": "后缀",
+          "text": "-ic",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "electr 电 + -ic 形容词 ⇒ 电的"
+    }
   },
   {
     "rank": 523,
@@ -6273,7 +9452,21 @@
     "ex_label": "例句",
     "ex": "The medical team helped many sick people in the village.(医疗队帮助了村里很多生病的人。)",
     "syl": "med·i·cal",
-    "root": "med(治疗)+-ical(形容词后缀) → 医学的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "med",
+          "meaning": "治疗"
+        },
+        {
+          "type": "后缀",
+          "text": "-ical",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "med 治疗 + -ical 形容词 ⇒ 医学的"
+    }
   },
   {
     "rank": 524,
@@ -6321,7 +9514,21 @@
     "ex_label": "例句",
     "ex": "My grandmother enjoys watching Beijing Opera on TV.(我奶奶喜欢在电视上看京剧。)",
     "syl": "op·er·a",
-    "root": "oper(工作；作品)+-a → 作品 → 歌剧"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "oper",
+          "meaning": "工作；作品"
+        },
+        {
+          "type": "后缀",
+          "text": "-a",
+          "meaning": ""
+        }
+      ],
+      "summary": "oper 作品 ⇒ 综合的作品 ⇒ 歌剧"
+    }
   },
   {
     "rank": 528,
@@ -6333,7 +9540,21 @@
     "ex_label": "例句",
     "ex": "A beautiful butterfly landed on the flower in the garden.(一只美丽的蝴蝶落在了花园里的花上。)",
     "syl": "but·ter·fly",
-    "root": "butter(黄油)+fly(飞虫) → 蝴蝶"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "butter",
+          "meaning": "黄油"
+        },
+        {
+          "type": "词",
+          "text": "fly",
+          "meaning": "飞虫"
+        }
+      ],
+      "summary": "butter 黄油 + fly 飞虫 ⇒ 蝴蝶"
+    }
   },
   {
     "rank": 529,
@@ -6345,7 +9566,21 @@
     "ex_label": "例句",
     "ex": "We have a chemistry class every Wednesday afternoon.(我们每周三下午有一节化学课。)",
     "syl": "chem·is·try",
-    "root": "chem(化学)+-istry(学科后缀) → 化学"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "chem",
+          "meaning": "化学"
+        },
+        {
+          "type": "后缀",
+          "text": "-istry",
+          "meaning": "学科"
+        }
+      ],
+      "summary": "chem 化学 + -istry 学科 ⇒ 化学"
+    }
   },
   {
     "rank": 530,
@@ -6417,7 +9652,21 @@
     "ex_label": "例句",
     "ex": "We studied the history of this period in class.(我们在课堂上学习了这个时期的历史。)",
     "syl": "pe·ri·od",
-    "root": "peri-(周围)+od(路) → 一个周期 → 时期"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "peri-",
+          "meaning": "周围"
+        },
+        {
+          "type": "词根",
+          "text": "od",
+          "meaning": "路"
+        }
+      ],
+      "summary": "peri- 周围 + od 路 ⇒ 绕一圈 ⇒ 时期"
+    }
   },
   {
     "rank": 536,
@@ -6429,7 +9678,21 @@
     "ex_label": "例句",
     "ex": "The students sat in a circle and played games.(学生们围成一圈做游戏。)",
     "syl": "cir·cle",
-    "root": "circ(环；圆)+-le → 圆圈"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "circ",
+          "meaning": "环；圆"
+        },
+        {
+          "type": "后缀",
+          "text": "-le",
+          "meaning": ""
+        }
+      ],
+      "summary": "circ 环 ⇒ 圆圈"
+    }
   },
   {
     "rank": 537,
@@ -6453,7 +9716,21 @@
     "ex_label": "例句",
     "ex": "The fire destroyed several houses in the village.(大火烧毁了村里的几座房子。)",
     "syl": "de·stroy",
-    "root": "de-(向下)+stroy(=struct,建造) → 拆掉建筑 → 破坏"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "向下"
+        },
+        {
+          "type": "词根",
+          "text": "stroy",
+          "meaning": "建造"
+        }
+      ],
+      "summary": "de- 向下 + stroy 建造 ⇒ 拆掉建筑 ⇒ 破坏"
+    }
   },
   {
     "rank": 539,
@@ -6465,7 +9742,21 @@
     "ex_label": "例句",
     "ex": "I really admire her courage to speak in front of so many people.(我很钦佩她在那么多人面前发言的勇气。)",
     "syl": "ad·mire",
-    "root": "ad-(朝向)+mire(惊叹) → 朝着惊叹 → 钦佩"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ad-",
+          "meaning": "朝向"
+        },
+        {
+          "type": "词根",
+          "text": "mire",
+          "meaning": "惊叹"
+        }
+      ],
+      "summary": "ad- 朝向 + mire 惊叹 ⇒ 朝着惊叹 ⇒ 钦佩"
+    }
   },
   {
     "rank": 540,
@@ -6537,7 +9828,21 @@
     "ex_label": "例句",
     "ex": "Some chemical products can be harmful to the environment.(一些化学产品可能对环境有害。)",
     "syl": "chem·i·cal",
-    "root": "chem(化学)+-ical(形容词后缀) → 化学的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "chem",
+          "meaning": "化学"
+        },
+        {
+          "type": "后缀",
+          "text": "-ical",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "chem 化学 + -ical 形容词 ⇒ 化学的"
+    }
   },
   {
     "rank": 546,
@@ -6561,7 +9866,16 @@
     "ex_label": "例句",
     "ex": "Our math teacher is very strict with us.(我们的数学老师对我们非常严格。)",
     "syl": "strict",
-    "root": "strict(拉紧) → 拉紧要求 → 严格的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "strict",
+          "meaning": "拉紧"
+        }
+      ],
+      "summary": "strict 拉紧 ⇒ 拉紧要求 ⇒ 严格的"
+    }
   },
   {
     "rank": 548,
@@ -6621,7 +9935,21 @@
     "ex_label": "例句",
     "ex": "His dream is to join the army when he grows up.(他的梦想是长大后参军。)",
     "syl": "ar·my",
-    "root": "arm(武器)+-y(名词后缀) → 持武器的人 → 军队"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "arm",
+          "meaning": "武器"
+        },
+        {
+          "type": "后缀",
+          "text": "-y",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "arm 武器 + -y 名词 ⇒ 持武器的人 ⇒ 军队"
+    }
   },
   {
     "rank": 553,
@@ -6645,7 +9973,21 @@
     "ex_label": "例句",
     "ex": "The teacher punished him for cheating on the exam.(老师因他考试作弊而惩罚了他。)",
     "syl": "pun·ish",
-    "root": "pun(惩罚)+-ish(动词后缀) → 惩罚"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "pun",
+          "meaning": "惩罚"
+        },
+        {
+          "type": "后缀",
+          "text": "-ish",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "pun 惩罚 + -ish 动词 ⇒ 惩罚"
+    }
   },
   {
     "rank": 555,
@@ -6657,7 +9999,21 @@
     "ex_label": "例句",
     "ex": "Taking regular exercise is good for your health.(有规律地锻炼对你的健康有好处。)",
     "syl": "reg·u·lar",
-    "root": "reg(规则)+-ular(形容词后缀) → 有规则的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "reg",
+          "meaning": "规则"
+        },
+        {
+          "type": "后缀",
+          "text": "-ular",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "reg 规则 + -ular 形容词 ⇒ 有规则的 ⇒ 规律的"
+    }
   },
   {
     "rank": 556,
@@ -6681,7 +10037,21 @@
     "ex_label": "例句",
     "ex": "It was raining, but we went to the park anyway.(虽然下着雨，但我们还是去了公园。)",
     "syl": "an·y·way",
-    "root": "any(任何)+way(方式) → 无论如何"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "any",
+          "meaning": "任何"
+        },
+        {
+          "type": "词",
+          "text": "way",
+          "meaning": "方式"
+        }
+      ],
+      "summary": "any 任何 + way 方式 ⇒ 无论如何"
+    }
   },
   {
     "rank": 558,
@@ -6717,7 +10087,21 @@
     "ex_label": "例句",
     "ex": "We went to the theater to see a play last weekend.(上周末我们去剧院看了一场戏。)",
     "syl": "the·a·ter",
-    "root": "thea(观看)+-ter(场所后缀) → 观看的场所 → 剧场"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "thea-",
+          "meaning": "观看"
+        },
+        {
+          "type": "后缀",
+          "text": "-ter",
+          "meaning": "场所"
+        }
+      ],
+      "summary": "thea- 观看 + -ter 场所 ⇒ 观看的场所 ⇒ 剧场"
+    }
   },
   {
     "rank": 561,
@@ -6777,7 +10161,21 @@
     "ex_label": "例句",
     "ex": "Beijing is the capital of China.(北京是中国的首都。)",
     "syl": "cap·i·tal",
-    "root": "capit(头)+-al(形容词后缀) → 头等的 → 首都"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "capit",
+          "meaning": "头"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "capit 头 + -al 形容词 ⇒ 头等的 ⇒ 首都；资本"
+    }
   },
   {
     "rank": 566,
@@ -6789,7 +10187,21 @@
     "ex_label": "例句",
     "ex": "China has built many high-speed railways in recent years.(中国近年来修建了许多高速铁路。)",
     "syl": "rail·way",
-    "root": "rail(铁轨)+way(路) → 铁路"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "rail",
+          "meaning": "铁轨"
+        },
+        {
+          "type": "词",
+          "text": "way",
+          "meaning": "路"
+        }
+      ],
+      "summary": "rail 铁轨 + way 路 ⇒ 铁路"
+    }
   },
   {
     "rank": 567,
@@ -6801,7 +10213,21 @@
     "ex_label": "例句",
     "ex": "Physics is one of the most important subjects in science.(物理学是最重要的科学学科之一。)",
     "syl": "phys·ics",
-    "root": "phys(自然)+-ics(学科后缀) → 研究自然 → 物理学"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "phys",
+          "meaning": "自然"
+        },
+        {
+          "type": "后缀",
+          "text": "-ics",
+          "meaning": "学科"
+        }
+      ],
+      "summary": "phys 自然 + -ics 学科 ⇒ 研究自然 ⇒ 物理学"
+    }
   },
   {
     "rank": 568,
@@ -6813,7 +10239,21 @@
     "ex_label": "例句",
     "ex": "The temperature will drop to five degrees tonight.(今晚气温将降到五度。)",
     "syl": "de·gree",
-    "root": "de-(向下)+gree(=grad,步) → 一步步向下的刻度 → 度"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "de-",
+          "meaning": "向下"
+        },
+        {
+          "type": "词根",
+          "text": "gree",
+          "meaning": "步"
+        }
+      ],
+      "summary": "de- 向下 + gree 步 ⇒ 一步步的刻度 ⇒ 程度；度数"
+    }
   },
   {
     "rank": 569,
@@ -6825,7 +10265,21 @@
     "ex_label": "例句",
     "ex": "The doctor said the operation was very successful.(医生说手术非常成功。)",
     "syl": "op·er·a·tion",
-    "root": "oper(工作)+-ation(名词后缀) → 运转；手术"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "oper",
+          "meaning": "工作"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "oper 工作 + -ation 名词 ⇒ 运转；手术"
+    }
   },
   {
     "rank": 570,
@@ -6837,7 +10291,26 @@
     "ex_label": "例句",
     "ex": "Please read the instructions carefully before using this machine.(使用这台机器前请仔细阅读说明。)",
     "syl": "in·struc·tion",
-    "root": "in-(进入)+struct(建造)+-ion(名词后缀) → 往脑中建造 → 教导"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "struct",
+          "meaning": "建造"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "in- 进入 + struct 建造 + -ion 名词 ⇒ 往脑中建造 ⇒ 教导；说明"
+    }
   },
   {
     "rank": 571,
@@ -6861,7 +10334,21 @@
     "ex_label": "例句",
     "ex": "The result of the game disappointed all the fans.(比赛结果令所有球迷失望。)",
     "syl": "dis·ap·point",
-    "root": "dis-(否定)+appoint(指定) → 未能如愿 → 使失望"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "否定"
+        },
+        {
+          "type": "词",
+          "text": "appoint",
+          "meaning": "指定"
+        }
+      ],
+      "summary": "dis- 否定 + appoint 指定 ⇒ 未能如愿 ⇒ 使失望"
+    }
   },
   {
     "rank": 573,
@@ -6897,7 +10384,21 @@
     "ex_label": "例句",
     "ex": "She is a senior student in high school.(她是一名高中高年级学生。)",
     "syl": "sen·ior",
-    "root": "sen(老)+-ior(比较级后缀) → 更年长的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "sen",
+          "meaning": "老"
+        },
+        {
+          "type": "后缀",
+          "text": "-ior",
+          "meaning": "比较级"
+        }
+      ],
+      "summary": "sen 老 + -ior 比较级 ⇒ 更年长的 ⇒ 年长的"
+    }
   },
   {
     "rank": 576,
@@ -6909,7 +10410,21 @@
     "ex_label": "例句",
     "ex": "Tom was absent from school because he was ill.(汤姆因病没来上学。)",
     "syl": "ab·sent",
-    "root": "ab-(离开)+sent(=be,存在) → 离开不在 → 缺席的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ab-",
+          "meaning": "离开"
+        },
+        {
+          "type": "词根",
+          "text": "sent",
+          "meaning": "存在"
+        }
+      ],
+      "summary": "ab- 离开 + sent 存在 ⇒ 离开不在 ⇒ 缺席的"
+    }
   },
   {
     "rank": 577,
@@ -6921,7 +10436,21 @@
     "ex_label": "例句",
     "ex": "Physical exercise is important for young students.(体育锻炼对年轻学生很重要。)",
     "syl": "phys·i·cal",
-    "root": "phys(自然；身体)+-ical(形容词后缀) → 身体的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "phys",
+          "meaning": "自然；身体"
+        },
+        {
+          "type": "后缀",
+          "text": "-ical",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "phys 身体 + -ical 形容词 ⇒ 身体的；物理的"
+    }
   },
   {
     "rank": 578,
@@ -6957,7 +10486,21 @@
     "ex_label": "例句",
     "ex": "The school has high standards for its students.(这所学校对学生有很高的标准。)",
     "syl": "stan·dard",
-    "root": "stand(站立)+-ard(名词后缀) → 立起来的旗帜 → 标准"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "stand",
+          "meaning": "站立"
+        },
+        {
+          "type": "后缀",
+          "text": "-ard",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "stand 站立 + -ard 名词 ⇒ 立起来的旗帜 ⇒ 标准"
+    }
   },
   {
     "rank": 581,
@@ -6969,7 +10512,21 @@
     "ex_label": "例句",
     "ex": "The director of the movie won many awards.(这部电影的导演获得了许多奖项。)",
     "syl": "di·rec·tor",
-    "root": "direct(指导)+-or(人) → 指导者 → 导演"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "direct",
+          "meaning": "指导"
+        },
+        {
+          "type": "后缀",
+          "text": "-or",
+          "meaning": "人"
+        }
+      ],
+      "summary": "direct 指导 + -or 人 ⇒ 指导者 ⇒ 导演；主管"
+    }
   },
   {
     "rank": 582,
@@ -6993,7 +10550,26 @@
     "ex_label": "例句",
     "ex": "We learn about different countries in geography class.(我们在地理课上了解不同的国家。)",
     "syl": "ge·og·ra·phy",
-    "root": "geo(地球)+graph(写；描述)+-y → 描述地球 → 地理"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "geo-",
+          "meaning": "地球"
+        },
+        {
+          "type": "词根",
+          "text": "graph",
+          "meaning": "写；描述"
+        },
+        {
+          "type": "后缀",
+          "text": "-y",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "geo- 地球 + graph 描述 + -y 名词 ⇒ 描述地球 ⇒ 地理"
+    }
   },
   {
     "rank": 584,
@@ -7017,7 +10593,26 @@
     "ex_label": "例句",
     "ex": "They moved into a new apartment near the school.(他们搬进了学校附近的一套新公寓。)",
     "syl": "a·part·ment",
-    "root": "a-+part(分开)+-ment(名词后缀) → 分开的房间 → 公寓"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "a-",
+          "meaning": "加强"
+        },
+        {
+          "type": "词",
+          "text": "part",
+          "meaning": "分开"
+        },
+        {
+          "type": "后缀",
+          "text": "-ment",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "a- 加强 + part 分开 + -ment 名词 ⇒ 分隔开的房间 ⇒ 公寓"
+    }
   },
   {
     "rank": 586,
@@ -7029,7 +10624,21 @@
     "ex_label": "例句",
     "ex": "You need a passport to travel to another country.(你需要护照才能去另一个国家旅行。)",
     "syl": "pass·port",
-    "root": "pass(通过)+port(港口) → 通过港口的凭证 → 护照"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "pass",
+          "meaning": "通过"
+        },
+        {
+          "type": "词",
+          "text": "port",
+          "meaning": "港口"
+        }
+      ],
+      "summary": "pass 通过 + port 港口 ⇒ 通过港口的凭证 ⇒ 护照"
+    }
   },
   {
     "rank": 587,
@@ -7041,7 +10650,21 @@
     "ex_label": "例句",
     "ex": "The team showed great spirit during the competition.(团队在比赛中展现了伟大的精神。)",
     "syl": "spir·it",
-    "root": "spir(呼吸)+-it → 呼吸 → 生命力 → 精神"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "spir",
+          "meaning": "呼吸"
+        },
+        {
+          "type": "后缀",
+          "text": "-it",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "spir 呼吸 + -it 名词 ⇒ 呼吸 ⇒ 生命力 ⇒ 精神"
+    }
   },
   {
     "rank": 588,
@@ -7101,7 +10724,26 @@
     "ex_label": "例句",
     "ex": "He apologized to his friend for being late.(他因为迟到向朋友道歉。)",
     "syl": "a·pol·o·gize",
-    "root": "apo-(远离)+log(说)+-ize(动词后缀) → 说开去 → 道歉"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "apo-",
+          "meaning": "远离"
+        },
+        {
+          "type": "词根",
+          "text": "log",
+          "meaning": "说"
+        },
+        {
+          "type": "后缀",
+          "text": "-ize",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "apo- 远离 + log 说 + -ize 动词 ⇒ 说开去 ⇒ 道歉"
+    }
   },
   {
     "rank": 593,
@@ -7113,7 +10755,26 @@
     "ex_label": "例句",
     "ex": "Please separate the waste into different groups.(请把垃圾分成不同的类别。)",
     "syl": "sep·a·rate",
-    "root": "se-(分开)+par(准备)+-ate → 分开准备 → 分开"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "se-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "par",
+          "meaning": "准备"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "se- 分开 + par 准备 + -ate 动词 ⇒ 分开准备 ⇒ 分开"
+    }
   },
   {
     "rank": 594,
@@ -7125,7 +10786,21 @@
     "ex_label": "例句",
     "ex": "She was chosen as the monitor of our class.(她被选为我们班的班长。)",
     "syl": "mon·i·tor",
-    "root": "mon(提醒)+-itor(人/物) → 提醒者 → 监视者"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "mon",
+          "meaning": "提醒"
+        },
+        {
+          "type": "后缀",
+          "text": "-itor",
+          "meaning": "人/物"
+        }
+      ],
+      "summary": "mon 提醒 + -itor 人/物 ⇒ 提醒者 ⇒ 监视器；班长"
+    }
   },
   {
     "rank": 595,
@@ -7137,7 +10812,26 @@
     "ex_label": "例句",
     "ex": "Parents should educate their children to be kind and honest.(父母应该教育孩子做善良诚实的人。)",
     "syl": "ed·u·cate",
-    "root": "e-(出)+duc(引导)+-ate(动词后缀) → 引导出来 → 教育"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "e-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "duc",
+          "meaning": "引导"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "e- 出 + duc 引导 + -ate 动词 ⇒ 引导出来 ⇒ 教育"
+    }
   },
   {
     "rank": 596,
@@ -7173,7 +10867,21 @@
     "ex_label": "例句",
     "ex": "This is a private matter and I don't want to talk about it.(这是私事，我不想谈论。)",
     "syl": "pri·vate",
-    "root": "priv(个人的)+-ate(形容词后缀) → 私人的"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "priv",
+          "meaning": "个人的"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "priv 个人的 + -ate 形容词 ⇒ 私人的"
+    }
   },
   {
     "rank": 599,
@@ -7185,7 +10893,21 @@
     "ex_label": "例句",
     "ex": "She won first prize in the English speech contest.(她在英语演讲比赛中获得了一等奖。)",
     "syl": "con·test",
-    "root": "con-(共同)+test(证明) → 共同证明实力 → 竞赛"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "con-",
+          "meaning": "共同"
+        },
+        {
+          "type": "词根",
+          "text": "test",
+          "meaning": "证明"
+        }
+      ],
+      "summary": "con- 共同 + test 证明 ⇒ 共同证明实力 ⇒ 竞赛"
+    }
   },
   {
     "rank": 600,
@@ -7197,7 +10919,16 @@
     "ex_label": "例句",
     "ex": "Press the button to turn on the machine.(按下按钮来启动机器。)",
     "syl": "press",
-    "root": "press(压) → 按压"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "press",
+          "meaning": "压"
+        }
+      ],
+      "summary": "press 压 ⇒ 按压；压力"
+    }
   },
   {
     "rank": 601,
@@ -7209,7 +10940,21 @@
     "ex_label": "例句",
     "ex": "The car industry is very important to the country's economy.(汽车工业对国家经济非常重要。)",
     "syl": "in·dus·try",
-    "root": "indu-(在内)+stry(=struct,建造) → 在内部建造 → 工业"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "indu-",
+          "meaning": "在内"
+        },
+        {
+          "type": "词根",
+          "text": "stry",
+          "meaning": "建造"
+        }
+      ],
+      "summary": "indu- 在内 + stry 建造 ⇒ 在内部建造 ⇒ 工业；勤勉"
+    }
   },
   {
     "rank": 602,
@@ -7269,7 +11014,21 @@
     "ex_label": "例句",
     "ex": "I need to see a dentist because my tooth hurts.(我需要去看牙医，因为我牙疼。)",
     "syl": "den·tist",
-    "root": "dent- = tooth 牙齿"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "dent-",
+          "meaning": "牙齿"
+        },
+        {
+          "type": "后缀",
+          "text": "-ist",
+          "meaning": "人"
+        }
+      ],
+      "summary": "dent- 牙齿 + -ist 人 ⇒ 治牙的人 ⇒ 牙医"
+    }
   },
   {
     "rank": 607,
@@ -7317,7 +11076,16 @@
     "ex_label": "例句",
     "ex": "My father is fixing the broken chair.(我爸爸正在修理那把坏椅子。)",
     "syl": "fix",
-    "root": "fix- = fasten 固定"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "fix-",
+          "meaning": "固定"
+        }
+      ],
+      "summary": "fix- 固定 ⇒ 使固定 ⇒ 修理；安装"
+    }
   },
   {
     "rank": 611,
@@ -7449,7 +11217,21 @@
     "ex_label": "例句",
     "ex": "The trader sells fruit and vegetables at the market.(这个商人在市场上卖水果和蔬菜。)",
     "syl": "trad·er",
-    "root": "trade + -er 做…的人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "trade",
+          "meaning": "贸易"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "做…的人"
+        }
+      ],
+      "summary": "trade 贸易 + -er 做…的人 ⇒ 做贸易的人 ⇒ 商人"
+    }
   },
   {
     "rank": 622,
@@ -7473,7 +11255,16 @@
     "ex_label": "例句",
     "ex": "We need to measure the length of this table.(我们需要测量这张桌子的长度。)",
     "syl": "meas·ure",
-    "root": "mens-/meas- = measure 测量"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "meas-",
+          "meaning": "测量"
+        }
+      ],
+      "summary": "meas- 测量 ⇒ 测量；措施"
+    }
   },
   {
     "rank": 624,
@@ -7485,7 +11276,21 @@
     "ex_label": "例句",
     "ex": "Can you pronounce this word for me?(你能帮我读一下这个单词吗？)",
     "syl": "pro·nounce",
-    "root": "pro- 向前 + nounc- = declare 宣告"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "pro-",
+          "meaning": "向前"
+        },
+        {
+          "type": "词根",
+          "text": "nounc-",
+          "meaning": "宣告"
+        }
+      ],
+      "summary": "pro- 向前 + nounc- 宣告 ⇒ 向外宣读 ⇒ 发音"
+    }
   },
   {
     "rank": 625,
@@ -7497,7 +11302,26 @@
     "ex_label": "例句",
     "ex": "I didn't recognize her because she had changed a lot.(我没认出她，因为她变化很大。)",
     "syl": "rec·og·nize",
-    "root": "re- 再 + cogn- = know 知道"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "cogn-",
+          "meaning": "知道"
+        },
+        {
+          "type": "后缀",
+          "text": "-ize",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "re- 再 + cogn- 知道 + -ize 动词 ⇒ 再次认出 ⇒ 认出；承认"
+    }
   },
   {
     "rank": 626,
@@ -7509,7 +11333,21 @@
     "ex_label": "例句",
     "ex": "We decorated the classroom with flowers and balloons.(我们用鲜花和气球装饰了教室。)",
     "syl": "dec·o·rate",
-    "root": "decor- = beauty 美丽 + -ate 动词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "decor-",
+          "meaning": "美丽"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "decor- 美丽 + -ate 动词 ⇒ 使变美 ⇒ 装饰"
+    }
   },
   {
     "rank": 627,
@@ -7521,7 +11359,21 @@
     "ex_label": "例句",
     "ex": "Is there a direct flight from Beijing to London?(有从北京到伦敦的直飞航班吗？)",
     "syl": "di·rect",
-    "root": "di- = apart + rect- = straight 直的"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "di-",
+          "meaning": "分开"
+        },
+        {
+          "type": "词根",
+          "text": "rect-",
+          "meaning": "直的"
+        }
+      ],
+      "summary": "di- 分开 + rect- 直的 ⇒ 指向正前方 ⇒ 直接的；指导"
+    }
   },
   {
     "rank": 628,
@@ -7545,7 +11397,21 @@
     "ex_label": "例句",
     "ex": "Do you know the exact time of the meeting?(你知道会议的确切时间吗？)",
     "syl": "ex·act",
-    "root": "ex- 出 + act- = drive 驱使"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "ex-",
+          "meaning": "出"
+        },
+        {
+          "type": "词根",
+          "text": "act-",
+          "meaning": "驱使"
+        }
+      ],
+      "summary": "ex- 出 + act- 驱使 ⇒ 称量准确 ⇒ 精确的"
+    }
   },
   {
     "rank": 630,
@@ -7557,7 +11423,21 @@
     "ex_label": "例句",
     "ex": "Most students have a digital watch these days.(现在大多数学生都有一块电子手表。)",
     "syl": "dig·i·tal",
-    "root": "digit- = finger/number 手指/数字 + -al 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "digit-",
+          "meaning": "手指/数字"
+        },
+        {
+          "type": "后缀",
+          "text": "-al",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "digit- 数字 + -al 形容词 ⇒ 用数字表示的 ⇒ 数字的"
+    }
   },
   {
     "rank": 631,
@@ -7593,7 +11473,21 @@
     "ex_label": "例句",
     "ex": "What is the best means of transport in your city?(在你的城市里最好的交通方式是什么？)",
     "syl": "trans·port",
-    "root": "trans- 跨越 + port- = carry 搬运"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "trans-",
+          "meaning": "跨越"
+        },
+        {
+          "type": "词根",
+          "text": "port-",
+          "meaning": "搬运"
+        }
+      ],
+      "summary": "trans- 跨越 + port- 搬运 ⇒ 搬运到别处 ⇒ 运输"
+    }
   },
   {
     "rank": 634,
@@ -7605,7 +11499,21 @@
     "ex_label": "例句",
     "ex": "The teacher asked for silence before the exam began.(考试开始前老师要求保持安静。)",
     "syl": "si·lence",
-    "root": "sil- = silent 沉默 + -ence 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "sil-",
+          "meaning": "沉默"
+        },
+        {
+          "type": "后缀",
+          "text": "-ence",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "sil- 沉默 + -ence 名词 ⇒ 寂静"
+    }
   },
   {
     "rank": 635,
@@ -7629,7 +11537,21 @@
     "ex_label": "例句",
     "ex": "English is the official language of many countries.(英语是许多国家的官方语言。)",
     "syl": "of·fi·cial",
-    "root": "offic- = work 工作 + -ial 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "offic-",
+          "meaning": "工作"
+        },
+        {
+          "type": "后缀",
+          "text": "-ial",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "offic- 工作 + -ial 形容词 ⇒ 公职的 ⇒ 官方的；官员"
+    }
   },
   {
     "rank": 637,
@@ -7641,7 +11563,21 @@
     "ex_label": "例句",
     "ex": "Please find a partner and practice the dialogue.(请找一个搭档练习这段对话。)",
     "syl": "part·ner",
-    "root": "part- = part 部分 + -ner 人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "part",
+          "meaning": "部分"
+        },
+        {
+          "type": "后缀",
+          "text": "-ner",
+          "meaning": "人"
+        }
+      ],
+      "summary": "part 部分 + -ner 人 ⇒ 分担的人 ⇒ 伙伴"
+    }
   },
   {
     "rank": 638,
@@ -7653,7 +11589,21 @@
     "ex_label": "例句",
     "ex": "We must find a solution to this problem.(我们必须找到这个问题的解决办法。)",
     "syl": "so·lu·tion",
-    "root": "solut- = loosen 解开 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "solut-",
+          "meaning": "解开"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "solut- 解开 + -ion 名词 ⇒ 解开难题 ⇒ 解决办法；溶液"
+    }
   },
   {
     "rank": 639,
@@ -7677,7 +11627,21 @@
     "ex_label": "例句",
     "ex": "The team celebrated their victory in the final game.(球队庆祝他们在决赛中的胜利。)",
     "syl": "vic·to·ry",
-    "root": "vict- = conquer 征服 + -ory 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "vict-",
+          "meaning": "征服"
+        },
+        {
+          "type": "后缀",
+          "text": "-ory",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "vict- 征服 + -ory 名词 ⇒ 征服对手 ⇒ 胜利"
+    }
   },
   {
     "rank": 641,
@@ -7701,7 +11665,21 @@
     "ex_label": "例句",
     "ex": "Can you show me the position of our school on the map?(你能在地图上指出我们学校的位置吗？)",
     "syl": "po·si·tion",
-    "root": "posit- = place 放置 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "posit-",
+          "meaning": "放置"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "posit- 放置 + -ion 名词 ⇒ 所放的地方 ⇒ 位置"
+    }
   },
   {
     "rank": 643,
@@ -7725,7 +11703,16 @@
     "ex_label": "例句",
     "ex": "She wants to become a professional athlete when she grows up.(她长大后想成为一名职业运动员。)",
     "syl": "ath·lete",
-    "root": "athl- = contest 竞赛"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "athl-",
+          "meaning": "竞赛"
+        }
+      ],
+      "summary": "athl- 竞赛 ⇒ 参加竞赛的人 ⇒ 运动员"
+    }
   },
   {
     "rank": 645,
@@ -7749,7 +11736,21 @@
     "ex_label": "例句",
     "ex": "Do you know how to operate this machine?(你知道如何操作这台机器吗？)",
     "syl": "op·er·ate",
-    "root": "oper- = work 工作 + -ate 动词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "oper-",
+          "meaning": "工作"
+        },
+        {
+          "type": "后缀",
+          "text": "-ate",
+          "meaning": "动词"
+        }
+      ],
+      "summary": "oper- 工作 + -ate 动词 ⇒ 使运转 ⇒ 操作；手术"
+    }
   },
   {
     "rank": 647,
@@ -7785,7 +11786,21 @@
     "ex_label": "例句",
     "ex": "Hot pot is a typical Chinese food in winter.(火锅是中国冬天的一道典型美食。)",
     "syl": "typ·i·cal",
-    "root": "typ- = type 类型 + -ical 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "typ-",
+          "meaning": "类型"
+        },
+        {
+          "type": "后缀",
+          "text": "-ical",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "typ- 类型 + -ical 形容词 ⇒ 代表某类型的 ⇒ 典型的"
+    }
   },
   {
     "rank": 650,
@@ -7809,7 +11824,21 @@
     "ex_label": "例句",
     "ex": "It was just an ordinary day, nothing special happened.(那只是普通的一天，没有什么特别的事发生。)",
     "syl": "or·di·nar·y",
-    "root": "ordin- = order 秩序 + -ary 形容词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "ordin-",
+          "meaning": "秩序"
+        },
+        {
+          "type": "后缀",
+          "text": "-ary",
+          "meaning": "形容词"
+        }
+      ],
+      "summary": "ordin- 秩序 + -ary 形容词 ⇒ 合乎常规的 ⇒ 普通的"
+    }
   },
   {
     "rank": 652,
@@ -7833,7 +11862,26 @@
     "ex_label": "例句",
     "ex": "The discovery of fire changed human history.(火的发现改变了人类历史。)",
     "syl": "dis·cov·er·y",
-    "root": "dis- 去除 + cover 覆盖 + -y 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "去除"
+        },
+        {
+          "type": "词",
+          "text": "cover",
+          "meaning": "覆盖"
+        },
+        {
+          "type": "后缀",
+          "text": "-y",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "dis- 去除 + cover 覆盖 + -y 名词 ⇒ 揭开盖子 ⇒ 发现"
+    }
   },
   {
     "rank": 654,
@@ -7845,7 +11893,26 @@
     "ex_label": "例句",
     "ex": "What is the relation between these two events?(这两个事件之间有什么关系？)",
     "syl": "re·la·tion",
-    "root": "re- 回 + lat- = carry 携带 + -ion 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "lat-",
+          "meaning": "携带"
+        },
+        {
+          "type": "后缀",
+          "text": "-ion",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "re- 回 + lat- 携带 + -ion 名词 ⇒ 相互联系 ⇒ 关系"
+    }
   },
   {
     "rank": 655,
@@ -7881,7 +11948,16 @@
     "ex_label": "例句",
     "ex": "The four seasons form a natural cycle every year.(四季每年形成一个自然循环。)",
     "syl": "cy·cle",
-    "root": "cycl- = circle 圆/环"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "cycl-",
+          "meaning": "圆/环"
+        }
+      ],
+      "summary": "cycl- 圆/环 ⇒ 循环；自行车"
+    }
   },
   {
     "rank": 658,
@@ -7905,7 +11981,16 @@
     "ex_label": "例句",
     "ex": "She went to the clinic to see a doctor this morning.(她今天早上去诊所看了医生。)",
     "syl": "clin·ic",
-    "root": "clin- = bed 床（病床旁诊治）"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "clin-",
+          "meaning": "床"
+        }
+      ],
+      "summary": "clin- 床 ⇒ 病床旁诊治 ⇒ 诊所"
+    }
   },
   {
     "rank": 660,
@@ -7941,7 +12026,21 @@
     "ex_label": "例句",
     "ex": "He made a request to leave school early today.(他请求今天早点离校。)",
     "syl": "re·quest",
-    "root": "re- 再 + quest- = seek 寻求"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "再"
+        },
+        {
+          "type": "词根",
+          "text": "quest-",
+          "meaning": "寻求"
+        }
+      ],
+      "summary": "re- 再 + quest- 寻求 ⇒ 再三寻求 ⇒ 请求"
+    }
   },
   {
     "rank": 663,
@@ -7989,7 +12088,21 @@
     "ex_label": "例句",
     "ex": "Please inform your parents about the school meeting.(请通知你的父母关于学校会议的事。)",
     "syl": "in·form",
-    "root": "in- 进入 + form- = shape 形成"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "in-",
+          "meaning": "进入"
+        },
+        {
+          "type": "词根",
+          "text": "form-",
+          "meaning": "形成"
+        }
+      ],
+      "summary": "in- 进入 + form- 形成 ⇒ 在脑中成形 ⇒ 通知"
+    }
   },
   {
     "rank": 667,
@@ -8025,7 +12138,26 @@
     "ex_label": "例句",
     "ex": "We went sightseeing in Beijing during the holiday.(假期里我们去北京观光了。)",
     "syl": "sight·see·ing",
-    "root": "sight 景象 + see 看 + -ing"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "sight",
+          "meaning": "景象"
+        },
+        {
+          "type": "词",
+          "text": "see",
+          "meaning": "看"
+        },
+        {
+          "type": "后缀",
+          "text": "-ing",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "sight 景象 + see 看 + -ing 名词 ⇒ 观看景象 ⇒ 观光"
+    }
   },
   {
     "rank": 670,
@@ -8049,7 +12181,21 @@
     "ex_label": "例句",
     "ex": "The secretary answered the phone and took a message.(秘书接了电话并记下了留言。)",
     "syl": "sec·re·tar·y",
-    "root": "secret- = secret 秘密 + -ary 人"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "secret-",
+          "meaning": "秘密"
+        },
+        {
+          "type": "后缀",
+          "text": "-ary",
+          "meaning": "人"
+        }
+      ],
+      "summary": "secret- 秘密 + -ary 人 ⇒ 掌管机密的人 ⇒ 秘书"
+    }
   },
   {
     "rank": 672,
@@ -8061,7 +12207,21 @@
     "ex_label": "例句",
     "ex": "The location of the new library is near the park.(新图书馆的位置在公园附近。)",
     "syl": "lo·ca·tion",
-    "root": "loc- = place 地方 + -ation 名词后缀"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "loc-",
+          "meaning": "地方"
+        },
+        {
+          "type": "后缀",
+          "text": "-ation",
+          "meaning": "名词"
+        }
+      ],
+      "summary": "loc- 地方 + -ation 名词 ⇒ 所在地方 ⇒ 位置"
+    }
   },
   {
     "rank": 673,
@@ -8169,7 +12329,21 @@
     "ex_label": "例句",
     "ex": "Please don't disturb me while I'm studying.(我学习的时候请不要打扰我。)",
     "syl": "dis·turb",
-    "root": "dis- 分离 + turb- = confusion 混乱"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "dis-",
+          "meaning": "分离"
+        },
+        {
+          "type": "词根",
+          "text": "turb-",
+          "meaning": "混乱"
+        }
+      ],
+      "summary": "dis- 分离 + turb- 混乱 ⇒ 搅乱 ⇒ 打扰"
+    }
   },
   {
     "rank": 682,
@@ -8181,7 +12355,21 @@
     "ex_label": "例句",
     "ex": "She overcame many difficulties and finally succeeded.(她克服了许多困难，最终成功了。)",
     "syl": "o·ver·come",
-    "root": "over- 超越 + come 来"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "over-",
+          "meaning": "超越"
+        },
+        {
+          "type": "词",
+          "text": "come",
+          "meaning": "来"
+        }
+      ],
+      "summary": "over- 超越 + come 来 ⇒ 越过障碍 ⇒ 克服"
+    }
   },
   {
     "rank": 683,
@@ -8193,7 +12381,21 @@
     "ex_label": "例句",
     "ex": "Hard work will bring its own reward in the end.(努力工作最终会带来回报。)",
     "syl": "re·ward",
-    "root": "re- 回 + ward- = watch 看"
+    "root": {
+      "parts": [
+        {
+          "type": "前缀",
+          "text": "re-",
+          "meaning": "回"
+        },
+        {
+          "type": "词根",
+          "text": "ward-",
+          "meaning": "看"
+        }
+      ],
+      "summary": "re- 回 + ward- 看 ⇒ 回头关照 ⇒ 报答；奖赏"
+    }
   },
   {
     "rank": 684,
@@ -8205,7 +12407,21 @@
     "ex_label": "例句",
     "ex": "In old times, rich families usually had many servants.(在古代，富人家庭通常有很多仆人。)",
     "syl": "ser·vant",
-    "root": "serv- = serve 服务 + -ant 人"
+    "root": {
+      "parts": [
+        {
+          "type": "词根",
+          "text": "serv-",
+          "meaning": "服务"
+        },
+        {
+          "type": "后缀",
+          "text": "-ant",
+          "meaning": "人"
+        }
+      ],
+      "summary": "serv- 服务 + -ant 人 ⇒ 服务的人 ⇒ 仆人"
+    }
   },
   {
     "rank": 685,
@@ -8217,7 +12433,21 @@
     "ex_label": "例句",
     "ex": "The prisoner was set free after twenty years.(这名囚犯在二十年后被释放了。)",
     "syl": "pris·on·er",
-    "root": "prison 监狱 + -er 人"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "prison",
+          "meaning": "监狱"
+        },
+        {
+          "type": "后缀",
+          "text": "-er",
+          "meaning": "人"
+        }
+      ],
+      "summary": "prison 监狱 + -er 人 ⇒ 监狱里的人 ⇒ 囚犯"
+    }
   },
   {
     "rank": 686,
@@ -8241,7 +12471,21 @@
     "ex_label": "例句",
     "ex": "The news made the headlines in all the newspapers.(这条新闻上了所有报纸的头条。)",
     "syl": "head·line",
-    "root": "head 头 + line 行"
+    "root": {
+      "parts": [
+        {
+          "type": "词",
+          "text": "head",
+          "meaning": "头"
+        },
+        {
+          "type": "词",
+          "text": "line",
+          "meaning": "行"
+        }
+      ],
+      "summary": "head 头 + line 行 ⇒ 最上面的一行 ⇒ 标题"
+    }
   },
   {
     "rank": 688,

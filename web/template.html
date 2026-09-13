@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="__APP_TITLE__">
-<meta name="theme-color" content="#1f5fa8">
+<meta name="theme-color" content="#1a1a1a">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <title>__PAGE_TITLE__</title>
@@ -15,7 +15,7 @@
   :root{
     --bg:#ffffff; --card:#ffffff; --ink:#1a1a1a; --sub:#555555;
     --gray:#8a8a8a; --blue:#1f5fa8; --hair:rgba(0,0,0,.08);
-    --mark:#8a8a8a; --panel:#f4f6f9;
+    --mark:#8a8a8a; --panel:#f4f6f9; --fill:#3d3d3d;
     --fs:1; --gap:20px; --padh:14px;
   }
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -121,9 +121,7 @@
     background:var(--card); border:1px solid var(--hair); border-radius:23px;
     display:none; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(0,0,0,.18); }
   #wheelV input{ writing-mode:vertical-lr; -webkit-appearance:slider-vertical; width:22px; height:90%; }
-  .wlabel{ text-align:center; font-size:12px; color:var(--sub); margin-bottom:6px;
-    font-variant-numeric:tabular-nums; }
-  input[type=range]{ accent-color:var(--blue); }
+  input[type=range]{ accent-color:var(--fill); }
 
   /* ---------- settings ---------- */
   #settings{ position:fixed; inset:0; background:var(--bg); z-index:50;
@@ -143,10 +141,10 @@
   .seg{ display:flex; border:1px solid var(--blue); border-radius:9px; overflow:hidden; flex-wrap:wrap; }
   .seg button{ border:0; background:var(--card); color:var(--blue);
     padding:8px 12px; font-size:13px; cursor:pointer; }
-  .seg button.on{ background:var(--blue); color:#fff; }
+  .seg button.on{ background:var(--fill); color:#fff; }
   .switch{ width:52px; height:30px; border-radius:16px; background:#c8ccd2;
     position:relative; cursor:pointer; transition:background .2s; flex:0 0 auto; }
-  .switch.on{ background:var(--blue); }
+  .switch.on{ background:var(--fill); }
   .switch::after{ content:""; position:absolute; top:3px; left:3px; width:24px; height:24px;
     border-radius:50%; background:#fff; transition:left .2s; }
   .switch.on::after{ left:25px; }
@@ -161,7 +159,7 @@
   .hexwrap{ display:flex; gap:8px; align-items:center; margin-top:8px; width:100%; }
   .hexwrap input{ flex:1; max-width:170px; padding:8px 10px; font-size:13px;
     border:1px solid var(--hair); border-radius:8px; background:var(--card); color:var(--ink); }
-  .hexwrap button{ padding:8px 14px; border:1px solid var(--blue); background:var(--blue);
+  .hexwrap button{ padding:8px 14px; border:1px solid var(--fill); background:var(--fill);
     color:#fff; border-radius:8px; font-size:13px; cursor:pointer; }
   /* counter-interval chips (added running-total intervals; tap a chip to remove it) */
   .chips{ display:flex; flex-wrap:wrap; gap:6px; width:100%; margin-top:8px; }
@@ -175,7 +173,7 @@
   .poolnums label{ font-size:12px; color:var(--sub); display:flex; align-items:center; gap:6px; }
   .poolnums input{ width:68px; padding:7px 8px; font-size:13px; text-align:center;
     border:1px solid var(--hair); border-radius:8px; background:var(--card); color:var(--ink); }
-  .minibtn{ flex:0 0 auto; padding:9px 16px; border:1px solid var(--blue); background:var(--blue);
+  .minibtn{ flex:0 0 auto; padding:9px 16px; border:1px solid var(--fill); background:var(--fill);
     color:#fff; border-radius:9px; font-size:13px; cursor:pointer; }
   .minibtn:disabled{ opacity:.5; cursor:default; }
   /* update-available accent: the version button turns amber when a new build is waiting */
@@ -198,7 +196,7 @@
   /* fixed at the bottom of the settings overlay so it's always reachable without scrolling.
      Child of #settings (display:none when closed) so it only shows while settings is open. */
   #start{ position:fixed; left:22px; right:22px; bottom:calc(env(safe-area-inset-bottom) + 16px);
-    z-index:60; padding:15px; background:var(--blue); color:#fff;
+    z-index:60; padding:15px; background:var(--fill); color:#fff;
     border:0; border-radius:13px; font-size:17px; font-weight:700; cursor:pointer;
     box-shadow:0 6px 22px rgba(0,0,0,.24); }
   .hintbox{ background:var(--panel); border-radius:10px; padding:12px 14px;
@@ -207,7 +205,7 @@
   /* offline-cache progress: slim bar in settings, matches the accent color */
   .cachebar{ flex:0 0 120px; height:8px; border-radius:5px; background:var(--panel);
     overflow:hidden; border:1px solid var(--hair); }
-  .cachebar i{ display:block; height:100%; width:0; background:var(--blue);
+  .cachebar i{ display:block; height:100%; width:0; background:var(--fill);
     border-radius:5px; transition:width .35s ease; }
   #cache-row.done .cachebar i{ background:#2ea043; }
   /* developer mode: bottom dock (takes real layout space), drag top edge to resize */
@@ -319,6 +317,14 @@
       <button id="hexadd">添加</button>
     </div>
   </div>
+  <div class="row" style="display:block">
+    <div class="lab"><b>主题颜色</b><span>单词标题、开关、按钮的强调色；默认=黑色（深色背景下自动变浅）</span></div>
+    <div class="swatches" id="accents"></div>
+    <div class="hexwrap">
+      <input id="achexinput" type="text" placeholder="#1f5fa8" maxlength="7">
+      <button id="achexadd">添加</button>
+    </div>
+  </div>
 
   <div class="row" style="display:block">
     <div class="lab"><b>多端同步</b><span>两台设备填<b>同一个同步码</b>即可同步「划线」(以最新改动为准) 与「自定义色号列表」；其余设置及当前选中的颜色不同步</span></div>
@@ -350,9 +356,9 @@
     · 点<b>单词</b> → 音节拆分 ⇄ 原词，并发音（美音）<br>
     · 点<b>例句</b> → 朗读整句（Andrew / Brian 双音色）<br>
     · 点词条<b>其他地方</b> → 发音<br>
-    · 点<b>页码</b> → 弹出快速翻页滚轮（再点收起）<br>
+    · 点<b>页码</b> → 弹出快速翻页滑块（拖动跟手；松手按趋势翻页、多拖多翻，回拉超过一成页宽则反悔不动；再点或点别处收起）<br>
     · <b>状态池</b>：只背序号范围内的词，划掉即剔除；剩余到阈值自动往后推进<br>
-    · 设置 / 划线 / 上次位置自动保存
+    · 设置 / 划线 / 自测解锁 / 上次位置自动保存；切后台、重开都不刷新，重新覆盖只在「开始背诵」
   </div>
   <button id="start">开始背诵</button>
 </div>
@@ -371,7 +377,7 @@
   <div id="dev-info">开发者模式：点任意单词发音 —— 橙线=检测到的真起音，绿线=实际起播(起音前留 lead)，红线=播放头</div>
 </div>
 
-<div id="wheelH"><div class="wlabel" id="wlabelH"></div><input type="range" id="rangeH"></div>
+<div id="wheelH"><input type="range" id="rangeH"></div>
 <div id="wheelV"><input type="range" id="rangeV"></div>
 <div id="bar">
   <div id="barnav-l" class="barnav">‹</div>
@@ -424,19 +430,26 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   var state = {
     removeMarked:false, markStyle:"dim", divider:true, mode:"h", accent:"us",
     fontScale:1.0, cols:"auto", spacing:0.35, skipMs:40, exDelay:0,
-    bg:"#ffffff", customColors:[], marks:{}, anchor:1, syncCode:"", dev:false, devH:170,
+    bg:"#ffffff", customColors:[], themeColor:"", customAccents:[], marks:{}, anchor:1, syncCode:"", dev:false, devH:170,
     selftest:false, showEx:true,  // selftest: blank the definition until tapped; showEx: render example lines
     maskExTrans:true,             // self-test sub-option: also mask the example's 中文 translation, revealed together with the card
     exSlow:false,                 // slow example audio (only available when ex_slow audio is embedded/packed)
     counters:[],                  // running-total milestone intervals, e.g. [100,25]; empty = off. 【local】
-    poolMode:false, poolSize:40, poolLow:15, poolMax:0   // Leitner rank ceiling (see ensurePool). 【local】
+    poolMode:false, poolSize:40, poolLow:15, poolMax:0,   // Leitner rank ceiling (see ensurePool). 【local】
+    revealed:{}                   // self-test: ranks already unlocked; survives re-render/relaunch, cleared only by 开始背诵. 【local】
   };
-  try{ var s=JSON.parse(localStorage.getItem(LS)); if(s) Object.assign(state,s); }catch(e){}
+  // _firstRun: no saved state -> land on the settings page. A returning install goes straight
+  // back to the reading view exactly as it was left (masks/marks/position all restored from state).
+  var _firstRun=true;
+  try{ var s=JSON.parse(localStorage.getItem(LS)); if(s){ Object.assign(state,s); _firstRun=false; } }catch(e){}
   // migrate old marks {rank:1} -> {rank:{v,t}} (t=0 so any later change wins)
   if(state.marked){ for(var _r in state.marked){ if(!state.marks[_r]) state.marks[_r]={v:1,t:0}; } delete state.marked; }
   // migrate showMarked(显示) -> removeMarked(去掉): inverse meaning
   if(state.showMarked!==undefined){ state.removeMarked=!state.showMarked; delete state.showMarked; }
   if(!state.marks) state.marks={};
+  if(!state.revealed) state.revealed={};
+  if(typeof state.themeColor!=="string") state.themeColor="";
+  if(!Array.isArray(state.customAccents)) state.customAccents=[];
   if(!Array.isArray(state.counters)) state.counters=[];
   // skip slider reference changed 314 -> 100ms; clamp old out-of-range values
   if(!(state.skipMs>=0 && state.skipMs<=100)) state.skipMs=40;
@@ -481,7 +494,9 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     var h='<div class="entry'+(marked(e.rank)?" marked":"")+'" data-rank="'+e.rank+'" data-word="'+esc(e.word)+'">';
     h+='<div class="headline"><span class="num" data-act="mark">'+e.rank+'.</span> '
       +'<span class="hw" data-act="syl" data-orig="'+esc(e.word)+'" data-syl="'+esc(e.syl||e.word)+'">'+esc(e.word)+'</span></div>';
-    var st=state.selftest, m=st?' mask':"", ma=st?' data-act="reveal"':"";  // self-test masking
+    // self-test masking; an unlocked card (state.revealed) stays unlocked across re-renders
+    // and relaunches — only 开始背诵 re-covers everything.
+    var st=state.selftest && !state.revealed[e.rank], m=st?' mask':"", ma=st?' data-act="reveal"':"";
     if(e.uk||e.us) h+='<div class="ipa">英[/'+esc(e.uk)+'/]&nbsp; 美[/'+esc(e.us)+'/]</div>';
     if(e.def) h+='<div class="def'+m+'"'+ma+'>'+esc(e.def)+'</div>';
     // 词根词缀卡（在例句之上；自测里也一起遮蔽）
@@ -514,7 +529,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   }
 
   // ---- measured pagination (fills a column top-to-bottom like the PDF) ----
-  var pages=[], colW=300, colCount=2;
+  var pages=[], colW=300, colCount=2, layW=0, layH=0;   // layW/layH: the size the current layout was built for
   // marked words are filtered out ONLY here (at paginate time), not via CSS in real time —
   // so "去掉已划掉" takes effect when the settings page is opened/closed (which re-paginates),
   // and marking a word while reading never makes the page reflow under your finger.
@@ -571,6 +586,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     var lay=applyLayout();
     var W=pagesEl.clientWidth, H=pagesEl.clientHeight;
     if(!W||!H) return;
+    layW=W; layH=H;
     if(state.cols==="auto"){
       var target=330*state.fontScale;
       colCount=Math.max(1, Math.round((W-2*lay.padh+lay.gap)/(target+lay.gap)));
@@ -611,7 +627,6 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     }
     pagesEl.innerHTML=html;
     pagesEl.className=state.mode+(state.markStyle==="line"?" markline":"")+(state.divider?"":" nodivider");
-    rangeH.max=rangeV.max=Math.max(0,pages.length-1);
     restoreAnchor(); prefetchCurrent();
   }
 
@@ -640,8 +655,11 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   function updateLabel(){
     var cur=currentPage();
     pagenoEl.textContent=(cur+1)+" / "+pages.length;
-    rangeH.value=rangeV.value=cur;
-    wlabelH.textContent="第 "+(cur+1)+" / "+pages.length+" 页";
+    // 滑块是 0..1000 连续刻度；拖动中不回写，否则会跟手指打架
+    if(!dragging && pages.length>1){
+      var f=Math.round(cur/(pages.length-1)*1000);
+      rangeH.value=rangeV.value=f;
+    }
     return cur;
   }
   var scrollTO;
@@ -915,7 +933,8 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     if(act==="ex"){ speakEx(rank); return; }         // tap the example line -> read it
     if(act==="reveal"){                              // self-test: unlock the card -> reveal ALL masked parts together
       var hid=entry.querySelectorAll(".mask");
-      if(hid.length){ [].forEach.call(hid,function(x){ x.classList.remove("mask"); x.removeAttribute("data-act"); }); return; }
+      if(hid.length){ [].forEach.call(hid,function(x){ x.classList.remove("mask"); x.removeAttribute("data-act"); });
+        state.revealed[rank]=1; save(); return; }    // remember the unlock so no re-render/relaunch re-covers it
       speak(word); return;                           // already revealed -> pronounce
     }
     // clicking the blank strip in front of / around the number also marks
@@ -949,13 +968,55 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     speak(word);
   });
 
-  // ---- wheel ----
+  // ---- 跳页滑块：0..1000 连续刻度，拖动时页面实时跟手；松手按「趋势」定去留 ----
+  // 趋势规则：越过原点朝某个方向拖 → 翻过去，至少 1 页、多拖多翻（0.5~1.5 → 1 页，
+  // 1.5~2.5 → 2 页，以此类推）；但从最远点「回拉」超过 10% 页宽 → 视为反悔，弹回原点页。
+  // 松手后滑块立即落到目标页的刻度上；吸附动画结束后才恢复 scroll-snap（避免先弹回再翻页）。
   var wheelH=document.getElementById("wheelH"), wheelV=document.getElementById("wheelV"),
       rangeH=document.getElementById("rangeH"), rangeV=document.getElementById("rangeV"),
-      wlabelH=document.getElementById("wlabelH");
-  rangeH.min=rangeV.min=0;
-  rangeH.addEventListener("input", function(){ wlabelH.textContent="第 "+(+rangeH.value+1)+" / "+pages.length+" 页"; scrollToPage(+rangeH.value,false); });
-  rangeV.addEventListener("input", function(){ scrollToPage(+rangeV.value,false); });
+      dragging=false, dragOrigin=0, dragSide=0, dragPeak=0;
+  rangeH.min=rangeV.min=0; rangeH.max=rangeV.max=1000;
+  var PULLBACK=0.1;                            // 回拉阈值：10% 页宽
+  function dragBegin(){ dragging=true; dragOrigin=currentPage(); dragSide=0; dragPeak=0; }
+  function dragTrack(r){                       // 跟踪当前侧的最远点（跨过原点则换侧重计）
+    var d=(+r.value/1000)*(pages.length-1)-dragOrigin;
+    var s=d>0?1:d<0?-1:0;
+    if(s!==dragSide){ dragSide=s; dragPeak=0; }
+    if(Math.abs(d)>dragPeak) dragPeak=Math.abs(d);
+    return d;
+  }
+  function dragRelease(r){
+    var pos=(+r.value/1000)*(pages.length-1);
+    var d=pos-dragOrigin, dir=d>0?1:d<0?-1:0, t=dragOrigin;
+    // 回拉量 = 最远点 − 松手位置；不超过 10% 页宽就仍按趋势翻页
+    if(dir!==0 && dragPeak-Math.abs(d)<=PULLBACK)
+      t=dragOrigin + dir*Math.max(1, Math.round(Math.abs(d)));
+    t=Math.max(0, Math.min(pages.length-1, t));
+    if(pages.length>1) r.value=Math.round(t/(pages.length-1)*1000);   // 滑块跟着落到目标页的点
+    scrollToPage(t, true);
+    settleSnap();
+  }
+  function settleSnap(){                       // 平滑动画结束后恢复吸附并同步滑块刻度
+    var done=false;
+    function fin(){ if(done) return; done=true; pagesEl.style.scrollSnapType=""; dragging=false; updateLabel(); }
+    pagesEl.addEventListener("scrollend", fin, {once:true});
+    setTimeout(fin, 500);
+  }
+  rangeH.addEventListener("pointerdown", function(){ dragBegin(); });
+  rangeH.addEventListener("input", function(){
+    if(!dragging) dragBegin();
+    dragTrack(rangeH);
+    pagesEl.style.scrollSnapType="none";               // 拖动期间摘掉吸附，否则程序滚动会被弹回
+    pagesEl.scrollLeft=(+rangeH.value/1000)*(pagesEl.scrollWidth-pagesEl.clientWidth);
+  });
+  rangeH.addEventListener("change", function(){ dragRelease(rangeH); });
+  rangeV.addEventListener("pointerdown", function(){ dragBegin(); });
+  rangeV.addEventListener("input", function(){
+    if(!dragging) dragBegin();
+    dragTrack(rangeV);
+    pagesEl.scrollTop=(+rangeV.value/1000)*(pagesEl.scrollHeight-pagesEl.clientHeight);
+  });
+  rangeV.addEventListener("change", function(){ dragRelease(rangeV); });
   function wheelOpen(){ return wheelH.style.display==="block" || wheelV.style.display==="flex"; }
   function closeWheel(){ wheelH.style.display="none"; wheelV.style.display="none"; }
   pagenoEl.addEventListener("click", function(){
@@ -987,7 +1048,10 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     r.setProperty("--ink",dark?"#e9e9e9":"#1a1a1a");
     r.setProperty("--sub",dark?"#aab0b6":"#555555");
     r.setProperty("--gray",dark?"#9aa0a6":"#8a8a8a");
-    r.setProperty("--blue",dark?"#7fb0e6":"#1f5fa8");
+    r.setProperty("--blue", state.themeColor || (dark?"#e9e9e9":"#1a1a1a"));
+    // --fill 是大面积实底控件（开关/按钮/大按钮）的颜色：默认用柔和深灰，白底下不刺眼；
+    // 用户自选了主题色则文字与控件都用它
+    r.setProperty("--fill", state.themeColor || (dark?"#e9e9e9":"#3d3d3d"));
     r.setProperty("--mark",dark?"#8b9096":"#8a8a8a");
     r.setProperty("--hair",dark?"rgba(255,255,255,.10)":"rgba(0,0,0,.08)");
     r.setProperty("--panel",dark?"rgba(255,255,255,.05)":"#f4f6f9");
@@ -1018,7 +1082,32 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
       swExSlow=document.getElementById("sw-exslow"), rowExSlow=document.getElementById("row-exslow"),
       swDev=document.getElementById("sw-dev"),
       swatchesEl=document.getElementById("swatches"),
-      hexInput=document.getElementById("hexinput"), hexAdd=document.getElementById("hexadd");
+      hexInput=document.getElementById("hexinput"), hexAdd=document.getElementById("hexadd"),
+      accentsEl=document.getElementById("accents"),
+      acHexInput=document.getElementById("achexinput"), acHexAdd=document.getElementById("achexadd");
+
+  var ACCENTS = [
+    {n:"默认", c:""}, {n:"黑", c:"#1a1a1a"}, {n:"蓝", c:"#1f5fa8"},
+    {n:"绿", c:"#2e7d32"}, {n:"红", c:"#b03a2e"}, {n:"紫", c:"#6b4fa1"}
+  ];
+  // 主题色（--blue 强调色）：空串 = 默认黑（深色背景自动变浅灰）；自定义色号只存本地，不同步
+  function renderAccents(){
+    var all=ACCENTS.concat(state.customAccents.map(function(c){ return {n:c,c:c}; }));
+    accentsEl.innerHTML=all.map(function(o){
+      var on = o.c.toLowerCase()===(state.themeColor||"").toLowerCase();
+      var bg = o.c || "linear-gradient(135deg,#1a1a1a 50%,#e9e9e9 50%)";
+      return '<div class="sw'+(on?" on":"")+'" title="'+o.n+'" data-c="'+o.c+'" style="background:'+bg+'"></div>';
+    }).join("");
+  }
+  accentsEl.addEventListener("click", function(ev){ var el=ev.target.closest(".sw"); if(!el) return;
+    state.themeColor=el.dataset.c; applyTheme(state.bg); renderAccents(); save(); });
+  acHexAdd.addEventListener("click", function(){
+    var v=(acHexInput.value||"").trim();
+    if(!/^#?[0-9a-fA-F]{6}$/.test(v)){ acHexInput.value=""; acHexInput.placeholder="色号无效，如 #1f5fa8"; return; }
+    if(v[0]!=="#") v="#"+v; v=v.toLowerCase();
+    if(state.customAccents.indexOf(v)<0 && !ACCENTS.some(function(p){return p.c===v;})) state.customAccents.push(v);
+    state.themeColor=v; applyTheme(state.bg); renderAccents(); acHexInput.value=""; save();
+  });
 
   function renderSwatches(){
     var all=PRESETS.concat(state.customColors.map(function(c){ return {n:c,c:c}; }));
@@ -1067,7 +1156,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     rgExDelay.value=state.exDelay; vExDelay.textContent=state.exDelay+"ms";
     swExSlow.classList.toggle("on",!!state.exSlow);
     swDev.classList.toggle("on",!!state.dev);
-    renderSwatches();
+    renderSwatches(); renderAccents();
   }
   swRemove.addEventListener("click", function(){ state.removeMarked=!state.removeMarked; syncSettings(); save(); });
   // active pool. The ceiling only ever moves FORWARD, so editing 容量/阈值 can never lose
@@ -1119,7 +1208,11 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   rgSkip.addEventListener("input", function(){ state.skipMs=+rgSkip.value; vSkip.textContent=state.skipMs+"ms"; save(); });
   rgExDelay.addEventListener("input", function(){ state.exDelay=+rgExDelay.value; vExDelay.textContent=state.exDelay+"ms"; save(); });
 
-  document.getElementById("start").addEventListener("click", function(){ settingsEl.style.display="none"; paginate(); });
+  // 开始背诵 = the ONE deliberate refresh: re-cover every self-test mask, re-apply 去掉已划掉 /
+  // 状态池 filtering, re-paginate. Nothing else (backgrounding, relaunch, no-op resize, sync pull)
+  // is allowed to do this.
+  document.getElementById("start").addEventListener("click", function(){
+    state.revealed={}; save(); settingsEl.style.display="none"; paginate(); });
   document.getElementById("btn-settings").addEventListener("click", function(){
     syncSettings(); updateCacheUI(); settingsEl.style.display="flex"; wheelH.style.display="none"; wheelV.style.display="none"; });
   // 同义词辨析书：托管版在 docs/synbook.html（SW 预缓存，离线可读）；
@@ -1240,7 +1333,14 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   }
 
   var rzTO;
-  window.addEventListener("resize", function(){ clearTimeout(rzTO); rzTO=setTimeout(function(){ if(settingsEl.style.display==="none") paginate(); }, 200); });
+  window.addEventListener("resize", function(){ clearTimeout(rzTO); rzTO=setTimeout(function(){
+    if(settingsEl.style.display!=="none") return;
+    // iOS/iPadOS fires resize on every background→foreground switch WITHOUT any real size change
+    // (app-switcher snapshots etc.); re-paginating there re-covered masks and dropped marked words.
+    // Only a real size change (rotation, split-view) justifies a rebuild.
+    if(pagesEl.clientWidth===layW && pagesEl.clientHeight===layH) return;
+    paginate();
+  }, 200); });
 
   // ---- multi-device sync (Supabase REST, last-write-wins per word) ----
   // Syncs ONLY: per-word marks (LWW by timestamp) + the custom-color LIST (union).
@@ -1293,7 +1393,14 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
         for(k in rColors){ var hex="#"+k;
           if(state.customColors.indexOf(hex)<0 && !PRESETS.some(function(p){return p.c===hex;})){ state.customColors.push(hex); changed=true; } }
         state.customColors.forEach(function(hex){ var ck=hex.replace("#",""); if(!(ck in rColors)) push.push({code:SYNC.code,kind:"color",item:ck,v:1,t:Date.now()}); });
-        if(changed){ save(); renderSwatches(); if(settingsEl.style.display==="none") paginate(); }
+        if(changed){
+          save(); renderSwatches();
+          if(settingsEl.style.display==="none"){
+            pagesEl.querySelectorAll(".entry[data-rank]").forEach(function(el){
+              el.classList.toggle("marked", !!marked(+el.dataset.rank));
+            });
+          }
+        }
         if(push.length) return api("progress?on_conflict=code,kind,item",
           {method:"POST", headers:{"Prefer":"resolution=merge-duplicates,return=minimal"}, body:JSON.stringify(push)});
       })
@@ -1321,6 +1428,9 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
 
   // init
   applyTheme(state.bg); applyLayout(); syncSettings(); devApply(); paginate(); updateCacheUI();
+  // 老用户冷启动直接回到离开时的背诵页（遮蔽解锁/划线/位置全部由 state 恢复）；
+  // 设置页只剩「点设置按钮」一个入口，「重新覆盖遮蔽 / 过滤划词」只发生在主动点开始背诵时。
+  if(!_firstRun) settingsEl.style.display="none";
   loadPacks();                                   // hosted build: stream the audio in behind the shell
   if(state.syncCode) startSync();
 

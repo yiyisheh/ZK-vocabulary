@@ -4,3 +4,6 @@ __pycache__/
 .venv/
 tmp/
 英语中考单词背诵.html
+
+# 同义词辨析书的单文件副本（scripts/build_synbook.py 产物）；上线用的是 docs/synbook.html
+/synbook.html

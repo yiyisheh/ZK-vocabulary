@@ -30,6 +30,14 @@
 2. **iPad/手机**：Safari 打开上述网址 → 分享 → 添加到主屏幕（PWA 离线可用）
 3. **AirDrop 单文件版**：本地构建后生成 `英语中考单词背诵.html`（~25MB，内含所有音频）
 
+## 同义词辨析书
+
+688 个高频词按同义/近义/易混分为 164 组，逐组讲透区别；从背单词网页设置页第一行进入，PWA 预缓存、离线可读。
+
+- 数据：`中考高频词同义辨析.json`（164 组的目录/索引）+ `synbook_content/G001.md … G164.md`（每组正文）
+- 模板：`web/synbook.html`；构建脚本：`scripts/build_synbook.py`
+- 构建顺序：先 `python3 scripts/build_synbook.py`（产物 `docs/synbook.html` 入库，根目录 `synbook.html` 是单文件伴侣、不入库），再 `python3 scripts/build_html.py --profile zhongkao`（把辨析书计入版本哈希并追加进 SW 预缓存清单）
+
 ## Section 划分
 
 按真题出现次数分为 6 个 Section：
@@ -71,13 +79,17 @@
 ├── make_zhongkao_pdf.py            PDF 生成脚本
 ├── web/                             网页模板（与 CET4 共用）
 │   ├── template.html                网页唯一源文件
+│   ├── synbook.html                 同义词辨析书模板
 │   ├── supabase-config.json         同步配置（publishable key）
 │   └── pwa/                         manifest / sw.js / icons
 ├── scripts/
+│   ├── build_synbook.py             同义词辨析书构建（先于 build_html.py 运行）
 │   ├── build_html.py                注入数据+音频 → 成品 html + docs/
 │   ├── fetch_audio.py               下载有道单词发音
 │   └── fetch_ex_audio.py            edge-tts 合成例句朗读
 ├── 单词表/                           源数据：16 张词表图片（1-16.webp）
+├── 中考高频词同义辨析.json            同义词辨析 164 组（目录/索引数据）
+├── synbook_content/                 辨析书正文 G001.md … G164.md
 ├── intermediate/
 │   ├── entries_full.json            688 词完整词条数据
 │   ├── audio/us/*.mp3               单词美音（688 条）
@@ -89,6 +101,7 @@
 │   └── high_freq_zhongkao.txt       纯文本词表
 ├── docs/                            GitHub Pages 托管目录
 │   ├── index.html                   网页外壳（284KB）
+│   ├── synbook.html                 同义词辨析书（SW 预缓存，离线可读）
 │   ├── audio-us.*.bin               单词音频包（~9MB）
 │   ├── audio-ex.*.bin               例句音频包·正常语速（~10MB）
 │   ├── audio-ex-slow.*.bin          例句音频包·慢速（~13MB）
@@ -102,8 +115,11 @@
 # PDF
 python make_zhongkao_pdf.py
 
+# 同义词辨析书（在 build_html.py 之前运行）
+python3 scripts/build_synbook.py
+
 # 网页（已有音频时只需这一步）
-python scripts/build_html.py
+python scripts/build_html.py --profile zhongkao
 
 # 重新下载音频（断点续传，跳过已存在文件）
 python scripts/fetch_audio.py                                # 有道单词发音

@@ -83,6 +83,7 @@ slim = [{
     "rank": e["rank"], "word": e["word"], "syl": e["syl"],
     "uk": e["uk"], "us": e["us"], "def": e["def"],
     "ex_label": e["ex_label"], "ex": e["ex"], "root": e["root"],
+    "core": e.get("core"), "phr": e.get("phr") or [],
 } for e in DATA]
 
 
@@ -116,6 +117,8 @@ us_items, ex_items = clips("us"), clips("ex")
 ex_slow_items = clips("ex_slow") if (AUD / "ex_slow").is_dir() else []
 cfg = REPO / "web" / "supabase-config.json"
 sync_config = cfg.read_text().strip() if cfg.exists() else "null"
+# 冻结的旧序号表（rank → 单词）：把旧版「按序号存」的本地划线翻译成单词。永不修改
+legacy_v1 = (REPO / "web" / "legacy_rank_v1.json").read_text().strip()
 
 # ---------- shared: build a filled template, given the audio-carrying bits ----------
 def render(audio_us, audio_ex, audio_ex_slow, audio_index):
@@ -127,6 +130,7 @@ def render(audio_us, audio_ex, audio_ex_slow, audio_index):
             .replace("__AUDIO_INDEX__", audio_index)
             .replace("__CACHE_NAME__", CACHE_NAME)
             .replace("__SYNC_CONFIG__", sync_config)
+            .replace("__LEGACY_V1__", legacy_v1)
             .replace("__APP_TITLE__", P["app_title"])
             .replace("__PAGE_TITLE__", P["page_title"])
             .replace("__DESC__", P["desc"])

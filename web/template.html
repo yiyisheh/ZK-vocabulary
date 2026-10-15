@@ -82,6 +82,13 @@
   .root .p{ font-size:calc(8pt*var(--fs)); line-height:1.5; color:var(--gray); }
   .root .p .txt{ font-weight:700; }
   .root .sum{ font-size:calc(8pt*var(--fs)); line-height:1.5; color:var(--gray); margin-top:1px; }
+  /* 核心意象卡：与词根卡同款灰色小字 */
+  .core{ margin-top:2px; padding-left:6px; font-size:calc(8pt*var(--fs)); line-height:1.5; color:var(--gray); }
+  .core .txt{ font-weight:700; }
+  .core .sum{ margin-top:1px; }
+  /* 常见短语行（真题里出现 ≥3 次的固定短语）：同款灰色小字，短语本身加粗 */
+  .phr{ margin-top:2px; padding-left:6px; font-size:calc(8pt*var(--fs)); line-height:1.5; color:var(--gray); }
+  .phr .txt{ font-weight:700; }
 
   /* mark: gray strikethrough through the middle of the number, from the far left
      (before the number) to just after the number's dot — like a Word strikethrough */
@@ -123,13 +130,30 @@
   #wheelV input{ writing-mode:vertical-lr; -webkit-appearance:slider-vertical; width:22px; height:90%; }
   input[type=range]{ accent-color:var(--fill); }
 
-  /* ---------- settings ---------- */
+  /* ---------- main menu + settings (both fullscreen overlays) ---------- */
+  /* 主菜单：每次进入的落地页。设置是它的子页（默认隐藏，打开时盖在菜单上）。 */
+  #menu{ position:fixed; inset:0; background:var(--bg); z-index:40;
+    display:flex; flex-direction:column; padding:0 26px;
+    padding-top:calc(env(safe-area-inset-top) + 30px);
+    padding-bottom:calc(env(safe-area-inset-bottom) + 24px); overflow:auto; }
+  #menu h1{ font-size:24px; color:var(--blue); margin:8px 0 4px; }
+  #menu .desc{ color:var(--sub); font-size:13px; }
+  .mprog{ margin-top:18px; background:var(--panel); border-radius:12px;
+    padding:12px 14px; font-size:13.5px; color:var(--sub); line-height:1.7; }
+  .mprog b{ color:var(--ink); }
+  .mitem{ display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+    background:var(--card); border:1px solid var(--hair); border-radius:13px;
+    padding:14px 16px; margin-bottom:10px; cursor:pointer; color:var(--ink); font-family:inherit; }
+  .mitem:active{ background:var(--panel); }
+  .mitem .mt{ display:block; font-size:16px; font-weight:600; }
+  .mitem .md{ display:block; font-size:12px; color:var(--sub); margin-top:2px; }
+  .mitem .marr{ margin-left:auto; color:var(--gray); font-size:24px; font-weight:300; }
   #settings{ position:fixed; inset:0; background:var(--bg); z-index:50;
-    display:flex; flex-direction:column; padding:0 22px;
-    padding-top:calc(env(safe-area-inset-top) + 18px);
-    padding-bottom:calc(env(safe-area-inset-bottom) + 92px); overflow:auto; }
-  #settings h1{ font-size:22px; color:var(--blue); margin:12px 0 4px; }
-  #settings .desc{ color:var(--sub); font-size:13px; margin-bottom:12px; }
+    display:none; flex-direction:column; padding:0 22px;
+    padding-top:calc(env(safe-area-inset-top) + 12px);
+    padding-bottom:calc(env(safe-area-inset-bottom) + 20px); overflow:auto; }
+  .shead{ display:flex; align-items:center; gap:12px; padding:6px 0 10px; }
+  .shead .stitle{ font-size:18px; font-weight:700; color:var(--blue); }
   .row{ display:flex; align-items:center; padding:13px 2px;
     border-bottom:1px solid var(--hair); gap:12px; flex-wrap:wrap; }
   .row .lab{ flex:1; min-width:140px; }
@@ -193,12 +217,13 @@
   #um-status.err{ color:#c0392b; }
   .umbtns{ display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
   .umbtns .minibtn.ghost{ background:var(--card); color:var(--blue); }
-  /* fixed at the bottom of the settings overlay so it's always reachable without scrolling.
-     Child of #settings (display:none when closed) so it only shows while settings is open. */
-  #start{ position:fixed; left:22px; right:22px; bottom:calc(env(safe-area-inset-bottom) + 16px);
-    z-index:60; padding:15px; background:var(--fill); color:#fff;
-    border:0; border-radius:13px; font-size:17px; font-weight:700; cursor:pointer;
+  /* the main menu's primary action (in-flow big button, not fixed) */
+  #start{ width:100%; margin:26px 0 10px; padding:16px; background:var(--fill); color:#fff;
+    border:0; border-radius:13px; font-size:18px; font-weight:700; cursor:pointer;
     box-shadow:0 6px 22px rgba(0,0,0,.24); }
+  /* 重置：开始背诵下面的次级按钮（描边），唯一的页面内容刷新点 */
+  #reset{ width:100%; margin:0 0 24px; padding:12px; background:transparent; color:var(--blue);
+    border:1.5px solid var(--fill); border-radius:13px; font-size:15px; font-weight:700; cursor:pointer; }
   .hintbox{ background:var(--panel); border-radius:10px; padding:12px 14px;
     font-size:12.5px; color:var(--sub); line-height:1.7; margin-top:10px; }
   .hintbox b{ color:var(--ink); }
@@ -222,22 +247,40 @@
 </head>
 <body>
 
-<div id="settings">
+<!-- 主菜单：每次进入先落在这里；「开始背诵」原样继续，「重置」是唯一的页面内容刷新点 -->
+<div id="menu">
   <h1>__PAGE_TITLE__</h1>
   <div class="desc">__DESC__</div>
+  <div class="mprog" id="menu-progress"></div>
+  <button id="start">开始背诵</button>
+  <button id="reset">重置</button>
+  <button class="mitem" id="btn-synbook">
+    <span><span class="mt">同义词辨析 · 164 组</span><span class="md">688 个高频词按同义/近义/易混分组，逐组讲透区别</span></span>
+    <span class="marr">›</span>
+  </button>
+  <button class="mitem" id="btn-opensettings">
+    <span><span class="mt">设置</span><span class="md">状态池 · 自测 · 显示 · 发音 · 颜色 · 多端同步</span></span>
+    <span class="marr">›</span>
+  </button>
+</div>
 
-  <div class="row">
-    <div class="lab"><b>同义词辨析 · 164 组</b><span>688 个高频词按同义/近义/易混分组，逐组讲透区别；黑白书版式，支持目录跳转与单词检索</span></div>
-    <button class="minibtn" id="btn-synbook">打开</button>
+<div id="settings">
+  <div class="shead">
+    <button class="iconbtn" id="btn-back">‹ 返回</button>
+    <div class="stitle">设置</div>
   </div>
 
   <div class="row">
-    <div class="lab"><b>去掉已经划掉的单词</b><span>开启后，已掌握（划线）的单词会被去掉；不实时移除，每次进出设置页时才重新加载去掉</span></div>
+    <div class="lab"><b>去掉已经划掉的单词</b><span>开启后，已掌握（划线）的单词会被去掉；不实时移除，点主菜单「重置」时才重新加载去掉</span></div>
     <div id="sw-removemarked" class="switch"></div>
   </div>
   <div class="row">
-    <div class="lab"><b>状态池模式（莱特纳）</b><span>只背序号范围内还没划掉的词；划掉=熟练剔除。剩余降到阈值时，范围自动往后推进放新词进来。已掌握按全库总量算，不会归零</span></div>
+    <div class="lab"><b>状态池模式（莱特纳）</b><span>只背序号范围内还没划掉的词；划掉=熟练剔除。剩余降到阈值时，点主菜单「重置」才把范围往后推进放新词进来（不当场刷新）。已掌握按全库总量算，不会归零</span></div>
     <div id="sw-poolmode" class="switch"></div>
+  </div>
+  <div class="row subrow">
+    <div class="lab"><b>池内乱序</b><span>池外的新词仍按序号依次进入；池内的词打乱顺序排列。每次点「重置」重新洗牌</span></div>
+    <div id="sw-shuffle" class="switch"></div>
   </div>
   <div class="row subrow">
     <div class="lab"><b>池大小 / 推进阈值</b><span id="pool-stat">未开启</span></div>
@@ -357,15 +400,14 @@
     · 点<b>例句</b> → 朗读整句（Andrew / Brian 双音色）<br>
     · 点词条<b>其他地方</b> → 发音<br>
     · 点<b>页码</b> → 弹出快速翻页滑块（拖动跟手；松手按趋势翻页、多拖多翻，回拉超过一成页宽则反悔不动；再点或点别处收起）<br>
-    · <b>状态池</b>：只背序号范围内的词，划掉即剔除；剩余到阈值自动往后推进<br>
-    · 设置 / 划线 / 自测解锁 / 上次位置自动保存；切后台、重开都不刷新，重新覆盖只在「开始背诵」
+    · <b>状态池</b>：只背序号范围内的词，划掉即剔除；剩余到阈值后，点「重置」才把范围往后推进（不当场刷新）；可开「池内乱序」<br>
+    · 设置 / 划线 / 自测解锁 / 上次位置自动保存；每次进入先落主菜单。「开始背诵」原样继续上次的页面，页面内容（哪些词、顺序、遮蔽）只在点<b>「重置」</b>时重建
   </div>
-  <button id="start">开始背诵</button>
 </div>
 
 <div id="top">
   <div class="t">__TOP_TITLE__</div><div class="sp"></div>
-  <button class="iconbtn" id="btn-settings">设置</button>
+  <button class="iconbtn" id="btn-settings">菜单</button>
 </div>
 
 <div id="pages"></div>
@@ -416,6 +458,9 @@ window.CACHE_NAME = "__CACHE_NAME__";   // 与 sw.js 同名的缓存桶：音频
 /* 多端同步配置（Supabase，仅可公开的 publishable key）。
    留空(null)则不启用同步——App 仍可本地/离线正常使用。 */
 window.SYNC_CONFIG = __SYNC_CONFIG__;
+/* 冻结的旧序号表：LEGACY_V1[rank-1] = 单词。旧版划线/解锁按 rank 存，靠它翻译成单词（§8.5）。
+   永远对应最初那份 688 词表，词表以后怎么改都不能动它。只用于本地旧存档的迁移，不用于云端 "mark" 行（见 reconcile）。 */
+window.LEGACY_V1 = __LEGACY_V1__;
 </script>
 <script>
 (function(){
@@ -436,18 +481,33 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     exSlow:false,                 // slow example audio (only available when ex_slow audio is embedded/packed)
     counters:[],                  // running-total milestone intervals, e.g. [100,25]; empty = off. 【local】
     poolMode:false, poolSize:40, poolLow:15, poolMax:0,   // Leitner rank ceiling (see ensurePool). 【local】
-    revealed:{}                   // self-test: ranks already unlocked; survives re-render/relaunch, cleared only by 开始背诵. 【local】
+    shuffle:false,                // 池内乱序：pool mode only; the pool is shuffled at 重置, new words still enter by rank. 【local】
+    list:null,                    // the frozen page content: ranks in display order, rebuilt ONLY by 重置 (buildList). 【local】
+    listShuffled:false,           // whether that frozen list was shuffled -> hide rank numbers. 【local】
+    revealed:{},                  // self-test: words already unlocked; survives re-render/relaunch, cleared only by 重置. 【local】
+    keysV:1                       // 1 = marks/revealed keyed by rank (old); 2 = keyed by word (see migrateKeys)
   };
-  // _firstRun: no saved state -> land on the settings page. A returning install goes straight
-  // back to the reading view exactly as it was left (masks/marks/position all restored from state).
-  var _firstRun=true;
-  try{ var s=JSON.parse(localStorage.getItem(LS)); if(s){ Object.assign(state,s); _firstRun=false; } }catch(e){}
+  try{ var s=JSON.parse(localStorage.getItem(LS)); if(s) Object.assign(state,s); }catch(e){}
   // migrate old marks {rank:1} -> {rank:{v,t}} (t=0 so any later change wins)
   if(state.marked){ for(var _r in state.marked){ if(!state.marks[_r]) state.marks[_r]={v:1,t:0}; } delete state.marked; }
   // migrate showMarked(显示) -> removeMarked(去掉): inverse meaning
   if(state.showMarked!==undefined){ state.removeMarked=!state.showMarked; delete state.showMarked; }
   if(!state.marks) state.marks={};
   if(!state.revealed) state.revealed={};
+  // 身份键 rank -> 单词（§8.5）：划线/解锁跟着词走，词表重排或换六级都不会对错词。
+  // 翻译只用冻结的 LEGACY_V1，不用当前 DATA。迁移前把原始存档整份另存一份，永不覆盖。
+  var LEGACY_V1 = window.LEGACY_V1 || [];
+  function legacyWord(rank){ return /^\d+$/.test(String(rank)) ? LEGACY_V1[+rank-1] : undefined; }
+  var _keysMigrated=state.keysV!==2;
+  if(_keysMigrated){
+    try{ if(!localStorage.getItem(LS+"_backup_rankkeys")) localStorage.setItem(LS+"_backup_rankkeys", localStorage.getItem(LS)||"{}"); }catch(e){}
+    var _m={}, _rv={}, _k, _w;
+    for(_k in state.marks){ _w=legacyWord(_k)||_k;
+      if(!_m[_w] || state.marks[_k].t>_m[_w].t) _m[_w]=state.marks[_k]; }
+    for(_k in state.revealed){ _w=legacyWord(_k)||_k; _rv[_w]=1; }
+    state.marks=_m; state.revealed=_rv; state.keysV=2;
+  }
+  function own(o,k){ return Object.prototype.hasOwnProperty.call(o,k); }
   if(typeof state.themeColor!=="string") state.themeColor="";
   if(!Array.isArray(state.customAccents)) state.customAccents=[];
   if(!Array.isArray(state.counters)) state.counters=[];
@@ -464,9 +524,9 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   if(!(state.poolSize>=1)) state.poolSize=40;
   if(!(state.poolLow>=1)) state.poolLow=15;       // 0 would advance by 0 forever
   if(state.poolLow>=state.poolSize) state.poolLow=state.poolSize-1;
-  if(_poolMigrated) save();
+  if(_poolMigrated || _keysMigrated) save();
   function save(){ localStorage.setItem(LS, JSON.stringify(state)); }
-  function marked(rank){ var m=state.marks[rank]; return !!(m && m.v===1); }
+  function marked(word){ var m=own(state.marks,word)&&state.marks[word]; return !!(m && m.v===1); }
 
   var pagesEl=document.getElementById("pages"),
       measEl=document.getElementById("measure"),
@@ -491,14 +551,20 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   }
 
   function entryHTML(e){
-    var h='<div class="entry'+(marked(e.rank)?" marked":"")+'" data-rank="'+e.rank+'" data-word="'+esc(e.word)+'">';
-    h+='<div class="headline"><span class="num" data-act="mark">'+e.rank+'.</span> '
+    var h='<div class="entry'+(marked(e.word)?" marked":"")+'" data-rank="'+e.rank+'" data-word="'+esc(e.word)+'">';
+    // 乱序词表不显示序号（空的 .num 仍留着：划线横线和左侧空白的划词热区照旧）
+    h+='<div class="headline"><span class="num" data-act="mark">'+(state.listShuffled?'</span>':e.rank+'.</span> ')
       +'<span class="hw" data-act="syl" data-orig="'+esc(e.word)+'" data-syl="'+esc(e.syl||e.word)+'">'+esc(e.word)+'</span></div>';
     // self-test masking; an unlocked card (state.revealed) stays unlocked across re-renders
-    // and relaunches — only 开始背诵 re-covers everything.
-    var st=state.selftest && !state.revealed[e.rank], m=st?' mask':"", ma=st?' data-act="reveal"':"";
+    // and relaunches — only 重置 re-covers everything.
+    var st=state.selftest && !own(state.revealed,e.word), m=st?' mask':"", ma=st?' data-act="reveal"':"";
     if(e.uk||e.us) h+='<div class="ipa">英[/'+esc(e.uk)+'/]&nbsp; 美[/'+esc(e.us)+'/]</div>';
     if(e.def) h+='<div class="def'+m+'"'+ma+'>'+esc(e.def)+'</div>';
+    // 核心意象卡（多义小词：一个画面串起各义项；自测里同样遮蔽）
+    if(e.core){
+      h+='<div class="core'+m+'"'+ma+'><div class="p">核心 <span class="txt">'+esc(e.core.image)+'</span></div>'
+        +'<div class="sum">▸ '+esc(e.core.derive)+'</div></div>';
+    }
     // 词根词缀卡（在例句之上；自测里也一起遮蔽）
     if(e.root && e.root.parts && e.root.parts.length){
       h+='<div class="root'+m+'"'+ma+'>';
@@ -507,6 +573,12 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
       });
       if(e.root.summary) h+='<div class="sum">▸ '+esc(e.root.summary)+'</div>';
       h+='</div>';
+    }
+    // 常见短语行（真题出现 ≥3 次，最多 5 条；在核心卡/词根卡之后；自测里随释义一起遮蔽）
+    if(e.phr && e.phr.length){
+      h+='<div class="phr'+m+'"'+ma+'>短语 '+e.phr.map(function(p){
+        return '<span class="txt">'+esc(p.p)+'</span> '+esc(p.zh);
+      }).join("；")+'</div>';
     }
     // 例句放在词根下面；英文常显，中文翻译在自测+子项开时随卡片一起遮蔽/解锁
     if(e.ex && state.showEx){
@@ -530,12 +602,30 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
 
   // ---- measured pagination (fills a column top-to-bottom like the PDF) ----
   var pages=[], colW=300, colCount=2, layW=0, layH=0;   // layW/layH: the size the current layout was built for
-  // marked words are filtered out ONLY here (at paginate time), not via CSS in real time —
-  // so "去掉已划掉" takes effect when the settings page is opened/closed (which re-paginates),
+  // marked words are filtered out ONLY here, and visible() is read ONLY by buildList() (重置) —
+  // so "去掉已划掉" / 状态池 / 乱序 take effect on the next 重置,
   // and marking a word while reading never makes the page reflow under your finger.
   function visible(){
-    if(state.poolMode) return DATA.filter(function(e){ return e.rank<=state.poolMax && !marked(e.rank); });
-    return state.removeMarked ? DATA.filter(function(e){ return !marked(e.rank); }) : DATA;
+    if(state.poolMode) return DATA.filter(function(e){ return e.rank<=state.poolMax && !marked(e.word); });
+    return state.removeMarked ? DATA.filter(function(e){ return !marked(e.word); }) : DATA;
+  }
+  // The page content is a frozen snapshot state.list (ranks in display order). Only 重置 calls
+  // buildList(); paginate() merely lays that same list out again (font / columns / rotation…),
+  // so nothing else can change which words are shown, their order, or re-cover masks.
+  // 池内乱序: the ceiling still advances by rank (new words enter in order), then the whole
+  // pool is Fisher–Yates shuffled.
+  var byRank={};
+  DATA.forEach(function(e){ byRank[e.rank]=e; });
+  function buildList(){
+    ensurePool();
+    var r=visible().map(function(e){ return e.rank; });
+    var sh=!!(state.poolMode && state.shuffle);
+    if(sh)
+      for(var i=r.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), t=r[i]; r[i]=r[j]; r[j]=t; }
+    state.list=r; state.listShuffled=sh; save();      // listShuffled: 冻结时是否乱序（乱序不显示序号）
+  }
+  function listEntries(){
+    return (state.list||[]).map(function(r){ return byRank[r]; }).filter(Boolean);
   }
 
   // ---- Leitner active pool: a RANK CEILING, counted against the whole book ----
@@ -563,7 +653,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     for(var i=0;i<DATA.length;i++){
       var r=DATA[i].rank;
       if(r>state.poolMax) break;
-      if(!marked(r)) n++;
+      if(!marked(DATA[i].word)) n++;
     }
     return n;
   }
@@ -581,8 +671,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     return true;
   }
 
-  function paginate(){
-    ensurePool();                                   // top up the active pool before measuring
+  function paginate(){                              // layout only: re-packs the frozen state.list
     var lay=applyLayout();
     var W=pagesEl.clientWidth, H=pagesEl.clientHeight;
     if(!W||!H) return;
@@ -594,7 +683,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     colCount=Math.max(1, Math.min(6, colCount));
     colW=Math.floor((W-2*lay.padh-(colCount-1)*lay.gap)/colCount);
     var colH=H-14;
-    var list=visible();
+    var list=listEntries();
     computeMilestones(list);
     measEl.style.width=colW+"px";
     measEl.innerHTML=list.map(entryHTML).join("");
@@ -934,7 +1023,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     if(act==="reveal"){                              // self-test: unlock the card -> reveal ALL masked parts together
       var hid=entry.querySelectorAll(".mask");
       if(hid.length){ [].forEach.call(hid,function(x){ x.classList.remove("mask"); x.removeAttribute("data-act"); });
-        state.revealed[rank]=1; save(); return; }    // remember the unlock so no re-render/relaunch re-covers it
+        state.revealed[word]=1; save(); return; }    // remember the unlock so no re-render/relaunch re-covers it
       speak(word); return;                           // already revealed -> pronounce
     }
     // clicking the blank strip in front of / around the number also marks
@@ -944,19 +1033,13 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
         if(ev.clientY<=r.bottom && ev.clientX<r.left) act="mark"; }
     }
     if(act==="mark"){
-      var nv = marked(rank) ? 0 : 1;
-      state.marks[rank] = {v:nv, t:Date.now()};
+      var nv = marked(word) ? 0 : 1;
+      state.marks[word] = {v:nv, t:Date.now()};
       entry.classList.toggle("marked", nv===1); save();
-      syncPushMark(rank);
-      // Pool mode: the ONE place that re-paginates on a mark — hitting the low watermark starts the
-      // next round (survivors + freshly injected words), so it's a deliberate, visible event.
-      if(poolNeedsRefill()){
-        ensurePool();
-        var first=visible()[0]; if(first) state.anchor=first.rank; save();
-        paginate();
-        return;
-      }
-      // otherwise no paginate(): removal is deferred to the next settings open/close (see visible())
+      syncPushMark();
+      // 划词绝不重排页面（不会在手指底下抖）。状态池触到低水位也**不当场刷新**——
+      // 范围推进推迟到下次 buildList()（主菜单点「重置」）；
+      // 主菜单的进度区会提示「待推进」（renderMenu）。
       return;
     }
     if(act==="syl"){
@@ -1058,9 +1141,12 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   }
 
   // ---- settings UI ----
-  var settingsEl=document.getElementById("settings"),
+  var menuEl=document.getElementById("menu"),
+      menuProgEl=document.getElementById("menu-progress"),
+      settingsEl=document.getElementById("settings"),
       swRemove=document.getElementById("sw-removemarked"),
       swPoolMode=document.getElementById("sw-poolmode"),
+      swShuffle=document.getElementById("sw-shuffle"),
       poolSizeIn=document.getElementById("pool-size"),
       poolLowIn=document.getElementById("pool-low"),
       poolStatEl=document.getElementById("pool-stat"),
@@ -1130,13 +1216,14 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   function renderPool(){
     poolSizeIn.value=state.poolSize; poolLowIn.value=state.poolLow;
     swPoolMode.classList.toggle("on",state.poolMode);
+    swShuffle.classList.toggle("on",!!state.shuffle);
     if(!state.poolMode){ poolStatEl.textContent="未开启——开启后从第 1 号起，始终保持「池大小」那么多没划掉的词"; return; }
-    var all=0; for(var i=0;i<DATA.length;i++) if(marked(DATA[i].rank)) all++;
+    var all=0; for(var i=0;i<DATA.length;i++) if(marked(DATA[i].word)) all++;
     var win=Math.min(state.poolMax, DATA.length), rem=poolRemain(), next=Math.min(DATA.length, win+(state.poolSize-state.poolLow));
     poolStatEl.innerHTML =
       "范围 第 1–"+win+" 号 · 已掌握 "+(win-rem)+" · 剩余 <b>"+rem+"</b><br>"
       +(win>=DATA.length ? "（已到全书末尾）"
-                         : "（剩余 ≤ "+state.poolLow+" 时推进到 "+next+" 号）")
+                         : "（剩余 ≤ "+state.poolLow+" 时，下次点「重置」推进到 "+next+" 号）")
       +"<br>全库已掌握 "+all+" / "+DATA.length;
   }
   function syncSettings(){
@@ -1161,7 +1248,9 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   swRemove.addEventListener("click", function(){ state.removeMarked=!state.removeMarked; syncSettings(); save(); });
   // active pool. The ceiling only ever moves FORWARD, so editing 容量/阈值 can never lose
   // progress: 容量 is just the starting range, 阈值 is both the low-water mark and the step.
-  function poolApply(){ syncSettings(); save(); paginate(); }
+  // These only change state; the page itself follows on the next 重置 (buildList).
+  function poolApply(){ syncSettings(); save(); }
+  swShuffle.addEventListener("click", function(){ state.shuffle=!state.shuffle; syncSettings(); save(); });
   swPoolMode.addEventListener("click", function(){ state.poolMode=!state.poolMode; ensurePool(); poolApply(); });
   poolSizeIn.addEventListener("change", function(){
     var n=parseInt(poolSizeIn.value,10);
@@ -1208,13 +1297,39 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   rgSkip.addEventListener("input", function(){ state.skipMs=+rgSkip.value; vSkip.textContent=state.skipMs+"ms"; save(); });
   rgExDelay.addEventListener("input", function(){ state.exDelay=+rgExDelay.value; vExDelay.textContent=state.exDelay+"ms"; save(); });
 
-  // 开始背诵 = the ONE deliberate refresh: re-cover every self-test mask, re-apply 去掉已划掉 /
-  // 状态池 filtering, re-paginate. Nothing else (backgrounding, relaunch, no-op resize, sync pull)
-  // is allowed to do this.
-  document.getElementById("start").addEventListener("click", function(){
-    state.revealed={}; save(); settingsEl.style.display="none"; paginate(); });
+  // 主菜单进度区：全库已掌握 + 状态池账目；池已触低水位但尚未推进时提示「待推进」
+  //（推进只发生在点「重置」时——划词当场不再刷新）。
+  function renderMenu(){
+    var all=0; for(var i=0;i<DATA.length;i++) if(marked(DATA[i].word)) all++;
+    var h="全库已掌握 <b>"+all+"</b> / "+DATA.length;
+    if(state.poolMode){
+      var win=Math.min(state.poolMax,DATA.length), rem=poolRemain();
+      h+="<br>状态池：范围 第 1–"+win+" 号 · 剩余 <b>"+rem+"</b>";
+      if(poolNeedsRefill())
+        h+="<br>剩余已到阈值——点「重置」将推进到 "+Math.min(DATA.length, win+(state.poolSize-state.poolLow))+" 号";
+      else if(win>=DATA.length) h+="（已到全书末尾）";
+    }
+    menuProgEl.innerHTML=h;
+  }
+
+  // 重置 = the ONE deliberate refresh: re-cover every self-test mask, re-apply 去掉已划掉 /
+  // 状态池 filtering (ensurePool advances the ceiling here), reshuffle if 池内乱序, re-paginate.
+  // Nothing else (开始背诵, settings, backgrounding, relaunch, resize, sync pull, marking a
+  // word) is allowed to do this. 开始背诵 just re-enters the same list where you left off
+  // (paginate() only re-lays it out, in case layout settings changed while in the menu).
+  function enterReading(){ settingsEl.style.display="none"; menuEl.style.display="none"; paginate(); }
+  document.getElementById("start").addEventListener("click", enterReading);
+  document.getElementById("reset").addEventListener("click", function(){
+    state.revealed={}; buildList();
+    if(state.poolMode && state.shuffle && state.list.length) state.anchor=state.list[0];   // 洗牌后从第一页开始
+    save(); enterReading(); });
+  // 顶栏「设置」-> 回主菜单；菜单里的「设置」-> 设置子页；子页「返回」回菜单（不刷新）。
   document.getElementById("btn-settings").addEventListener("click", function(){
-    syncSettings(); updateCacheUI(); settingsEl.style.display="flex"; wheelH.style.display="none"; wheelV.style.display="none"; });
+    renderMenu(); menuEl.style.display="flex"; wheelH.style.display="none"; wheelV.style.display="none"; });
+  document.getElementById("btn-opensettings").addEventListener("click", function(){
+    syncSettings(); updateCacheUI(); settingsEl.style.display="flex"; });
+  document.getElementById("btn-back").addEventListener("click", function(){
+    settingsEl.style.display="none"; renderMenu(); });
   // 同义词辨析书：托管版在 docs/synbook.html（SW 预缓存，离线可读）；
   // 单文件版指向同目录的 synbook.html（AirDrop 时两个文件一起发）。
   document.getElementById("btn-synbook").addEventListener("click", function(){ location.href="synbook.html"; });
@@ -1334,7 +1449,7 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
 
   var rzTO;
   window.addEventListener("resize", function(){ clearTimeout(rzTO); rzTO=setTimeout(function(){
-    if(settingsEl.style.display!=="none") return;
+    if(settingsEl.style.display!=="none" || menuEl.style.display!=="none") return;
     // iOS/iPadOS fires resize on every background→foreground switch WITHOUT any real size change
     // (app-switcher snapshots etc.); re-paginating there re-covered masks and dropped marked words.
     // Only a real size change (rotation, split-view) justifies a rebuild.
@@ -1368,8 +1483,9 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   // 分页拉取:云端(PostgREST db-max-rows)一次最多回 N 行(本项目默认 1000),
   // 且不会提示"还有更多"。这里按“实际返回行数”翻页、直到某页为空,
   // 因此不写死 1000/500,换任何服务器都能拉全(见 §8)。
+  // 读写都走 RPC(sync_pull/sync_push),不直接碰表:anon 无表权限,列不出别人的同步码(§8.3)。
   function pullAll(code, off, acc){
-    return api("progress?code=eq."+encodeURIComponent(code)+"&select=kind,item,v,t&order=kind,item&offset="+off)
+    return api("rpc/sync_pull", {method:"POST", body:JSON.stringify({p_code:code, p_offset:off})})
       .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
       .then(function(rows){
         acc=acc.concat(rows);
@@ -1382,27 +1498,32 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
     SYNC.busy=true;
     pullAll(SYNC.code, 0, [])
       .then(function(rows){
-        var rMarks={}, rColors={}, k;
-        rows.forEach(function(row){ if(row.kind==="mark") rMarks[row.item]={v:row.v,t:Number(row.t)};
-                                    else if(row.kind==="color") rColors[row.item]=true; });
-        var changed=false, push=[];
-        for(k in rMarks){ var rm=rMarks[k], lm=state.marks[k];
-          if(!lm || rm.t>lm.t){ state.marks[k]={v:rm.v?1:0,t:rm.t}; changed=true; } }
-        for(k in state.marks){ var l2=state.marks[k], r2=rMarks[k];
-          if(!r2 || l2.t>(r2.t||0)) push.push({code:SYNC.code,kind:"mark",item:String(k),v:l2.v,t:l2.t}); }
+        // 划线只认 kind "w"（按单词）：同一同步码下，四级/中考等各词典共享这一份——换词典接着用。
+        // 云端 "mark" 行（按旧序号）不读也不写：同一个码下它们是四级按四级序号写的，用中考的序号表翻译会对错词。
+        var rW={}, rColors={}, k;
+        function keep(map,key,row){ var t=Number(row.t); if(!own(map,key) || t>map[key].t) map[key]={v:row.v?1:0,t:t}; }
+        rows.forEach(function(row){
+          if(row.kind==="w") keep(rW,row.item,row);
+          else if(row.kind==="color") rColors[row.item]=true; });
+        var changed=false, push=[], rm;
+        for(k in rW){ rm=rW[k];
+          if(!own(state.marks,k) || rm.t>state.marks[k].t){ state.marks[k]={v:rm.v,t:rm.t}; changed=true; } }
+        for(k in state.marks){ var lm=state.marks[k];
+          if(!own(rW,k) || lm.t>rW[k].t) push.push({code:SYNC.code,kind:"w",item:k,v:lm.v,t:lm.t}); }
         for(k in rColors){ var hex="#"+k;
           if(state.customColors.indexOf(hex)<0 && !PRESETS.some(function(p){return p.c===hex;})){ state.customColors.push(hex); changed=true; } }
         state.customColors.forEach(function(hex){ var ck=hex.replace("#",""); if(!(ck in rColors)) push.push({code:SYNC.code,kind:"color",item:ck,v:1,t:Date.now()}); });
         if(changed){
           save(); renderSwatches();
+          if(menuEl.style.display!=="none") renderMenu();   // 菜单开着时，同步拉回的划线要反映到「已掌握」计数
           if(settingsEl.style.display==="none"){
             pagesEl.querySelectorAll(".entry[data-rank]").forEach(function(el){
-              el.classList.toggle("marked", !!marked(+el.dataset.rank));
+              el.classList.toggle("marked", !!marked(el.dataset.word));
             });
           }
         }
-        if(push.length) return api("progress?on_conflict=code,kind,item",
-          {method:"POST", headers:{"Prefer":"resolution=merge-duplicates,return=minimal"}, body:JSON.stringify(push)});
+        if(push.length) return api("rpc/sync_push",
+          {method:"POST", body:JSON.stringify({p_code:SYNC.code, p_rows:push})});
       })
       .then(function(){ setSyncStatus("on"); })
       .catch(function(){ setSyncStatus("err"); })
@@ -1426,11 +1547,13 @@ window.SYNC_CONFIG = __SYNC_CONFIG__;
   hasSlowEx = (AIDX && AIDX.ex_slow) || !!(document.getElementById("audio-ex-slow") && document.getElementById("audio-ex-slow").textContent.trim());
   if(hasSlowEx) rowExSlow.style.display="";
 
-  // init
+  // init — 每次启动（无论新老用户）都先落主菜单；「开始背诵」原样继续，
+  // 「重置」是唯一的页面内容刷新点（重盖遮蔽 / 过滤划词 / 状态池推进 / 乱序都在那一刻发生）。
+  // 老存档没有 state.list：首次按当前设置建一份（不清遮蔽），之后只有「重置」会改它。
+  if(!Array.isArray(state.list)) buildList();
+  else if(typeof state.listShuffled!=="boolean") state.listShuffled=!!(state.poolMode && state.shuffle);
   applyTheme(state.bg); applyLayout(); syncSettings(); devApply(); paginate(); updateCacheUI();
-  // 老用户冷启动直接回到离开时的背诵页（遮蔽解锁/划线/位置全部由 state 恢复）；
-  // 设置页只剩「点设置按钮」一个入口，「重新覆盖遮蔽 / 过滤划词」只发生在主动点开始背诵时。
-  if(!_firstRun) settingsEl.style.display="none";
+  settingsEl.style.display="none"; menuEl.style.display="flex"; renderMenu();
   loadPacks();                                   // hosted build: stream the audio in behind the shell
   if(state.syncCode) startSync();
 
